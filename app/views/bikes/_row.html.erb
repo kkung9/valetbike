@@ -1,0 +1,7 @@
+<div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
+    <% if bike.current_station  %>
+      <%= bike.identifier %>: docked at <%= bike.current_station.name %>
+    <% else %>
+      <%= bike.identifier %>: not docked
+    <% end %>
+</div>

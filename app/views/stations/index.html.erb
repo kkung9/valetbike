@@ -1,9 +1,24 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
-      Welcome to ValetBike!
+      ValetBike: Explore Nipmuc Notch
     </div>  
-    <div class="flexbox vertical stretch">
+ 
+    <button href="javascript:;" onmousedown="showStations();" style="width:200px">Show Stations</button>
+    <button href="javascript:;" onmousedown="showBikes();" style="width:200px">Show Bikes</button>
+
+    <script>
+    function showStations() {
+      document.getElementById("b").style.display = 'none';
+      document.getElementById("s").style.display = 'block';
+    } 
+    function showBikes() {
+      document.getElementById("s").style.display = 'none';
+      document.getElementById("b").style.display = 'block';
+    } 
+    </script>
+
+    <div class="flexbox vertical stretch" id="s" style="display:block">
       <% if @stations.present? %>
         <%= render(partial: "stations/row", collection: @stations, as: :station) %>
       <% else %>
@@ -12,5 +27,16 @@
       </div>
       <% end %>
     </div>
+
+    <div class="flexbox vertical stretch" id="b" style="display:none">
+      <% if @bikes.present? %>
+          <%= render(partial: "bikes/row", collection: @bikes, as: :bike) %>
+      <% else %>
+        <div class="empty">
+          No bikes found.
+        </div>
+      <% end %>
+    </div>
+
 	</div>
 </div>
