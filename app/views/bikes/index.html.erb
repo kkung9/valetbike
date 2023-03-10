@@ -4,23 +4,23 @@
       ValetBike: Explore Nipmuc Notch
     </div>  
 
-    <a class="toggle" href="<%= bikes_path %>">View Bikes</a>
+    <a class="toggle" href="<%= stations_path %>">View Stations</a>
 
     <div class="flexbox vertical stretch" id="s" style="display:block">
-      <% if @stations.present? %>
+      <% if @bikes.present? %>
         <div class="record-row header flexbox horizontal justify-space-between">
           <% if params[:reverse].blank? || params[:reverse] == "0" %>
-            <a href="<%= stations_path(params: {reverse: 1})%>"> Sort (desc) </a>
+            <a href="<%= bikes_path(params: {reverse: 1})%>"> Sort (desc) </a>
           <% else %>
-            <a href="<%= stations_path %>"> Sort (asc) </a>
+            <a href="<%= bikes_path %>"> Sort (asc) </a>
           <% end %>
         </div>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+        <%= render(partial: "bikes/row", collection: @bikes, as: :bike) %>
       <% else %>
         <div class="empty">
-          No stations found.
+          No bikes found.
         </div>
       <% end %>
     </div>
-	</div>
+    </div>
 </div>
