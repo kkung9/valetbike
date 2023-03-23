@@ -1,7 +1,7 @@
 class Bike < ApplicationRecord
-  validates_presence_of    :identifier
-  validates_uniqueness_of  :identifier
-  
-  belongs_to :current_station, class_name: :Station, foreign_key: :current_station_id, optional: true
+  has_one :dock
+  has_one :station, through: :dock
 
+  has_one :rental
+  has_one :user, through: :rental
 end

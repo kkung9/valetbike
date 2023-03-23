@@ -38,3 +38,5 @@
 
 # Ignore ENV variable file
 .env
+
+database.yml

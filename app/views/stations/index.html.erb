@@ -1,26 +1,24 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
-      ValetBike: Explore Nipmuc Notch
+      <h1>Welcome to ValetBike!</h1>
+
+      <h3>About Us</h3>
+      <p>We are a super cool family business served the whole Pioneer Valley! Please rent our bikes!</p>
+
+      <h3>Announcements</h3>
+      <p>Unfortunately, ValetBike is closed in winter.</p>
+
+      <h3>Pricing</h3>
+      <p>Hourly: $0.18 per hour</p>
+      <p>Day pass: $15 per day</p>
+      <p>Membership: $50 annually</p>
+      
+
+      <h3>Contact</h3>
+      <p>valetbike@valetbike.com</p>
+      <p>(413)-123-4567</p>
+
     </div>  
-
-    <a class="toggle" href="<%= bikes_path %>">View Bikes</a>
-
-    <div class="flexbox vertical stretch" id="s" style="display:block">
-      <% if @stations.present? %>
-        <div class="record-row header flexbox horizontal justify-space-between">
-          <% if params[:reverse].blank? || params[:reverse] == "0" %>
-            <a href="<%= stations_path(params: {reverse: 1})%>"> Sort (desc) </a>
-          <% else %>
-            <a href="<%= stations_path %>"> Sort (asc) </a>
-          <% end %>
-        </div>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
-        <div class="empty">
-          No stations found.
-        </div>
-      <% end %>
-    </div>
-	</div>
+  </div>
 </div>
