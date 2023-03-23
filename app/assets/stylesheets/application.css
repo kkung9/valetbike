@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+* {
+    font-family: 'Tahoma', sans-serif;
+}
+
+:root{
+    --color1: #484A47;
+    --color2: #BDF7B7;
+    --color3: #57A95B;
+    --color4: #B9D6F2;
+    --color5: #935FA7;
+    --xlarge: 48px;
+    --large: 36px;
+    --medium: 24px;
+    --small: 18px; 
+}
+
+nav{
+    background-color: var(--color4);
+    text-align: center;
+    font-size: var(--large);
+    padding: 15px 50px 15px 50px;
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+nav li a {
+    color: var(--color1);
+    text-decoration: none;
+    
+}
+h1 {
+    font-size: var(--xlarge);
+}
+h3 {
+    font-size: var(--medium);
+}
+p {
+    font-size: var(--small);
+}
