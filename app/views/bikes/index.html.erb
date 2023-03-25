@@ -1,26 +1,31 @@
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-      ValetBike: Explore Nipmuc Notch
-    </div>  
-
-    <a class="toggle" href="<%= stations_path %>">View Stations</a>
-
-    <div class="flexbox vertical stretch" id="s" style="display:block">
-      <% if @bikes.present? %>
-        <div class="record-row header flexbox horizontal justify-space-between">
-          <% if params[:reverse].blank? || params[:reverse] == "0" %>
-            <a href="<%= bikes_path(params: {reverse: 1})%>"> Sort (desc) </a>
-          <% else %>
-            <a href="<%= bikes_path %>"> Sort (asc) </a>
-          <% end %>
+    <div class="section-inner flexbox vertical stretch">
+        <div class="section-title">
+            ValetBike: Explore Nipmuc Notch
         </div>
-        <%= render(partial: "bikes/row", collection: @bikes, as: :bike) %>
-      <% else %>
-        <div class="empty">
-          No bikes found.
+
+        <a class="toggle" href="<%= stations_path %>">View Stations</a>
+
+        <div class="flexbox vertical stretch" id="s" style="display:block">
+            <% if @bikes.present? %>
+                <div class="record-row header flexbox horizontal justify-space-between">
+                    <% if params[:reverse].blank? || params[:reverse] == "0" %>
+                        <a href="<%= bikes_path(params: {reverse: 1})%>">
+                            Sort (desc)
+                        </a>
+                        <%= @current_user %>
+                    <% else %>
+                        <a href="<%= bikes_path %>">
+                            Sort (asc)
+                        </a>
+                    <% end %>
+                </div>
+                <%= render(partial: "bikes/row", collection: @bikes, as: :bike) %>
+            <% else %>
+                <div class="empty">
+                    No bikes found.
+                </div>
+            <% end %>
         </div>
-      <% end %>
-    </div>
     </div>
 </div>

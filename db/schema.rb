@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_213624) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_185746) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "status"
+    t.integer "identifier"
+    t.integer "dock_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "docks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "bike_id", null: false
     t.bigint "station_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "bike_id", null: false
     t.index ["bike_id"], name: "index_docks_on_bike_id"
     t.index ["station_id"], name: "index_docks_on_station_id"
   end
@@ -36,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_213624) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "bike_id", null: false
+    t.boolean "is_complete"
     t.index ["bike_id"], name: "index_rentals_on_bike_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end

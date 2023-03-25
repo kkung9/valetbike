@@ -227,11 +227,8 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
-<<<<<<< HEAD
   arm64-darwin-21
-=======
   x86_64-darwin-21
->>>>>>> 3e4c6da (trying to update my local project)
   x86_64-darwin-22
   x86_64-linux
 
