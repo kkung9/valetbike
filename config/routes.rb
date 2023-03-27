@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   match '/list', to: "stations#list", via: :get
   match '/profile', to: "user#profile", via: :get
   match '/map', to: "stations#map", via: :get
+  match '/station', to: "stations#station_view", via: :get
   
 end
