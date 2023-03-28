@@ -18,6 +18,7 @@ class StationsController < ApplicationController
 
   def station_view
     @station = Station.find_by(identifier: "21")
+    @hello = "hello"
   end
   
 end
