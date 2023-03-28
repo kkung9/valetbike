@@ -1,7 +1,9 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
-      <h1>Map</h1>
-    </div>  
+      <h1><%= @station.name %></h1>
+      <p>Address: <%= @station.address %><p>
+      <p><%= @station.bikes.count %> bikes docked</p>
+    </div>
   </div>
 </div>
