@@ -25,6 +25,7 @@
 # Ignore Tailwind CSS builds
 /app/assets/builds/*
 !/app/assets/builds/.keep
+/public/assets
 
 # Ignore Mac images
 .DS_Store

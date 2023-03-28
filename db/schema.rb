@@ -12,6 +12,8 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_26_235702) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "identifier"
+    t.integer "dock_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -19,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_235702) do
   end
 
   create_table "docks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "bike_id", null: false
     t.bigint "station_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_235702) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "bike_id", null: false
+    t.boolean "is_complete"
     t.index ["bike_id"], name: "index_rentals_on_bike_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end

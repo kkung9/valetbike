@@ -4,6 +4,11 @@ class Bike < ApplicationRecord
   has_one :dock
   has_one :station, through: :dock
 
-  has_one :rental
-  has_one :user, through: :rental
+  has_many :rental
+  has_many :user, through: :rental
+
+  # current_user = Bike.user.where(is_complete: false) 
+  # puts(current_user.id)
+  # return current_user.id 
+
 end
