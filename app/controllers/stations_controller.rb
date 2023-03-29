@@ -18,5 +18,10 @@ class StationsController < ApplicationController
   def map
     render('map')
   end
+
+  # def ???
+  #   @vacancy = Station.find().capacity - Station.find().bikes.count
+  # end
+
   
 end
