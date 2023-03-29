@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   match '/profile', to: "users#profile", via: :get
   match '/map', to: "stations#map", via: :get
   match '/station', to: "stations#station_view", via: :get
-  match '/rental', to: "users#rental", via: :get
+  match '/rental', to: "rentals#rental", via: :get
+  match '/receipt', to: "rentals#receipt", via: :get
+  match '/purchase_confirmation', to: "rentals#purchase_confirm", via: :get
+  match '/current_ride', to: "rentals#current_ride", via: :get
   
 end

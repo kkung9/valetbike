@@ -2,8 +2,18 @@
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
       <h1><%= @station.name %></h1>
-      <p>Address: <%= @station.address %><p>
-      <p><%= @station.bikes.count %> bikes docked</p>
+
+      <div>
+        <p>Address: <%= @station.address %><p>
+        <p><%= @station.bikes.count %> bikes docked</p>
+        <button><a href="">RENT NOW</a></button>
+      </div>
+
+      <div>
+        <img src="">
+      </div>
+
+
     </div>
   </div>
 </div>

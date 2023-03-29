@@ -17,7 +17,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_235702) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "identifier"
   end
 
   create_table "docks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -25,7 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_235702) do
     t.bigint "station_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "bike_id", null: false
     t.integer "identifier"
     t.index ["bike_id"], name: "index_docks_on_bike_id"
     t.index ["station_id"], name: "index_docks_on_station_id"
