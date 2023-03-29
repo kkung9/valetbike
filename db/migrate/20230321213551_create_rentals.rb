@@ -6,6 +6,8 @@ class CreateRentals < ActiveRecord::Migration[7.0]
       t.datetime :actual_end_time
       t.float :predicted_fee
       t.float :actual_fee
+      t.integer :start_station
+      t.integer :end_station
 
       t.timestamps
     end

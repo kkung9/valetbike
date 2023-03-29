@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_185746) do
     t.datetime "actual_end_time"
     t.float "predicted_fee"
     t.float "actual_fee"
+    t.integer "start_station"
+    t.integer "end_station"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -47,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_185746) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
+    t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
