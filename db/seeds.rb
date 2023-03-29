@@ -13,7 +13,8 @@
 # }])
 
 # p "Created station"
-
+Dock.destroy_all
+Bike.destroy_all
 Station.destroy_all
 
 require 'csv'
@@ -29,18 +30,43 @@ csv.each do |row|
 end
 puts "There are now #{Station.count} rows in the stations table"
 
-Bike.destroy_all
-
 require 'csv'
-csv_text = File.read(Rails.root.join('notes', 'bike-data.csv'))
+csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
     b = Bike.new
     b.identifier = row['identifier']
-    b.current_station_id = row['current_station_identifier']
-    s = Station.find_by(identifier: b.current_station_id)
-    b.current_station = s
+    # d = Dock.find_by(identifier: b.dock)
+    # b.dock = d
     b.save
     puts "#{b.identifier} saved"
 end
 puts "There are now #{Bike.count} rows in the bikes table"
+
+require 'csv'
+csv_text = File.read(Rails.root.join('notes', 'dock-data.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+    d = Dock.new
+    d.identifier = row['identifier']
+    s = row['station']
+    d.station = Station.find_by(identifier: s)
+    b = row['bike']
+    d.bike = Bike.find_by(identifier: b)
+    d.save
+    puts "#{d.identifier} saved"
+end
+puts "There are now #{Dock.count} rows in the dock table"
+
+require 'csv'
+csv_text = File.read(Rails.root.join('notes', 'user-data.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+    u = User.new
+    u.identifier = row['identifier']
+    u.firstName = row['firstName']
+    u.lastName = row['lastName']
+    u.save
+    puts "#{u.firstName} saved"
+end
+puts "There are now #{User.count} rows in the user table"
