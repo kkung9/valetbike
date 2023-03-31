@@ -16,8 +16,22 @@ class StationsController < ApplicationController
     render('map')
   end
 
+
   # def ???
   #   @vacancy = Station.find().capacity - Station.find().bikes.count
   # end
+
+  def station_view
+    @station = Station.find_by(identifier: "21")
+    @hello = "hello"
+  end
+
+  # private
+  # def station_params
+    # params.require(:station).permit(:name, :address, :identifier)
+    # end
+    # ^ for all controllers
+    # create & edit & update reference station_params 
+
   
 end
