@@ -2,6 +2,34 @@
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
       <h1>Map</h1>
+      <!-- Leaflet's css header -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""/>
+
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+      <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+          integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+          crossorigin=""></script>
+      
+      <div id="map"></div>
+      
+      
+      <script>
+      var map = L.map('map').setView([51.505, -0.09], 13);
+      </script>
+
+      <script>
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+      </script>
+
+      <script>
+      var marker = L.marker([51.5, -0.09]).addTo(map);
+      </script>
+
     </div>  
   </div>
 </div>

@@ -56,3 +56,5 @@ h3 {
 p {
     font-size: var(--small);
 }
+/* map styling: setting size */
+#map { height: 800px; width: 800px;}
