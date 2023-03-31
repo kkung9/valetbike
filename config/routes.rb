@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   match '/receipt', to: "rentals#receipt", via: :get
   match '/purchase_confirmation', to: "rentals#purchase_confirm", via: :get
   match '/current_ride', to: "rentals#current_ride", via: :get
-  
+  match '/create_account', to: "users#create_account", via: :get
+
 end
