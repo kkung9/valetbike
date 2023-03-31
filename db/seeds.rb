@@ -64,9 +64,9 @@ csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
     u = User.new
     u.identifier = row['identifier']
-    u.firstName = row['firstName']
-    u.lastName = row['lastName']
+    u.first_name = row['first_name']
+    u.lastName = row['last_name']
     u.save
-    puts "#{u.firstName} saved"
+    puts "#{u.first_name} saved"
 end
 puts "There are now #{User.count} rows in the user table"
