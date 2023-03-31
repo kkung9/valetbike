@@ -7,10 +7,16 @@
     </div>
 
     <p>You currently have: bike</p>
-    <button><a href="">View Map</a></button>
+    <button> <%= link_to("View Map", "/map") %> </button>
+
+    <p>Please return your bike to a ValetBike station by: </p>
+        <p>Happy Riding!</p>
+        
     <p>To return a bike, approach a station and type in the code on the dock you wish to return it to.</p>
+
+    <button> <%= link_to("Return Bike", "/receipt") %> </button>
 
     <!-- need to add form for input re: dock ID verification ->
 
-    </div>
-    </div>
+  </div>
+</div>

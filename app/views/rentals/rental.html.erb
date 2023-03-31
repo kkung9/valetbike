@@ -1,10 +1,13 @@
 <style>
-    #rectangle{
-        width:50px;
-        height:100px;
-        border-radius: 10px;
-        display: inline-block;
-    }
+  .button {
+    background-color: green;
+    color: black;
+    padding: 50px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
 </style>
 
 <div class="page-section flexbox vertical stretch">
@@ -16,9 +19,9 @@
       
         <% @station.docks.each do |dock| %>
             <% if dock.bike.identifier %>
-                <div id="rectangle" style="background:green"></div>
+              <button class="button"> <%= link_to(dock.bike.identifier, "/purchase_confirmation") %> </button>
             <% else %>
-                <div id="rectangle" style="background:gray"></div>
+              <button class="button"> <%= dock.bike.identifier %> </button>
             <% end %>
         <% end %>
 

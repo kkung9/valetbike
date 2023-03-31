@@ -39,4 +39,4 @@
 # Ignore ENV variable file
 .env
 
-database.yml
+database.ymlconfig/database.yml
