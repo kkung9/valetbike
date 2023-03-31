@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  startTime: 2023-03-21 17:35:51
-  predictedEndTime: 2023-03-21 17:35:51
-  actualEndTime: 2023-03-21 17:35:51
-  predictedFee: 1.5
-  actualFee: 1.5
+  start_time: 2023-03-21 17:35:51
+  predicted_end_time: 2023-03-21 17:35:51
+  actual_end_time: 2023-03-21 17:35:51
+  predicted_fee: 1.5
+  actual_fee: 1.5
 
 two:
-  startTime: 2023-03-21 17:35:51
-  predictedEndTime: 2023-03-21 17:35:51
-  actualEndTime: 2023-03-21 17:35:51
-  predictedFee: 1.5
-  actualFee: 1.5
+  start_time: 2023-03-21 17:35:51
+  predicted_end_time: 2023-03-21 17:35:51
+  actual_end_time: 2023-03-21 17:35:51
+  predicted_fee: 1.5
+  actual_fee: 1.5
