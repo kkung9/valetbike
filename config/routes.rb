@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match '/search', to: "stations#search", via: :get
   match '/list', to: "stations#list", via: :get
   match '/profile', to: "users#profile", via: :get
+  match '/past_purchases', to: "users#profile_purchases", via: :get
   match '/map', to: "stations#map", via: :get
   match '/station', to: "stations#station_view", via: :get
   match '/rental', to: "rentals#rental", via: :get

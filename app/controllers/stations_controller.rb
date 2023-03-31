@@ -20,5 +20,12 @@ class StationsController < ApplicationController
     @station = Station.find_by(identifier: "21")
     @hello = "hello"
   end
+
+  # private
+  # def station_params
+    # params.require(:station).permit(:name, :address, :identifier)
+    # end
+    # ^ for all controllers
+    # create & edit & update reference station_params 
   
 end

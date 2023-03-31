@@ -6,7 +6,7 @@
       <div>
         <p>Address: <%= @station.address %><p>
         <p><%= @station.bikes.count %> bikes docked</p>
-        <button><a href="">RENT NOW</a></button>
+        <button> <%= link_to("RENT NOW", "/rental") %> </button>
       </div>
 
       <div>
