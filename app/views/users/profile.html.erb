@@ -4,7 +4,7 @@
 
       <h1>Welcome, <%= @user&.firstName %></h1>
 
-      <button> <a href="">Your past purchases</a> </button>
+      <button> <%= link_to("Your past purchases", "/past_purchases")%> </button>
 
       <table>
         <tr>
