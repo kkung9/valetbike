@@ -27,6 +27,8 @@ csv.each do |row|
     s.name = row['name']
     s.address = row['address']
     s.capacity = row['capacity']
+    s.lat = row['lat']
+    s.long = row['long']
     s.save
 end
 puts "There are now #{Station.count} rows in the stations table"
