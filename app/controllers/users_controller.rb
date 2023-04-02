@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def profile
-    @user = User.find_by(firstName: "Stephen")
+    @user = User.find_by(first_name: "Stephen")
     render('profile')
   end
   
