@@ -25,6 +25,8 @@ csv.each do |row|
     s.identifier = row['identifier']
     s.name = row['name']
     s.address = row['address']
+    s.lat = row['lat']
+    s.long = row['long']
     s.save
     puts "#{s.name} saved"
 end
