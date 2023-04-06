@@ -24,6 +24,7 @@ class RentalsController < ApplicationController
       @rental.start_time = Time.current
       @rental.predicted_end_time = Time.current + params[:duration].to_i.minutes
       @rental.save
+      @bike.dock.undock
       redirect_to current_path(@rental.id)
     end
 

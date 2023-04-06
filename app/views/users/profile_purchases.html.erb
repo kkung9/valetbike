@@ -3,8 +3,7 @@
     <div class="section-title">
 
     <h1>Your Past Purchases</h1>
-
-    <!-- Add thingy to the right with the user's name -->
+    <p><%= @user.first_name %> <%= @user.last_name %> </p>
 
     <table>
         <tr>
@@ -15,26 +14,21 @@
         <th>End Station</th>
         <th>Cost</th>
         </tr>
+
+      <% @rentals.each do |rental| %>
         <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <td><%= rental.start_time.to_date%></td>
+        <td><%= rental.start_time.hour %>:<%= rental.start_time.min %></td>
+        <td><%= rental.actual_end_time.hour %>:<%= rental.actual_end_time.min %></td>
+        <td><%= Station.find_by(identifier: rental.start_station).name %></td>
+        <td><%= Station.find_by(identifier: rental.end_station).name %></td>
+        <td></td>
         </tr>
-        <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+      <% end %>
     </table>
 
     </div>
   </div>
 </div> 
 
-    <!-- Continuous table styling ^^ -->
+<!-- Continuous table styling ^^ -->
