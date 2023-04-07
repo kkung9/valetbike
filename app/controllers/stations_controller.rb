@@ -6,24 +6,22 @@ class StationsController < ApplicationController
     else
       @stations = Station.all.order(identifier: :desc)
     end
-    render('search')
   end
   
   def index
   end
 
   def map
+    @stations = Station.all
     render('map')
   end
-
 
   # def ???
   #   @vacancy = Station.find().capacity - Station.find().bikes.count
   # end
 
   def station_view
-    @station = Station.find_by(identifier: "21")
-    @hello = "hello"
+    @station = Station.find(params[:id])
   end
 
   # private

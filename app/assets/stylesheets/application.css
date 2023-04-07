@@ -57,4 +57,9 @@ p {
     font-size: var(--small);
 }
 /* map styling: setting size */
-#map { height: 800px; width: 800px;}
+#map { 
+    height: 600px; 
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}

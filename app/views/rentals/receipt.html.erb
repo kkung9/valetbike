@@ -7,9 +7,9 @@
     </div>
 
     <div>
-        <p>Start Station:</p>
-        <p>End Station:</p>
-        <p>Time:</p>
+        <p>Start Station: <%= Station.find_by(id: @rental.start_station).name %> </p>
+        <p>End Station: <%= Station.find_by(id: @rental.end_station).name %> </p>
+        <p>Time: <%= (@rental.actual_end_time - @rental.start_time) / 60 %> minutes </p>
     </div>
 
     
