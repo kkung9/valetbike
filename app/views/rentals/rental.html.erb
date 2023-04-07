@@ -1,6 +1,15 @@
 <style>
-  .button {
+  .button1 {
     background-color: green;
+    color: black;
+    padding: 50px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  .button2 {
+    background-color: gray;
     color: black;
     padding: 50px 10px;
     text-align: center;
@@ -18,10 +27,10 @@
       <p>You are at <%= @station.name %>.</p>
       
         <% @station.docks.each do |dock| %>
-            <% if dock.bike.identifier %>
-              <button class="button"> <%= link_to(dock.bike.identifier, "/purchase_confirmation") %> </button>
+            <% if dock.bike %>
+              <button class="button1"> <%= link_to(dock.bike.identifier, confirm_path(@station.id, dock.bike.id)) %> </button>
             <% else %>
-              <button class="button"> <%= dock.bike.identifier %> </button>
+              <button class="button2"> ___ </button>
             <% end %>
         <% end %>
 

@@ -2,6 +2,9 @@
     <div class="section-inner flexbox vertical stretch">
         <div class="section-title">
             ValetBike: Explore Nipmuc Notch
+            <h3>current user
+                <%# <%=  @current_user%> %>
+            </h3>
         </div>
 
         <a class="toggle" href="<%= stations_path %>">View Stations</a>
@@ -13,7 +16,7 @@
                         <a href="<%= bikes_path(params: {reverse: 1})%>">
                             Sort (desc)
                         </a>
-                        <%= @current_user %>
+
                     <% else %>
                         <a href="<%= bikes_path %>">
                             Sort (asc)

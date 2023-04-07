@@ -6,14 +6,23 @@
 
     </div>
 
-    <p>Station:</p>
-    <div>
-    <p>How much time?</p>
-    <!-- Need to add in time duration selectors!! -->
-    </div>
+    <p>Station: <%= @station.name %> </p>
+    <p>Bike: <%= @bike.identifier %> </p>
 
-    <button> <%= link_to("UNLOCK NOW", "/current_ride") %> </button>
-    
+    <p>How much time?</p>
+    <%= form_with do |form| %>
+      <p> <%= form.number_field :duration, in: 1..120, step: 1 %> minutes</p>
+    <% @rental.user_id = User.find_by(first_name: "Stephen").id %>
+    <% @rental.bike_id = @bike.id %>
+    <% @rental.start_station = @station.id %>
+    <% @rental.start_time = Time.current%>
+    <% @rental.predicted_end_time = Time.current + 10.minutes%>
+    <% @rental.save %>
+
+    <div class="form-buttons">
+      <%= link_to(form.submit("UNLOCK NOW"), current_path(@rental.id)) %>
+    </div>
+    <% end %>
 
     </div>
     </div>

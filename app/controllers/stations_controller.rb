@@ -9,9 +9,6 @@ class StationsController < ApplicationController
   #   render('search')
   # end
 
-  
-  def index
-  end
 
   def search
     if params[:name]
@@ -20,19 +17,20 @@ class StationsController < ApplicationController
       @station = Station.all
     end
   end
+  
+  def index
+  end
 
   def map
     render('map')
   end
-
 
   # def ???
   #   @vacancy = Station.find().capacity - Station.find().bikes.count
   # end
 
   def station_view
-    @station = Station.find_by(identifier: "21")
-    @hello = "hello"
+    @station = Station.find(params[:id])
   end
 
   private
