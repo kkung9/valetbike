@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/confirm/:station_id/:bike_id', to: 'rentals#purchase_confirm', as: 'confirm'
   get '/receipt/:id', to: 'rentals#receipt', as: 'receipt'
   get '/current_ride/:id', to: 'rentals#current_ride', as: 'current'
-  post '/rental/:station_id/:bike_id', to: 'rentals#create', as: 'create'
+  post '/rental/:station_id/:bike_id', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
   get '/past_purchases/:id', to: 'users#profile_purchases', as: 'purchases'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   match '/current_ride', to: "rentals#current_ride", via: :get
   match '/create_account', to: "users#create_account", via: :get
   match '/account_confirmation', to: "users#account_confirmation", via: :get
-  post 'users', to: 'users#create', as: 'create_user'
+  post 'users', to: 'users#create', as: 'create'
   match '/user_login', to: "users#user_login", via: :get
   post 'temps', to: 'users#login', as: 'login'
   

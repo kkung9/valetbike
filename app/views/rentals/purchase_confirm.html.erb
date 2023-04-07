@@ -10,7 +10,7 @@
     <p>Bike: <%= @bike.identifier %> </p>
 
     <p>How much time?</p>
-    <%= form_with url: create_path(@station.id, @bike.id), method: 'post' do |form| %>
+    <%= form_with url: rent_path(@station.id, @bike.id), method: 'post' do |form| %>
       <p> <%= form.number_field :duration, in: 0..120, step: 5 %> minutes</p>
       <div class="form-buttons">
         <%= form.submit("UNLOCK NOW") %>
