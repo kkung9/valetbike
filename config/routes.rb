@@ -17,13 +17,20 @@ Rails.application.routes.draw do
   get '/past_purchases/:id', to: 'users#profile_purchases', as: 'purchases'
 
   match '/index', to: "stations#index", via: :get
-  match '/search', to: "stations#search", via: :get
+  get '/search(/:name)', to: "stations#search", as: 'search'
   match '/list', to: "stations#list", via: :get
   match '/profile', to: "users#profile", via: :get
   match '/map', to: "stations#map", via: :get
   match '/receipt', to: "rentals#receipt", via: :get
   match '/current_ride', to: "rentals#current_ride", via: :get
   match '/create_account', to: "users#create_account", via: :get
+  match '/account_confirmation', to: "users#account_confirmation", via: :get
+  post 'users', to: 'users#create', as: 'create'
+  match '/user_login', to: "users#user_login", via: :get
+  post 'temps', to: 'users#login', as: 'login'
+  
+ 
+
 
 
 end

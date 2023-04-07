@@ -1,6 +1,22 @@
-<%= form_with model: @user do |form| %>
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+
+    <h1>Create New Account</h1>
+
+    </div>
+
+<%= form_with url: create_path, remote: true, method: 'post' do |form| %>
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
     <p>First name: <%= form.text_field :first_name, :placeholder => "Johnny" %></p> <br>
     <p>Last name: <%= form.text_field :last_name, :placeholder => "Appleseed" %></p> <br>
     <p>Email: <%= form.email_field :email, :placeholder => "jappleseed@apple.orchard" %></p> <br>
     <%= form.submit "Create account" %>
   <% end %>
+
+  </div>
+</div
