@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   match '/current_ride', to: "rentals#current_ride", via: :get
   match '/create_account', to: "users#create_account", via: :get
   match '/account_confirmation', to: "users#account_confirmation", via: :get
-  post 'users', to: 'users#create', as: 'create'
+  post 'users', to: 'users#create', as: 'create_user'
   match '/user_login', to: "users#user_login", via: :get
   post 'temps', to: 'users#login', as: 'login'
   
