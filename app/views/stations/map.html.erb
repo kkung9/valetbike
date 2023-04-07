@@ -2,6 +2,7 @@
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
       <h1>Map</h1>
+      <br>
       <!-- Leaflet's css header -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
       integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -16,7 +17,7 @@
       
       
       <script>
-      var map = L.map('map').setView([51.505, -0.09], 13);
+        var map = L.map('map').setView([42.32, -72.64], 13);
       </script>
 
       <script>
@@ -26,9 +27,16 @@
         }).addTo(map);
       </script>
 
-      <script>
-      var marker = L.marker([51.5, -0.09]).addTo(map);
-      </script>
+      <!-- Adding markers for each station:) -->
+      <% @stations.each do |station| %>
+        <script>
+          var marker = L.marker([<%=station.lat%>, <%=station.long%>]).addTo(map);
+          marker.bindPopup('<%=link_to(station.name, station_path(station.id))%><br>Bikes available: ' + <%=station.bikes.count%>).openPopup();
+        </script>
+      <%end%>
+
+
+
 
     </div>  
   </div>

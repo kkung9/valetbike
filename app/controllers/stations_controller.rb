@@ -12,6 +12,7 @@ class StationsController < ApplicationController
   end
 
   def map
+    @stations = Station.all
     render('map')
   end
 
