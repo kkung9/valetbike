@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,15 +15,17 @@
  *= require_self
  */
 * {
-    font-family: 'Tahoma', sans-serif;
+    font-family: 'Comfortaa', cursive;
+    cursor: url();
+    font-weight: 700;
 }
 
 :root{
-    --color1: #484A47;
-    --color2: #BDF7B7;
-    --color3: #57A95B;
-    --color4: #B9D6F2;
-    --color5: #935FA7;
+    --color1: #f7f9f5;
+    --color2: #55A135;
+    --color3: #A0B64A;
+    --color4: #E39F5F;
+    --color5: #E2AB69;
     --xlarge: 48px;
     --large: 36px;
     --medium: 24px;
@@ -30,10 +33,11 @@
 }
 
 nav{
-    background-color: var(--color4);
+    background-color: var(--color2);
     text-align: center;
-    font-size: var(--large);
-    padding: 15px 50px 15px 50px;
+    font-size: var(--medium);
+    display: flex;
+    /* padding: 15px 50px 15px 50px; */
 }
 
 nav ul {
@@ -41,20 +45,27 @@ nav ul {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
+    width: 70%;
+    margin: auto;
 }
 nav li a {
     color: var(--color1);
-    text-decoration: none;
-    
+    text-decoration: none;   
+}
+nav li a:hover {
+    color: var(--color5);
 }
 h1 {
     font-size: var(--xlarge);
+    color: var(--color2);
 }
 h3 {
     font-size: var(--medium);
 }
 p {
     font-size: var(--small);
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-weight: 400;
 }
 /* map styling: setting size */
 #map { 
@@ -62,4 +73,12 @@ p {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+}
+.section-title {
+    width: 80%;
+    margin: auto;
+}
+#logo {
+    width: 15%;
+    margin-right: 5%;
 }
