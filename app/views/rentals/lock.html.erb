@@ -1,0 +1,19 @@
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+
+      <h1>Return Your Bike</h1>
+
+      </div>
+      
+      <%= form_with url: update_path(@rental.id), method: 'patch' do |form| %>
+        <p> Please enter the 2-digit code on the station.</p>
+        <%= form.text_field :station_code %>
+        <p> Please enter the 2-digit code on the dock.</p>
+        <%= form.text_field :dock_code %>
+        <div class="form-buttons">
+          <%= form.submit("Return Bike") %>
+        </div>
+      <% end %>
+  </div>
+</div>

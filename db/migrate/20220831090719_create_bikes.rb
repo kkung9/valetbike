@@ -3,7 +3,7 @@ class CreateBikes < ActiveRecord::Migration[7.0]
       create_table :bikes do |t|
         t.integer :identifier
         # t.integer :dock_id
-        t.string :status
+        t.boolean :is_available
   
         t.timestamps
       end
