@@ -1,22 +1,31 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
+
       <h1>Search</h1>
       <h3>Search by Station Name</h3>
-      <div class="searchbar">
-        <input id="searchbar" autocomplete="off" onkeyup="search()" type="text" name="search" placeholder="Search">
-      </div>
-      <div class="flexbox vertical stretch" id="s" style="display:block">
-      <% if @stations.present? %>
-        <div class="record-row header flexbox horizontal justify-space-between">
-        </div>
-        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-      <% else %>
-        <div class="empty">
-          No stations found.
-        </div>
-      <% end %>
-    </div>
+
+        <%= form_tag(search_path(@name), method: :get) do %>
+          <%= text_field_tag :name, params[:name] %>
+          <%= submit_tag 'Search'%>
+        <% end %>
+
+
+        <div class="flexbox vertical stretch" id="s" style="display:block">
+          <% if @stations.present? %>
+            <div class="record-row header flexbox horizontal justify-space-between">
+            </div>
+            <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+          <% else %>
+            <div class="empty">
+              No stations found.
+            </div>
+          <% end %>
+          </div>
+
+
+        
+
     </div>  
   </div>
 </div>

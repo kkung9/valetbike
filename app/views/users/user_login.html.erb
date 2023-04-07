@@ -1,0 +1,20 @@
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+
+    <h1>Login</h1>
+
+    </div>
+
+    <%= form_with url: login_path, remote: true, method: 'post' do |form| %>
+    <% flash.each do |type, msg| %>
+        <div>
+            <%= msg %>
+        </div>
+    <% end %>
+    <p>Email: <%= form.email_field :email, :placeholder => "jappleseed@apple.orchard" %></p> <br>
+    <%= form.submit "Send Verification Code" %>
+  <% end %>
+
+  </div>
+</div

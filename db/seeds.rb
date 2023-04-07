@@ -65,7 +65,7 @@ csv.each do |row|
     u = User.new
     u.identifier = row['identifier']
     u.first_name = row['first_name']
-    u.lastName = row['last_name']
+    u.last_name = row['last_name']
     u.save
     puts "#{u.first_name} saved"
 end
