@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   resources :stations, only: [:index]
   resources :rentals,  only: [:create]
 
-  get '/station/:id', to: 'stations#station_view', as: 'station'
-  get '/rental/:id', to: 'rentals#rental', as: 'rental'
-  get '/confirm/:station_id/:bike_id', to: 'rentals#purchase_confirm', as: 'confirm'
+  get '/station/:identifier', to: 'stations#station_view', as: 'station'
+  get '/rental/:identifier', to: 'rentals#rental', as: 'rental'
+  get '/confirm/:station_identifier/:bike_identifier', to: 'rentals#purchase_confirm', as: 'confirm'
   get '/receipt/:id', to: 'rentals#receipt', as: 'receipt'
-  get '/current_ride/:id', to: 'rentals#current_ride', as: 'current'
-  post '/rental/:station_id/:bike_id', to: 'rentals#create', as: 'rent'
+  get '/current_ride', to: 'rentals#current_ride', as: 'current'
+  post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
-  get '/past_purchases/:id', to: 'users#profile_purchases', as: 'purchases'
+  get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
 
   match '/index', to: "stations#index", via: :get
   get '/search(/:name)', to: "stations#search", as: 'search'

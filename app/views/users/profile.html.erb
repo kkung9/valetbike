@@ -4,6 +4,7 @@
 
       <h1>Welcome, <%= @user&.first_name %></h1>
 
+      <button> <%= link_to("Your current rides", current_path)%> </button>
       <button> <%= link_to("Your past purchases", purchases_path(@user.id))%> </button>
 
       <table>
@@ -23,17 +24,23 @@
         <th>Time ridden:</th>
         <td> <% time = 0 %>
         <% @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).each do |rental| %>
-        <% time += (rental.actual_end_time - rental.start_time)/60 %>
+          <% if rental.actual_end_time %>
+            <% time += (rental.actual_end_time - rental.start_time)/60 %>
+          <% end %>
         <% end %>
         <%= time.round() %></td>
         <td> <% time = 0 %>
         <% @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).each do |rental| %>
-        <% time += (rental.actual_end_time - rental.start_time)/60 %>
+          <% if rental.actual_end_time %>
+            <% time += (rental.actual_end_time - rental.start_time)/60 %>
+          <% end %>
         <% end %>
         <%= time.round() %></td>
         <td> <% time = 0 %>
           <% @rentals.each do |rental| %>
-          <% time += (rental.actual_end_time - rental.start_time)/60 %>
+            <% if rental.actual_end_time %>
+              <% time += (rental.actual_end_time - rental.start_time)/60 %>
+            <% end %>
           <% end %>
           <%= time.round() %></td>
         </tr>

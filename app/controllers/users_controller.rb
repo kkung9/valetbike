@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def profile_purchases
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: 1)
     @rentals = Rental.where(user_id: @user.id).order(start_time: :desc)
   end
 
