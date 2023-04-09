@@ -1,4 +1,4 @@
-user_id,bike_id,start_time,predicted_end_time,actual_end_time,start_station,end_station,is_complete
-1,30,1st Mar 2023 04:05:13,1st Mar 2023 05:05:13,1st Mar 2023 04:50:09,21,30,true
-2,18,1st Mar 2023 18:55:30,1st Mar 2023 20:55:30,1st Mar 2023 20:33:16,27,33,true
-1,10,2nd Apr 2023 07:00:04,2nd Apr 2023 07:30:04,2nd Apr 2023 07:29:01,24,21,true
+name,bike_id,start_time,predicted_end_time,actual_end_time,start_station,end_station,is_complete
+Stephen,6242,1st Mar 2023 04:05:13,1st Mar 2023 05:05:13,1st Mar 2023 04:50:09,21,30,true
+Megan,9543,1st Mar 2023 18:55:30,1st Mar 2023 20:55:30,1st Mar 2023 20:33:16,27,33,true
+Stephen,6813,2nd Apr 2023 07:00:04,2nd Apr 2023 07:30:04,2nd Apr 2023 07:29:01,24,21,true
