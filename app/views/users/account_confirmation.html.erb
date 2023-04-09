@@ -6,5 +6,11 @@
 
     </div>
 
+    <% if cookies[:current_station] %>
+      <% s = cookies[:current_station] %>
+      <% cookies.delete(:current_station) %>
+      <%= link_to("Resume Rental", rental_path(s)) %>
+    <% end %>
+
   </div>
 </div

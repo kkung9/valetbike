@@ -19,9 +19,17 @@
         <tr>
         <td><%= rental.start_time.to_date%></td>
         <td><%= rental.start_time.hour %>:<%= rental.start_time.min %></td>
-        <td><%= rental.actual_end_time.hour %>:<%= rental.actual_end_time.min %></td>
-        <td><%= Station.find_by(identifier: rental.start_station).name %></td>
-        <td><%= Station.find_by(identifier: rental.end_station).name %></td>
+        <% if rental.end_station %>
+          <td><%= rental.actual_end_time.hour %>:<%= rental.actual_end_time.min %></td>
+        <% else %>
+          <td>In progress.</td>
+        <% end %>
+        <td><%= Station.find_by(id: rental.start_station).name %></td>
+        <% if rental.end_station %>
+          <td><%= Station.find_by(id: rental.end_station).name %></td>
+        <% else %>
+          <td>In progress.</td>
+        <% end %>
         <td></td>
         </tr>
       <% end %>

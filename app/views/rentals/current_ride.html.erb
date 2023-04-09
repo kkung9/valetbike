@@ -6,17 +6,19 @@
 
     </div>
 
-    <p>You currently have: bike</p>
+    <p>You currently have: <%= @rentals.count %> bikes </p>
     <button> <%= link_to("View Map", "/map") %> </button>
 
-    <p>Please return your bike to a ValetBike station by: <%= @rental.predicted_end_time %> </p>
-        <p>Happy Riding!</p>
+    <p>Happy Riding!</p>
         
-    <p>To return a bike, approach a station and type in the code on the dock you wish to return it to.</p>
+    <p>To return a bike, approach a ValetBike station and type in the code on the dock you wish to return it to.</p><br/>
 
-    <button> <%= link_to("Return Bike", lock_path(@rental.id)) %> </button>
-
-    <!-- need to add form for input re: dock ID verification ->
+    <% @rentals.each do |rental| %>
+      <p>Bike: <%= rental.bike.identifier %></p>
+      <p>Return by: <%= rental.predicted_end_time %> </p>
+      <button> <%= link_to("Return Bike", lock_path(rental.id)) %> </button>
+      <br/>
+    <% end %>
 
   </div>
 </div>
