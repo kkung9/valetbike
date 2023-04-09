@@ -14,7 +14,8 @@
   </head>
   <body>
   <nav>
-  <ul>
+    <%= image_tag("logo.png", :alt=> "very cool logo", id: 'logo')%>
+    <ul>
       <li><a href="/index">Home</a></li>
       <li><a href="/search">Search</a></li>
       <li><a href="/map">Map</a></li>
@@ -23,7 +24,7 @@
       <% else %> <li><a href="/user_login"> Log In </a></li>
       <% end %>
     </ul>
-    </nav>
+  </nav>
     <div id="site-container" class="flexbox vertical stretch flex-1">
       <div class="flexbox vertical center">
         <%= yield %>
