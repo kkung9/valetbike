@@ -3,7 +3,10 @@ class Dock < ApplicationRecord
   belongs_to :station
 
   def undock
-    self.bike.dock_id = nil
-    self.bike = nil
+    self.update(bike: nil)
+  end
+
+  def redock(b)
+    self.update(bike: b)
   end
 end

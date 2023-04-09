@@ -19,7 +19,10 @@
       <li><a href="/index">Home</a></li>
       <li><a href="/search">Search</a></li>
       <li><a href="/map">Map</a></li>
-      <li><a href="/profile">Profile</a></li>
+      <!--<li><a href="/profile">Profile</a></li>-->
+      <% if logged_in? %> <li><a href="/profile"> Profile </a></li>
+      <% else %> <li><a href="/user_login"> Log In </a></li>
+      <% end %>
     </ul>
   </nav>
     <div id="site-container" class="flexbox vertical stretch flex-1">

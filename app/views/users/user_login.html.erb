@@ -6,7 +6,7 @@
 
     </div>
 
-    <%= form_with url: login_path, remote: true, method: 'post' do |form| %>
+    <%= form_with url: create_session_path, remote: true, method: 'post' do |form| %>
     <% flash.each do |type, msg| %>
         <div>
             <%= msg %>
@@ -15,6 +15,8 @@
     <p>Email: <%= form.email_field :email, :placeholder => "jappleseed@apple.orchard" %></p> <br>
     <%= form.submit "Send Verification Code" %>
   <% end %>
+
+  <%= link_to "Create Account", "/create_account" %>
 
   </div>
 </div

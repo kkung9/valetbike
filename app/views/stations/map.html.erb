@@ -31,7 +31,7 @@
       <% @stations.each do |station| %>
         <script>
           var marker = L.marker([<%=station.lat%>, <%=station.long%>]).addTo(map);
-          marker.bindPopup('<%=link_to(station.name, station_path(station.id))%><br>Bikes available: ' + <%=station.bikes.count%>).openPopup();
+          marker.bindPopup('<%=link_to(station.name, station_path(station.identifier))%><br>Bikes available: ' + <%=station.bikes.count%>).openPopup();
         </script>
       <%end%>
 

@@ -7,6 +7,11 @@
       </div>
       
       <%= form_with url: update_path(@rental.id), method: 'patch' do |form| %>
+        <% flash.each do |type, msg| %>
+          <div>
+            <%= msg %>
+          </div>
+        <% end %>
         <p> Please enter the 2-digit code on the station.</p>
         <%= form.text_field :station_code %>
         <p> Please enter the 2-digit code on the dock.</p>
