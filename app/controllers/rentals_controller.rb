@@ -1,12 +1,12 @@
 class RentalsController < ApplicationController
 
     def rental
-      # if cookies[:current_station]
-      #   @station = cookies[:current_station]
-      #   cookies.delete(:current_station)
-      # else
-      @station = Station.find_by(identifier: params[:identifier])
-      # end
+      if cookies[:current_station]
+        @station = Station.find_by(identifier: cookies[:current_station])
+        cookies.delete(:current_station)
+      else
+        @station = Station.find_by(identifier: params[:identifier])
+      end
       render('rental')
     end
 
