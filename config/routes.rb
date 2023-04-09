@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
   get 'stations/index'
   root to: "stations#index"
 
@@ -27,10 +28,7 @@ Rails.application.routes.draw do
   match '/account_confirmation', to: "users#account_confirmation", via: :get
   post 'users', to: 'users#create', as: 'create'
   match '/user_login', to: "users#user_login", via: :get
-  post 'temps', to: 'users#login', as: 'login'
-  
- 
-
-
+  post 'temps', to: 'sessions#create', as: 'create_session'
+  match '/user_logout', to: "sessions#logout", via: :get  
 
 end

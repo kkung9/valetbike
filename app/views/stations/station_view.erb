@@ -6,7 +6,12 @@
       <div>
         <p>Address: <%= @station.address %><p>
         <p><%= @station.bikes.count %> bikes docked</p>
-        <button> <%= link_to("RENT NOW", rental_path(@station.identifier)) %> </button>
+        <% if logged_in? %>
+          <button> <%= link_to("RENT NOW", rental_path(@station.identifier)) %> </button>
+        <% else %>
+          <button> <%= link_to("RENT NOW", "/user_login") %> </button>
+          <% cookies[:current_station] = @station %>
+        <% end %>
       </div>
 
       <div>

@@ -31,6 +31,7 @@ class StationsController < ApplicationController
   # end
 
   def station_view
+    
     @station = Station.find_by(identifier: params[:identifier])
   end
 

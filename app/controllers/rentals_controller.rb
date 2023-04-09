@@ -1,9 +1,14 @@
 class RentalsController < ApplicationController
 
     def rental
-        @station = Station.find_by(identifier: params[:identifier])
-        render('rental')
-      end
+      # if cookies[:current_station]
+      #   @station = cookies[:current_station]
+      #   cookies.delete(:current_station)
+      # else
+      @station = Station.find_by(identifier: params[:identifier])
+      # end
+      render('rental')
+    end
 
     def receipt
       @rental = Rental.find(params[:id])
@@ -18,7 +23,7 @@ class RentalsController < ApplicationController
       @bike = Bike.find_by(identifier: params[:bike_identifier])
       @station = Station.find_by(identifier: params[:station_identifier])
       @rental = Rental.new
-      @rental.user_id = User.find_by(first_name: "Stephen").id
+      @rental.user_id = User.find_by(email: session[:email]).id
       @rental.bike_id = @bike.id
       @rental.start_station = @station.id
       @rental.start_time = Time.current
@@ -29,7 +34,7 @@ class RentalsController < ApplicationController
     end
 
     def current_ride
-      @user = User.find_by(id: 1)
+      @user = User.find_by(email: session[:email])
       @rentals = Rental.where(user: @user, end_station: nil).order(predicted_end_time: :asc)
     end
 
