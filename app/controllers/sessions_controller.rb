@@ -4,16 +4,16 @@ class SessionsController < ApplicationController
     @existing = User.find_by(email: session[:email])
     if @existing.present?
 
-      # EMAIL IS STILL NOT SENDING - HARDCODED AS "1111" FOR NOW - Mercer + Yurika
+      # HARDCODED AS "1111" FOR NOW - Mercer + Yurika
       UserMailer.with(user: @existing).verification_email.deliver_later
 
-      # if cookies[:current_station]
-      #   s = cookies[:current_station]
-      #   cookies.delete(:current_station)
-      #   redirect_to rental_path(s)
-      # else
-      #   redirect_to profile_path
-      # end
+      if cookies[:current_station]
+        s = cookies[:current_station]
+        cookies.delete(:current_station)
+        redirect_to rental_path(s)
+      else
+        redirect_to profile_path
+      end
       redirect_to login_verification_path
     else
       redirect_to create_session_path
