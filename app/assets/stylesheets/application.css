@@ -29,7 +29,7 @@
     --xlarge: 48px;
     --large: 36px;
     --medium: 24px;
-    --small: 18px; 
+    --small: 20px; 
 }
 
 nav{
@@ -64,8 +64,8 @@ h3 {
 }
 p {
     font-size: var(--small);
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-    font-weight: 400;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
 }
 /* map styling: setting size */
 #map { 
