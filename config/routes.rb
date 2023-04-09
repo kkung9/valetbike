@@ -30,5 +30,8 @@ Rails.application.routes.draw do
   match '/user_login', to: "users#user_login", via: :get
   post 'temps', to: 'sessions#create', as: 'create_session'
   match '/user_logout', to: "sessions#logout", via: :get  
+  match '/user_logout', to: "sessions#logout", via: :get  
+  match '/login_verification', to: "users#login_verification", via: :get
+  post 'code', to: "sessions#login", as: 'start_login'
 
 end
