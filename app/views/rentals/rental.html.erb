@@ -28,7 +28,7 @@
       
         <% @station.docks.each do |dock| %>
             <% if dock.bike %>
-              <button class="button1"> <%= link_to(dock.bike.identifier, confirm_path(@station.id, dock.bike.id)) %> </button>
+              <button class="button1"> <%= link_to(dock.bike.identifier, confirm_path(@station.identifier, dock.bike.identifier)) %> </button>
             <% else %>
               <button class="button2"> ___ </button>
             <% end %>

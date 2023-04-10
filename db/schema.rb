@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_02_124500) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_032446) do
   create_table "bikes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "identifier"
     t.integer "dock_id"
-    t.boolean "is_available"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
   end
 
   create_table "docks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -31,11 +30,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_124500) do
   end
 
   create_table "rentals", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "startTime"
-    t.datetime "predictedEndTime"
-    t.datetime "actualEndTime"
-    t.float "predictedFee"
-    t.float "actualFee"
+    t.datetime "start_time"
+    t.datetime "predicted_end_time"
+    t.datetime "actual_end_time"
+    t.float "predicted_fee"
+    t.float "actual_fee"
+    t.integer "start_station"
+    t.integer "end_station"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -49,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_124500) do
     t.integer "identifier"
     t.string "name"
     t.string "address"
+    t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
@@ -59,13 +61,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_124500) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
-    t.string "firstName"
-    t.string "lastName"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "identifier"
   end
 
+  add_foreign_key "docks", "bikes"
   add_foreign_key "docks", "stations"
   add_foreign_key "rentals", "bikes"
   add_foreign_key "rentals", "users"

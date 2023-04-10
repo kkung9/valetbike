@@ -1,7 +1,5 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
     <div><%= station.identifier %>: <%= station.name %> (<%= station.address %>)</div>
     <div><%= station.dock_ids.count%> bikes currently docked</div>
-    <%= link_to 'Select', station_path(station.id) %>
-
-        
+    <%= link_to 'Select', station_path(station.identifier) %>
 </div>

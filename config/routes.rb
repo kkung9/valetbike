@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
   get 'stations/index'
   root to: "stations#index"
 
@@ -6,15 +7,15 @@ Rails.application.routes.draw do
   resources :stations, only: [:index]
   resources :rentals,  only: [:create]
 
-  get '/station/:id', to: 'stations#station_view', as: 'station'
-  get '/rental/:id', to: 'rentals#rental', as: 'rental'
-  get '/confirm/:station_id/:bike_id', to: 'rentals#purchase_confirm', as: 'confirm'
+  get '/station/:identifier', to: 'stations#station_view', as: 'station'
+  get '/rental/:identifier', to: 'rentals#rental', as: 'rental'
+  get '/confirm/:station_identifier/:bike_identifier', to: 'rentals#purchase_confirm', as: 'confirm'
   get '/receipt/:id', to: 'rentals#receipt', as: 'receipt'
-  get '/current_ride/:id', to: 'rentals#current_ride', as: 'current'
-  post '/rental/:station_id/:bike_id', to: 'rentals#create', as: 'create'
+  get '/current_ride', to: 'rentals#current_ride', as: 'current'
+  post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
-  get '/past_purchases/:id', to: 'users#profile_purchases', as: 'purchases'
+  get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
 
   match '/index', to: "stations#index", via: :get
   get '/search(/:name)', to: "stations#search", as: 'search'
@@ -27,10 +28,10 @@ Rails.application.routes.draw do
   match '/account_confirmation', to: "users#account_confirmation", via: :get
   post 'users', to: 'users#create', as: 'create'
   match '/user_login', to: "users#user_login", via: :get
-  post 'temps', to: 'users#login', as: 'login'
-  
- 
-
-
+  post 'temps', to: 'sessions#create', as: 'create_session'
+  match '/user_logout', to: "sessions#logout", via: :get  
+  match '/user_logout', to: "sessions#logout", via: :get  
+  match '/login_verification', to: "users#login_verification", via: :get
+  post 'code', to: "sessions#login", as: 'start_login'
 
 end

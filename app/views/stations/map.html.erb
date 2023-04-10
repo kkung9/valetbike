@@ -3,6 +3,7 @@
     <div class="section-title">
       <h1>Map</h1>
       <br>
+      <p>If the map doesn't load, try reloading the page.</p>
       <!-- Leaflet's css header -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
       integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -31,7 +32,7 @@
       <% @stations.each do |station| %>
         <script>
           var marker = L.marker([<%=station.lat%>, <%=station.long%>]).addTo(map);
-          marker.bindPopup('<%=link_to(station.name, station_path(station.id))%><br>Bikes available: ' + <%=station.bikes.count%>).openPopup();
+          marker.bindPopup('<%=link_to(station.name, station_path(station.identifier))%><br>Bikes available: ' + <%=station.bikes.count%>).openPopup();
         </script>
       <%end%>
 

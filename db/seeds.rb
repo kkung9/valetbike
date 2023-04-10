@@ -57,17 +57,17 @@ csv.each do |row|
 end
 puts "There are now #{Dock.count} rows in the dock table"
 
-require 'csv'
-csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
-    b = Bike.find_by(identifier: row['identifier'])
-    d = Dock.find_by(identifier: row['dock'])
-    if d
-        b.dock_id = d.id
-    end
-    b.save
-end
+# require 'csv'
+# csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
+# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#     b = Bike.find_by(identifier: row['identifier'])
+#     d = Dock.find_by(identifier: row['dock'])
+#     if d
+#         b.dock = d
+#     end
+#     b.save
+# end
 
 require 'csv'
 csv_text = File.read(Rails.root.join('notes', 'user-data-test.csv'))
@@ -87,8 +87,8 @@ csv_text = File.read(Rails.root.join('notes', 'rental-data-test.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
     r = Rental.new
-    r.user_id = row['user_id']
-    r.bike_id = row['bike_id']
+    r.user = User.find_by(first_name: row['name'])
+    r.bike = Bike.find_by(identifier: row['bike_id'])
     r.start_time = DateTime.parse(row['start_time'])
     r.predicted_end_time = DateTime.parse(row['predicted_end_time'])
     r.actual_end_time = DateTime.parse(row['actual_end_time'])
