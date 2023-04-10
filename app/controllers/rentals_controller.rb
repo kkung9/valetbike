@@ -2,7 +2,7 @@ class RentalsController < ApplicationController
 
     def rental
       if cookies[:current_station]
-        @station = Station.find_by(identifier: cookies[:current_station])
+        @station = Station.find_by(id: cookies[:current_station])
         cookies.delete(:current_station)
       else
         @station = Station.find_by(identifier: params[:identifier])
@@ -25,7 +25,7 @@ class RentalsController < ApplicationController
       @rental = Rental.new
       @rental.user_id = User.find_by(email: session[:email]).id
       @rental.bike_id = @bike.id
-      @rental.start_station = @station.id
+      @rental.start_station = @station.identifier
       @rental.start_time = Time.current
       @rental.predicted_end_time = Time.current + params[:duration].to_i.minutes
       @bike.dock.undock
@@ -54,7 +54,7 @@ class RentalsController < ApplicationController
             redirect_to lock_path(@rental.id)
             flash[:error] = "Dock already has a bike in it."
           else
-            @rental.end_station = @s.id
+            @rental.end_station = @s.identifier
             @rental.actual_end_time = Time.current
             @rental.save
             @d.redock(@rental.bike)

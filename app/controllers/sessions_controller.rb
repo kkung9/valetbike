@@ -7,13 +7,6 @@ class SessionsController < ApplicationController
       # HARDCODED AS "1111" FOR NOW - Mercer + Yurika
       UserMailer.with(user: @existing).verification_email.deliver_later
 
-      if cookies[:current_station]
-        s = cookies[:current_station]
-        cookies.delete(:current_station)
-        redirect_to rental_path(s)
-      else
-        redirect_to profile_path
-      end
       redirect_to login_verification_path
     else
       redirect_to create_session_path
@@ -25,7 +18,13 @@ class SessionsController < ApplicationController
     @code = params[:code]
 
     if @code == "1111"
-      redirect_to profile_path
+      if cookies[:current_station]
+        s = cookies[:current_station]
+        cookies.delete(:current_station)
+        redirect_to rental_path(s)
+      else
+        redirect_to profile_path
+      end
     else
       redirect_to login_verification_path
       flash[:error] = "Your code was incorrect. Please try again."
