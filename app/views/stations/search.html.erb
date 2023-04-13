@@ -7,21 +7,20 @@
 
         <%= form_tag(search_path(@name), method: :get) do %>
           <%= text_field_tag :name, params[:name] %>
-          <%= submit_tag 'Search'%>
+          <%= submit_tag 'Search', :class => 'button'%>
         <% end %>
 
 
         <div class="flexbox vertical stretch" id="s" style="display:block">
           <% if @stations.present? %>
-            <div class="record-row header flexbox horizontal justify-space-between">
-            </div>
+            <div class="record-row header flexbox horizontal justify-space-between"></div>
             <%= render(partial: "stations/row", collection: @stations, as: :station) %>
           <% else %>
-            <div class="empty">
+            <p>
               No stations found.
-            </div>
+            </p>
           <% end %>
-          </div>
+        </div>
 
 
         
