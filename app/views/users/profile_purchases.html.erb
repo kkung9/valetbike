@@ -24,9 +24,11 @@
         <% else %>
           <td>In progress.</td>
         <% end %>
-        <td><%= Station.find_by(id: rental.start_station).name %></td>
+        <% puts "aaaaa" %>
+        <% puts rental.start_station %>
+        <td><%= Station.find_by(identifier: rental.start_station).name %></td>
         <% if rental.end_station %>
-          <td><%= Station.find_by(id: rental.end_station).name %></td>
+          <td><%= Station.find_by(identifier: rental.end_station).name %></td>
         <% else %>
           <td>In progress.</td>
         <% end %>
