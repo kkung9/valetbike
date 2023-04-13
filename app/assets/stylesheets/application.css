@@ -32,53 +32,121 @@
     --small: 18px; 
 }
 
+/* nav bar */
 nav{
     background-color: var(--color2);
     text-align: center;
     font-size: var(--small);
     display: flex;
-    /* padding: 15px 50px 15px 50px; */
+    border-radius: 10px 10px 0px 0px;
+    padding: 0px 30px 0px 20x; 
 }
-
 nav ul {
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     list-style-type: none;
-    width: 70%;
+    width: 90%;
     margin: auto;
+    margin-right: 3%;
 }
 nav li a {
     color: var(--color1);
     text-decoration: none;   
 }
+nav li {
+    padding-left: 10%;
+}
 nav li a:hover {
     color: var(--color5);
 }
+#logo {
+    width: 40%;
+    float: left;
+    margin-left: 2%;
+}
+
+/* text stuff */
 h1 {
     font-size: var(--xlarge);
     color: var(--color2);
+    margin-bottom: 10px;
 }
 h3 {
     font-size: var(--medium);
+    margin-bottom: 5px;
 }
 p {
     font-size: var(--small);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 400;
+    margin: 0px;
 }
-/* map styling: setting size */
+
+/* map, obvi */
 #map { 
-    height: 600px; 
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 500px; 
+    width: 100%;
 }
-.section-title {
-    width: 80%;
+
+/* this is the class for general page styling */
+.section-inner.flexbox.vertical.stretch{
+    padding: 10px;
+    width: 70%;
     margin: auto;
+} 
+
+/* buttons and such */
+.button {
+    background-color: var(--color2);
+    border: none;
+    color: var(--color1);  
+    padding: 15px 32px;
+    border-radius: 10px;
+    margin: 15px 0px;
 }
-#logo {
-    width: 15%;
-    margin-right: 5%;
+.button:hover{
+    color: var(--color1);
+    background-color: var(--color4);
 }
+#input{
+    width: 30%;
+}
+.button:visited {
+    color: var(--color1);
+}
+#profilebuttons {
+    display: flex;
+    justify-content: space-around;
+}
+.altbutton {
+    background-color: var(--color1);
+    color: var(--color4);
+}
+
+/* tables */
+th {
+    padding: 10px 15px;
+    height: 30px;
+}
+table {
+    margin: auto;
+    margin-top: 15px;
+    text-align: center;
+    background-color: #f7f9f5;
+    border-collapse:collapse;
+    border-radius: 10px;
+}
+tr {
+    text-align: left;
+}
+td {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+}
+tr:nth-child(even) {
+    background-color: white;
+}
+
+
