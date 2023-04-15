@@ -109,6 +109,12 @@ p {
     color: var(--color1);
     background-color: var(--color4);
 }
+
+#rectangle{
+    width:100%;
+    height:30px;
+    background: var(--color3);
+}
 #input{
     width: 30%;
 }
