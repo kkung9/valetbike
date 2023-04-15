@@ -14,7 +14,7 @@
   </head>
   <body>
   <nav>
-    <%= image_tag("logo.png", :alt=> "very cool logo", id: 'logo')%>
+    <%= link_to image_tag("logo.png", :alt=> "very cool logo", id: 'logo'), "/index" %>
     <ul>
       <li><a href="/index">Home</a></li>
       <li><a href="/search">Search</a></li>
@@ -25,6 +25,13 @@
       <% end %>
     </ul>
   </nav>
+
+  <% @user = User.find_by(email: session[:email]) %>
+  <% @rental = Rental.find_by(user: @user, end_station: nil) %>
+  <% if @user and @rental %>
+    <div id = "rectangle" ><%= link_to("Your current rides", current_path)%></div>
+  <% end %>
+
     <div id="site-container" class="flexbox vertical stretch flex-1">
       <div class="flexbox vertical center">
         <%= yield %>

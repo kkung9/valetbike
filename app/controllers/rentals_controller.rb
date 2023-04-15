@@ -27,7 +27,7 @@ class RentalsController < ApplicationController
       @rental.bike_id = @bike.id
       @rental.start_station = @station.identifier
       @rental.start_time = Time.current
-      @rental.predicted_end_time = Time.current + params[:duration].to_i.minutes
+      @rental.predicted_end_time = @rental.start_time + params[:duration].to_i.minutes
       @bike.dock.undock
       @rental.save
       redirect_to current_path
@@ -40,6 +40,7 @@ class RentalsController < ApplicationController
 
     def lock
       @rental = Rental.find(params[:id])
+      @station_options = Station.all.map{ |u| [ u.name, u.identifier ] }
     end
 
     def update

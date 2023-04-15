@@ -33,6 +33,15 @@ csv.each do |row|
 end
 puts "There are now #{Station.count} rows in the stations table"
 
+Station.find_by(identifier: 21).update(photo: "lillylib.jpeg")
+Station.find_by(identifier: 24).update(photo: "florencecenter.jpeg")
+Station.find_by(identifier: 30).update(photo: "7A7D.jpeg")
+Station.find_by(identifier: 25).update(photo: "cooley.jpeg")
+Station.find_by(identifier: 33).update(photo: "highschool.jpeg")
+Station.find_by(identifier: 20).update(photo: "villagehill.jpeg")
+Station.find_by(identifier: 22).update(photo: "ymca.jpeg")
+
+
 require 'csv'
 csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')

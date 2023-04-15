@@ -7,16 +7,16 @@
         <p>Address: <%= @station.address %><p>
         <p><%= @station.bikes.count %> bikes docked</p>
         <% if logged_in? %>
-          <button> <%= link_to("RENT NOW", rental_path(@station.identifier)) %> </button>
+          <%= button_to("RENT NOW", rental_path(@station.identifier), :method => "get", :class => "button") %> 
         <% else %>
-          <button> <%= link_to("RENT NOW", "/user_login") %> </button>
+          <%= button_to("RENT NOW", "/user_login", :method => "get", :class => "button") %>
           <% cookies[:current_station] = @station.identifier %>
         <% end %>
       </div>
 
-      <div>
-        <img src="">
-      </div>
+      <div><% if @station.photo %>
+      <%= image_tag(@station.photo, style: 'width:30%;')%>
+      <% end %> </div>
 
 
     </div>

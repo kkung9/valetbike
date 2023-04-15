@@ -5,13 +5,12 @@
     <h1>Create New Account</h1>
 
     </div>
-
-<%= form_with url: create_path, remote: true, method: 'post' do |form| %>
-    <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
-      </div>
-    <% end %>
+    <%= form_with url: create_path, remote: true, method: 'post' do |form| %>
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg%>
+        </div>
+      <% end %>
     <p>First name: <%= form.text_field :first_name, :placeholder => "Johnny", :required => true %></p> <br>
     <p>Last name: <%= form.text_field :last_name, :placeholder => "Appleseed", :required => true %></p> <br>
     <p>Email: <%= form.email_field :email, :placeholder => "jappleseed@apple.orchard", :required => true %></p> <br>
