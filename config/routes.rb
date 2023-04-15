@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
 
   match '/index', to: "stations#index", via: :get
-  get '/search(/:name)', to: "stations#search", as: 'search'
+  get '/search', to: "stations#search", as: 'search'
   match '/list', to: "stations#list", via: :get
   match '/profile', to: "users#profile", via: :get
   match '/map', to: "stations#map", via: :get
