@@ -9,14 +9,14 @@ class StationsController < ApplicationController
     render('search')
   end
 
-
-  # def search
-  #   if params[:name]
-  #     @station = Station.where('name LIKE ?', "%{params[:name]}%").first
-  #   else
-  #     @station = Station.all
-  #   end
-  # end
+  def search
+      if !params[:name].blank?
+        @stations = Station.all.where('name LIKE ?', "%#{params[:name]}%")
+        puts @stations
+      else
+        @stations = Station.all
+      end
+    end
   
   def index
   end
