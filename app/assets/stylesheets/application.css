@@ -82,3 +82,9 @@ p {
     width: 15%;
     margin-right: 5%;
 }
+
+#rectangle{
+    width:100%;
+    height:30px;
+    background: var(--color3);
+}
