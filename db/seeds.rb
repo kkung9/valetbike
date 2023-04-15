@@ -40,6 +40,12 @@ Station.find_by(identifier: 25).update(photo: "cooley.jpeg")
 Station.find_by(identifier: 33).update(photo: "highschool.jpeg")
 Station.find_by(identifier: 20).update(photo: "villagehill.jpeg")
 Station.find_by(identifier: 22).update(photo: "ymca.jpeg")
+Station.find_by(identifier: 28).update(photo: "amtrak.png")
+Station.find_by(identifier: 32).update(photo: "bridge.png")
+Station.find_by(identifier: 23).update(photo: "forbes.png")
+Station.find_by(identifier: 20).update(photo: "hospital.png")
+Station.find_by(identifier: 26).update(photo: "jmg.png")
+Station.find_by(identifier: 31).update(photo: "mainstreet.png")
 
 
 require 'csv'
