@@ -28,7 +28,6 @@ class UsersController < ApplicationController
       UserMailer.with(user: @user, vcode: session[:vcode]).verification_email.deliver_later
 
       redirect_to login_verification_path
-      # redirect_to account_confirmation_path
     end
   end
   
