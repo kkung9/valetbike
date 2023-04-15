@@ -23,15 +23,6 @@ Rails.application.routes.draw do
   post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
-  get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
-
-  match '/index', to: "stations#index", via: :get
-  get '/search', to: "stations#search", as: 'search'
-  match '/list', to: "stations#list", via: :get
-  match '/profile', to: "users#profile", via: :get
-  match '/map', to: "stations#map", via: :get
-  match '/receipt', to: "rentals#receipt", via: :get
-  match '/current_ride', to: "rentals#current_ride", via: :get
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'

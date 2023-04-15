@@ -1,0 +1,17 @@
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+
+        <h1>Receipt</h1>
+
+    </div>
+
+    <div>
+        <p>Start Station: <%= Station.find_by(identifier: @rental.start_station).name %> </p>
+        <p>End Station: <%= Station.find_by(identifier: @rental.end_station).name %> </p>
+        <p>Time: <%= ((@rental.actual_end_time - @rental.start_time) / 60).round %> minutes </p>
+    </div>
+
+    
+  </div>
+</div>
