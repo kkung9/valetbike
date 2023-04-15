@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
     @existing = User.find_by(email: session[:email])
     if @existing.present?
 
-      # HARDCODED AS "1111" FOR NOW - Mercer + Yurika
-      UserMailer.with(user: @existing).verification_email.deliver_later
+      session[:vcode] = 4.times.map{rand(10)}.join
+      UserMailer.with(user: @existing, vcode: session[:vcode]).verification_email.deliver_later
 
       redirect_to login_verification_path
     else
@@ -16,14 +16,17 @@ class SessionsController < ApplicationController
 
   def login
     @code = params[:code]
-
-    if @code == "1111"
+    if @code == session[:vcode]
       if cookies[:current_station]
         s = cookies[:current_station]
         cookies.delete(:current_station)
         redirect_to rental_path(s)
       else
-        redirect_to profile_path
+        if session[:new] == true
+          redirect_to account_confirmation_path
+        else
+          redirect_to profile_path
+        end
       end
     else
       redirect_to login_verification_path
@@ -34,6 +37,8 @@ class SessionsController < ApplicationController
 
   def logout
     session.delete(:email)
+    session.delete(:vcode)
+    session.delete(:new)
     redirect_to index_path
   end
 end
