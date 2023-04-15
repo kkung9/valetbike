@@ -7,7 +7,7 @@
     </div>
 
     <p>You currently have: <%= @rentals.count %> bikes </p>
-    <button> <%= link_to("View Map", "/map") %> </button>
+    <%= button_to("View Map", "/map", :method => "get", :class => "button") %> 
 
     <p>Happy Riding!</p>
         
@@ -16,7 +16,7 @@
     <% @rentals.each do |rental| %>
       <p>Bike: <%= rental.bike.identifier %></p>
       <p>Return by: <%= rental.predicted_end_time %> </p>
-      <button> <%= link_to("Return Bike", lock_path(rental.id)) %> </button>
+      <%= button_to("Return Bike", lock_path(rental.id), :method => "get", :class => "button") %> 
       <br/>
     <% end %>
 

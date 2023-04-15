@@ -3,6 +3,7 @@
     <div class="section-title">
 
       <h1>Search</h1>
+
       <h3>Search by Station Name</h3>
 
       <%= form_tag(search_path(@name), method: :get) do %>
@@ -11,18 +12,16 @@
         <% end %>
 
         <br>
-
         <div class="flexbox vertical stretch" id="s" style="display:block">
           <% if @stations.present? %>
-            <div class="record-row header flexbox horizontal justify-space-between">
-            </div>
+            <div class="record-row header flexbox horizontal justify-space-between"></div>
             <%= render(partial: "stations/row", collection: @stations, as: :station) %>
           <% else %>
-            <div class="empty">
+            <p>
               No stations found.
-            </div>
+            </p>
           <% end %>
-          </div>
+        </div>
 
 
         
