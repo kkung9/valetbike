@@ -37,7 +37,7 @@ class StationsController < ApplicationController
 
   private
   def station_params
-    params.require(:station).permit(:name, :address, :identifier)
+    params.require(:station).permit(:name, :address, :identifier, :photo)
   end
     # ^ for all controllers
     # create & edit & update reference station_params 
