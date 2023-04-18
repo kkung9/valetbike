@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   match '/login_verification', to: "users#login_verification", via: :get
   post 'code', to: "sessions#login", as: 'start_login'
 
+  get 'set_theme', to: 'theme#update'
 end
