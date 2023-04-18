@@ -20,6 +20,19 @@
       
       <div id="map"></div>
       
+      <script>
+        var customIcon = L.icon({
+          iconUrl: 'green-marker.png',
+          iconSize:     [38, 95],
+          iconAnchor:   [22, 94], 
+          popupAnchor:  [-3, -76] 
+      
+        });
+
+      
+
+       
+      </script>
 
       <script>
         var map = L.map('map').setView([42.32, -72.64], 13);
@@ -31,17 +44,18 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
       </script>
-
+      
       <!-- Adding markers for each station:) -->
       <% @stations.each do |station| %>
         
         <script>
-          var marker = L.marker([<%=station.lat%>, <%=station.long%>]).addTo(map);
+          var marker = L.marker([<%=station.lat%>, <%=station.long%>], {icon: customIcon}).addTo(map);
           marker.bindPopup('<%=link_to(station.name, station_path(station.identifier))%><br>Bikes available: ' 
           + <%=station.bikes.count%>).openPopup();
         </script>
       <%end%>
 
+      <%image_path('green-marker.png')%>
 
 
 
