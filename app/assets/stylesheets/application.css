@@ -113,6 +113,7 @@ p {
         text-align: center;
         font-size: var(--medium);
         display: flex;
+        border-radius: 10px;
     }
     body.light {
         background: var(--light-bg-color);
@@ -144,6 +145,8 @@ p {
         text-align: center;
         font-size: var(--medium);
         display: flex;
+        border-radius: 10px;
+
     }
   
     body.dark {
@@ -201,4 +204,4 @@ nav li a {
 }
 nav li a:hover {
     color: var(--hover-color);
-} 
+}
