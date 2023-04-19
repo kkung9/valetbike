@@ -1,59 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTDXHTML1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
-        <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-        <%= javascript_importmap_tags %>
-        <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
-            <link href="/favicon.ico" rel="icon" type="image/x-icon">
-                <title>ValetBike</title>
-            </head>
-            <body class="<%= cookies[:theme] %>">
-                <header>
-                    <%= cookies[:theme] %>
-                    <%= link_to 'light', set_theme_path(theme: 'light') %>
-                    <%= link_to 'dark', set_theme_path(theme: 'dark') %>
-                    <%= link_to 'system default', set_theme_path %>
-                    <nav>
-                        <%= image_tag("logo.png", :alt=> "very cool logo", id: 'logo')%>
-                        <ul>
-                            <li>
-                                <a href="/index">Home</a>
-                            </li>
-                            <li>
-                                <a href="/search">Search</a>
-                            </li>
-                            <li>
-                                <a href="/map">Map</a>
-                            </li>
-                            <!--<li><a href="/profile">Profile</a></li>-->
-                            <% if logged_in? %>
-                                <li>
-                                    <a href="/profile">
-                                        Profile
-                                    </a>
-                                </li>
-                            <% else %>
-                                <li>
-                                    <a href="/user_login">
-                                        Log In
-                                    </a>
-                                </li>
-                            <% end %>
-                        </ul>
-                    </nav>
-                </header>
-
-                <div id="site-container" class="flexbox vertical stretch flex-1">
-                    <div class="flexbox vertical center">
-                        <%= yield %>
-                    </div>
-                </div>
-            </body>
-        </html>
-    </body>
-</head></html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= javascript_importmap_tags %>
+<link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
+<link href="/favicon.ico" rel="icon" type="image/x-icon">
+<title>ValetBike</title>
+</head>
+<body class="<%= cookies[:theme] %>">
+<header>
+<%= cookies[:theme] %>
+<%= link_to 'light', set_theme_path(theme: 'light') %>
+<%= link_to 'dark', set_theme_path(theme: 'dark') %>
+<%= link_to 'system default', set_theme_path %>
+<nav>
+<%= link_to image_tag("logo.png", :alt=> "very cool logo", id: 'logo'), "/index" %>
+<ul>
+<li><a href="/index">Home</a></li>
+<li><a href="/search">Search</a></li>
+<li><a href="/map">Map</a></li>
+<!--<li><a href="/profile">Profile</a></li>-->
+<% if logged_in? %> <li><a href="/profile"> Profile </a></li>
+<% else %> <li><a href="/user_login"> Log In </a></li>
+<% end %>
+</ul>
+</nav>
+</header>
+<% @user = User.find_by(email: session[:email]) %>
+<% @rental = Rental.find_by(user: @user, end_station: nil) %>
+<% if @user and @rental %>
+<div id = "rectangle" ><%= link_to("Your current rides", current_path)%></div>
+<% end %>
+<div id="site-container" class="flexbox vertical stretch flex-1">
+<div class="flexbox vertical center">
+<%= yield %>
+</div>
+</div>
+</body>
+</html>

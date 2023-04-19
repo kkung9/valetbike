@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
     
     def verification_email
         @user = params[:user]
-        @url = ''
+        @vcode = params[:vcode]
         mail(to: @user.email, subject: 'Verification code')
 
         puts "Success!"

@@ -4,9 +4,11 @@
 
       <h1>Welcome, <%= @user&.first_name %></h1>
 
-      <button> <%= link_to("Your current rides", current_path)%> </button>
-      <button> <%= link_to("Your past purchases", purchases_path(@user.id))%> </button>
-      <button> <%= link_to("Log Out", "/user_logout")%> </button>
+      <div id = "profilebuttons">
+        <%= button_to("Your current rides", current_path, :method => "get", :class => "button")%> 
+        <%= button_to("Your past purchases", purchases_path(@user.id), :method => "get", :class => "button")%> 
+        <%= button_to("Log Out", "/user_logout", :method => "get", :class => "button altbutton")%> 
+      </div>
 
       <table>
         <tr>
