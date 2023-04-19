@@ -16,7 +16,6 @@
  */
 * {
     font-family: 'Comfortaa', cursive;
-    cursor: url();
     font-weight: 700;
 }
 :root {
@@ -24,7 +23,9 @@
     --light-text-color: #3e7527;
     --dark-bg-color: #444038;
     --dark-text-color: #f7f9f5;
-    --hover-color: #E39F5F;
+    --color2: #E39F5F;
+    --color3: #A0B64A;
+    --color4: #E2AB69;
     --xlarge: 48px;
     --large: 36px;
     --medium: 24px;
@@ -99,9 +100,6 @@
     }
 
   }
-
-
-
   h3 {
     font-size: var(--medium);
     margin-bottom: 5px;
@@ -170,7 +168,7 @@ nav li a:hover {
     width: 30%;
 }
 .button:visited {
-    color: var(--color1);
+    color: var(--light-bg-color);
 }
 #profilebuttons {
     display: flex;
@@ -178,7 +176,19 @@ nav li a:hover {
 }
 .altbutton {
     background-color: var(--light-bg-color);
-    color: var(--light-text-color);
+    color: var(--color2);
+}
+.button {
+    background-color: var(--color2);
+    border: none;
+    color: var(--color1);  
+    padding: 15px 32px;
+    border-radius: 10px;
+    margin: 15px 0px;
+}
+.button:hover{
+    color: var(--light-bg-color);
+    background-color: var(--color2);
 }
 
 /* tables */
