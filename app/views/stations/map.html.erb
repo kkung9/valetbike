@@ -20,18 +20,6 @@
       
       <div id="map"></div>
       
-      <script>
-        var customIcon = L.icon({
-          iconUrl: 'green-marker.png',
-          iconSize:     [38, 95],
-          iconAnchor:   [22, 94], 
-          popupAnchor:  [-3, -76] 
-      
-        });
-
-      
-
-       
       </script>
 
       <script>
@@ -48,16 +36,25 @@
       <!-- Adding markers for each station:) -->
       <% @stations.each do |station| %>
         
+
         <script>
+
+          var color = "assets/green-marker.png";
+          if (<%=station.bikes.count%> == 0)
+            color = "assets/grey-marker.png";
+
+          var customIcon = L.icon({
+            iconUrl: color, 
+            iconSize:     [26, 40],
+            iconAnchor:   [13, 40], 
+            popupAnchor:  [0, -30] 
+          });
+
           var marker = L.marker([<%=station.lat%>, <%=station.long%>], {icon: customIcon}).addTo(map);
           marker.bindPopup('<%=link_to(station.name, station_path(station.identifier))%><br>Bikes available: ' 
           + <%=station.bikes.count%>).openPopup();
         </script>
       <%end%>
-
-      <%image_path('green-marker.png')%>
-
-
 
     </div>  
   </div>
