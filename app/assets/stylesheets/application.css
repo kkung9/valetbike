@@ -129,6 +129,10 @@ p {
     background-color: var(--color1);
     color: var(--color4);
 }
+.deletebutton {
+    background-color: #FF0000;
+    color: "white";
+}
 
 /* tables */
 th {

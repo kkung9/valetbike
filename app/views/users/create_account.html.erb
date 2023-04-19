@@ -14,7 +14,7 @@
     <p>First name: <%= form.text_field :first_name, :placeholder => "Johnny", :required => true %></p> <br>
     <p>Last name: <%= form.text_field :last_name, :placeholder => "Appleseed", :required => true %></p> <br>
     <p>Email: <%= form.email_field :email, :placeholder => "jappleseed@apple.orchard", :required => true %></p> <br>
-    <%= form.submit "Create account" %>
+    <%= form.submit "Create account", class: "button" %>
   <% end %>
 
   </div>

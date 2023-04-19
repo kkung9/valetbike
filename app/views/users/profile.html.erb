@@ -8,6 +8,7 @@
         <%= button_to("Your current rides", current_path, :method => "get", :class => "button")%> 
         <%= button_to("Your past purchases", purchases_path(@user.id), :method => "get", :class => "button")%> 
         <%= button_to("Log Out", "/user_logout", :method => "get", :class => "button altbutton")%> 
+        <%= button_to("DELETE ACCOUNT", delete_user_path(@user.id), :method => "get", :class => "button deletebutton")%> 
       </div>
 
       <table>

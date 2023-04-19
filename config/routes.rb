@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   post 'users', to: 'users#create', as: 'create'
   match '/user_login', to: "users#user_login", via: :get
   match '/login_verification', to: "users#login_verification", via: :get
+  get '/delete_user/:id', to: 'users#delete', as: 'delete_user'
+  delete 'hellowearedeleting/:id', to: 'users#destroy', as: 'destroy_user'
+  resources :users, only: [:delete]
 
   # sessions routes
   post 'temps', to: 'sessions#create', as: 'create_session'
