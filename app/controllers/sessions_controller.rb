@@ -20,11 +20,14 @@ class SessionsController < ApplicationController
       if cookies[:current_station]
         s = cookies[:current_station]
         cookies.delete(:current_station)
+        session[:verified] = true
         redirect_to rental_path(s)
       else
         if session[:new] == true
+          session[:verified] = true
           redirect_to account_confirmation_path
         else
+          session[:verified] = true
           redirect_to profile_path
         end
       end

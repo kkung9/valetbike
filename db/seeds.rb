@@ -13,6 +13,7 @@
 # }])
 
 # p "Created station"
+Rental.destroy_all
 Dock.destroy_all
 Bike.destroy_all
 Station.destroy_all
