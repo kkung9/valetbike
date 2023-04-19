@@ -39,4 +39,5 @@ Rails.application.routes.draw do
   get 'sessions/create'
   post 'code', to: "sessions#login", as: 'start_login'
 
+  get 'set_theme', to: 'theme#update'
 end
