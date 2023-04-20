@@ -47,6 +47,8 @@ Station.find_by(identifier: 23).update(photo: "forbes.png")
 Station.find_by(identifier: 20).update(photo: "hospital.png")
 Station.find_by(identifier: 26).update(photo: "jmg.png")
 Station.find_by(identifier: 31).update(photo: "mainstreet.png")
+Station.find_by(identifier: 29).update(photo: "noimage.png")
+Station.find_by(identifier: 27).update(photo: "noimage.png")
 
 
 require 'csv'
