@@ -42,4 +42,5 @@ Rails.application.routes.draw do
   get '/guest_option', to: 'users#guest_or_login', as: 'guest_option'
   post 'start_guest', to: 'guests#create', as: 'start_guest'
 
+  get 'set_theme', to: 'theme#update'
 end
