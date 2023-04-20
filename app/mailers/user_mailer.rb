@@ -5,7 +5,5 @@ class UserMailer < ApplicationMailer
         @user = params[:user]
         @vcode = params[:vcode]
         mail(to: @user.email, subject: 'Verification code')
-
-        puts "Success!"
     end
 end
