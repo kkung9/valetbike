@@ -1,5 +1,17 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
-    <div><%= station.identifier %>: <%= station.name %> (<%= station.address %>)</div>
-    <div><%= station.dock_ids.count%> bikes currently docked</div>
-    <%= link_to 'Select', station_path(station.identifier) %>
+    <div class="card">
+        <div class="container">
+            <div>
+                <% if station.photo %>
+                    <%= image_tag(station.photo)%>
+                <% end %>
+            </div>
+            <h3><b><%= station.name %></b></h3>
+            <p><%= station.address %></p> 
+            <p><span style="color: var(--color2)"><%= station.dock_ids.count%></span> bikes currently docked.</p> 
+            <div class="select-btn">
+                <%= link_to 'Select', station_path(station.identifier), class: "button" %>
+            </div>
+        </div>
+    </div>
 </div>

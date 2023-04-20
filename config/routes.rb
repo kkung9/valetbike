@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
-  get 'sessions/create'
-  get 'stations/index'
+  get 'guests/create'
+  # home page
   root to: "stations#index"
 
-  resources :bikes,    only: [:index]
+  # for admin
+  # resources :bikes,    only: [:index]
   resources :stations, only: [:index]
   resources :rentals,  only: [:create]
 
+
+  # stations routes
   get '/station/:identifier', to: 'stations#station_view', as: 'station'
+  match '/index', to: "stations#index", via: :get
+  get '/search(/:name)', to: "stations#search", as: 'search'
+  match '/list', to: "stations#list", via: :get
+  match '/map', to: "stations#map", via: :get
+  
+  # rentals routes
   get '/rental/:identifier', to: 'rentals#rental', as: 'rental'
   get '/confirm/:station_identifier/:bike_identifier', to: 'rentals#purchase_confirm', as: 'confirm'
   get '/receipt/:id', to: 'rentals#receipt', as: 'receipt'
@@ -15,23 +24,23 @@ Rails.application.routes.draw do
   post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
-  get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
 
-  match '/index', to: "stations#index", via: :get
-  get '/search', to: "stations#search", as: 'search'
-  match '/list', to: "stations#list", via: :get
+  # users routes
+  get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
   match '/profile', to: "users#profile", via: :get
-  match '/map', to: "stations#map", via: :get
-  match '/receipt', to: "rentals#receipt", via: :get
-  match '/current_ride', to: "rentals#current_ride", via: :get
   match '/create_account', to: "users#create_account", via: :get
   match '/account_confirmation', to: "users#account_confirmation", via: :get
   post 'users', to: 'users#create', as: 'create'
   match '/user_login', to: "users#user_login", via: :get
+  match '/login_verification', to: "users#login_verification", via: :get
+
+  # sessions routes
   post 'temps', to: 'sessions#create', as: 'create_session'
   match '/user_logout', to: "sessions#logout", via: :get  
-  match '/user_logout', to: "sessions#logout", via: :get  
-  match '/login_verification', to: "users#login_verification", via: :get
+  get 'sessions/create'
   post 'code', to: "sessions#login", as: 'start_login'
+  get '/guest_option', to: 'users#guest_or_login', as: 'guest_option'
+  post 'start_guest', to: 'guests#create', as: 'start_guest'
 
+  get 'set_theme', to: 'theme#update'
 end

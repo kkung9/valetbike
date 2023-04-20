@@ -4,6 +4,7 @@
 
     <h1>Your Past Purchases</h1>
     <p><%= @user.first_name %> <%= @user.last_name %> </p>
+    <button> <%= link_to("Back to Profile", profile_path)%> </button>
 
     <table>
         <tr>
@@ -17,15 +18,13 @@
 
       <% @rentals.each do |rental| %>
         <tr>
-        <td><%= rental.start_time.to_date%></td>
-        <td><%= rental.start_time.hour %>:<%= rental.start_time.min %></td>
+        <td><%= rental.start_time.to_date.strftime('%b %d, %Y')%></td>
+        <td><%= rental.start_time.in_time_zone("America/New_York").strftime("%I:%M %p") %></td>
         <% if rental.end_station %>
-          <td><%= rental.actual_end_time.hour %>:<%= rental.actual_end_time.min %></td>
+          <td><%= rental.actual_end_time.in_time_zone("America/New_York").strftime("%I:%M %p") %></td>
         <% else %>
           <td>In progress.</td>
         <% end %>
-        <% puts "aaaaa" %>
-        <% puts rental.start_station %>
         <td><%= Station.find_by(identifier: rental.start_station).name %></td>
         <% if rental.end_station %>
           <td><%= Station.find_by(identifier: rental.end_station).name %></td>

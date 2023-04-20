@@ -13,6 +13,7 @@
 # }])
 
 # p "Created station"
+Rental.destroy_all
 Dock.destroy_all
 Bike.destroy_all
 Station.destroy_all
@@ -32,6 +33,23 @@ csv.each do |row|
     s.save
 end
 puts "There are now #{Station.count} rows in the stations table"
+
+Station.find_by(identifier: 21).update(photo: "lillylib.jpeg")
+Station.find_by(identifier: 24).update(photo: "florencecenter.jpeg")
+Station.find_by(identifier: 30).update(photo: "7A7D.jpeg")
+Station.find_by(identifier: 25).update(photo: "cooley.jpeg")
+Station.find_by(identifier: 33).update(photo: "highschool.jpeg")
+Station.find_by(identifier: 20).update(photo: "villagehill.jpeg")
+Station.find_by(identifier: 22).update(photo: "ymca.jpeg")
+Station.find_by(identifier: 28).update(photo: "amtrak.png")
+Station.find_by(identifier: 32).update(photo: "bridge.png")
+Station.find_by(identifier: 23).update(photo: "forbes.png")
+Station.find_by(identifier: 20).update(photo: "hospital.png")
+Station.find_by(identifier: 26).update(photo: "jmg.png")
+Station.find_by(identifier: 31).update(photo: "mainstreet.png")
+Station.find_by(identifier: 29).update(photo: "noimage.png")
+Station.find_by(identifier: 27).update(photo: "noimage.png")
+
 
 require 'csv'
 csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
