@@ -9,7 +9,7 @@
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 <%= javascript_importmap_tags %>
 <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
-<link href="/favicon.ico" rel="icon" type="image/x-icon">
+<%= favicon_link_tag asset_path('bike.ico') %>
 <title>ValetBike</title>
 </head>
 <body class="<%= cookies[:theme] %>">
@@ -19,7 +19,7 @@
 <%= link_to 'dark', set_theme_path(theme: 'dark') %>
 <%= link_to 'system default', set_theme_path %>
 <nav>
-<%= link_to image_tag("logo.png", :alt=> "very cool logo", id: 'logo'), "/index" %>
+<%= link_to content_tag(:div, nil, class: "bow"), "/index" %>
 <ul>
 <li><a href="/index">Home</a></li>
 <li><a href="/search">Search</a></li>

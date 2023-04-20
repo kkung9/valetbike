@@ -1,4 +1,4 @@
-@import url('[https://fonts.googleapis.com/css2?family=Comfortaa&display=swap](https://fonts.googleapis.com/css2?family=Comfortaa&display=swap)');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 /*
 
 - This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -15,7 +15,7 @@
 - = require_tree .
 *= require_self
 */
-- {
+* {
 font-family: 'Comfortaa', cursive;
 font-weight: 700;
 }
@@ -125,6 +125,10 @@ font-weight: 700;
     width: 15%;
     margin-right: 5%;
     }
+    #logo a:hover {
+        animation-name: wiggle;
+        animation-duration: 1s;
+    }
     nav ul {
     padding: 0;
     display: flex;
@@ -148,18 +152,6 @@ font-weight: 700;
     
 
 /* buttons and such */
-.button {
-background-color: var(--color2);
-border: none;
-color: var(--color1);
-padding: 15px 32px;
-border-radius: 10px;
-margin: 15px 0px;
-}
-.button:hover{
-color: var(--color1);
-background-color: var(--color4);
-}
 
 #rectangle{
 width:100%;
@@ -181,9 +173,9 @@ background-color: var(--light-bg-color);
 color: var(--color2);
 }
 .button {
-background-color: var(--color2);
+background-color: var(--light-text-color);
 border: none;
-color: var(--color1);
+color: var(--light-bg-color);
 padding: 15px 32px;
 border-radius: 10px;
 margin: 15px 0px;
@@ -217,5 +209,89 @@ font-weight: 400;
 tr:nth-child(even) {
 background-color: var(--light-bg-color);
 }
+
+
+    /* wiggly bowtie */
+    .bow {
+        background-image: url("bow0.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: var(--light-text-color);
+        width: 250px;
+        height: 100px;
+        border-radius: 10px;
+    }
+
+    .bow:hover{
+        animation-name: wiggle;
+        animation-duration: 1s;
+    }
+
+    @keyframes wiggle {
+        0%   {background-image: url("bow0.png")}
+        30%  {background-image: url("bowr.png")}
+        90%  {background-image: url("bowl.png")}
+        100% {background-image: url("bow0.png")}
+    }
+
+    /* inspired by: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_cards2 */
+    /* search result card */
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 40%;
+        height: 430px;
+        border-radius: 5px;
+        margin-inline-end: 5%;
+        margin-bottom: 5%;
+        position: relative;
+        float:left;
+    }
+    
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    
+    
+    
+    .container {
+        padding: 16px 16px;
+    }
+
+    .container img{
+        width: 200px;
+        height: 200px;
+        border-radius: 5px 5px;
+    }
+    
+    .select-btn {
+        border-radius: 5px 5px;
+        padding: 5px 5px;
+        position: absolute;
+        bottom: 10%;
+        right: 5%;
+    }
+
+    .select-btn a{
+        text-decoration: none;
+    }
+  
+
+/* responsive */
+@media (max-width: 1500px) {
+    .card {
+        width: 100%;
+        height: auto;
+        border-radius: 0%;
+        margin: 0%;
+        margin-bottom: 5%;
+        position: relative;
+    }
+
+    .select-btn {
+        top: 10%;
+    }
+}
+  
 
 
