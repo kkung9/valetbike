@@ -2,7 +2,7 @@ class RentalsController < ApplicationController
 
     def rental
       if cookies[:current_station]
-        @station = Station.find_by(id: cookies[:current_station])
+        @station = Station.find_by(identifier: cookies[:current_station])
         cookies.delete(:current_station)
       else
         @station = Station.find_by(identifier: params[:identifier])
@@ -23,7 +23,11 @@ class RentalsController < ApplicationController
       @bike = Bike.find_by(identifier: params[:bike_identifier])
       @station = Station.find_by(identifier: params[:station_identifier])
       @rental = Rental.new
-      @rental.user_id = User.find_by(email: session[:email]).id
+      if !!session[:verified]
+        @rental.user_id = User.find_by(email: session[:email]).id
+      elsif !!session[:guest]
+        @rental.user_id = Guest.find_by(last_name: session[:guest]).id
+      end
       @rental.bike_id = @bike.id
       @rental.start_station = @station.identifier
       @rental.start_time = Time.current
@@ -34,8 +38,12 @@ class RentalsController < ApplicationController
     end
 
     def current_ride
-      @user = User.find_by(email: session[:email])
-      @rentals = Rental.where(user: @user, end_station: nil).order(predicted_end_time: :asc)
+      if !!session[:email]
+        @user = User.find_by(email: session[:email])
+      elsif !!session[:guest]
+        @user = Guest.find_by(last_name: session[:guest])
+      end
+        @rentals = Rental.where(user: @user, end_station: nil).order(predicted_end_time: :asc)
     end
 
     def lock
@@ -59,6 +67,15 @@ class RentalsController < ApplicationController
             @rental.actual_end_time = Time.current
             @rental.save
             @d.redock(@rental.bike)
+
+            if !!session[:guest]
+              @guest = Guest.find_by(last_name: session[:guest])
+              @all_rentals = Rental.where(user: @guest, end_station: nil)
+              if @all_rentals.count == 0
+                session.delete(:guest)
+              end
+            end
+
             redirect_to receipt_path(@rental.id)
           end
         else

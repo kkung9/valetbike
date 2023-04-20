@@ -9,7 +9,7 @@
         <% if logged_in? %>
           <button> <%= link_to("RENT NOW", start_rental_path(@station.identifier)) %> </button>
         <% else %>
-          <button> <%= link_to("RENT NOW", "/user_login") %> </button>
+          <button> <%= link_to("RENT NOW", guest_option_path) %> </button>
           <% cookies[:current_station] = @station.identifier %>
         <% end %>
       </div>
