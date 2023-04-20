@@ -31,15 +31,21 @@
 </ul>
 </nav>
 </header>
-<% @user = User.find_by(email: session[:email]) %>
-<% @rental = Rental.find_by(user: @user, end_station: nil) %>
-<% if @user and @rental %>
-<div id = "rectangle" ><%= link_to("Your current rides", current_path)%></div>
-<% end %>
-<div id="site-container" class="flexbox vertical stretch flex-1">
-<div class="flexbox vertical center">
-<%= yield %>
-</div>
-</div>
-</body>
+
+  <% @user = User.find_by(email: session[:email]) %>
+  <% @rental = Rental.find_by(user: @user, end_station: nil) %>
+  <% @guest = Guest.find_by(last_name: session[:guest]) %>
+  <% @grental = Rental.find_by(user: @guest, end_station: nil) %>
+  <% if @user and @rental %>
+    <div id = "rectangle" ><%= link_to("Your current rides", current_path)%></div>
+  <% elsif @guest and @grental %>
+    <div id = "rectangle" ><%= link_to("Your current rides", current_path)%></div>
+  <% end %>
+
+    <div id="site-container" class="flexbox vertical stretch flex-1">
+      <div class="flexbox vertical center">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>

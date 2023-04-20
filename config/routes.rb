@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'guests/create'
   # home page
   root to: "stations#index"
 
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
   match '/user_logout', to: "sessions#logout", via: :get  
   get 'sessions/create'
   post 'code', to: "sessions#login", as: 'start_login'
+  get '/guest_option', to: 'users#guest_or_login', as: 'guest_option'
+  post 'start_guest', to: 'guests#create', as: 'start_guest'
 
   get 'set_theme', to: 'theme#update'
 end
