@@ -41,6 +41,7 @@ class SessionsController < ApplicationController
   def logout
     session.delete(:email)
     session.delete(:vcode)
+    session.delete(:verified)
     session.delete(:new)
     redirect_to index_path
   end

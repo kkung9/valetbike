@@ -12,7 +12,6 @@ class StationsController < ApplicationController
   def search
       if !params[:name].blank?
         @stations = Station.all.where('name LIKE ?', "%#{params[:name]}%")
-        puts @stations
       else
         @stations = Station.all
       end
@@ -31,13 +30,12 @@ class StationsController < ApplicationController
   # end
 
   def station_view
-    
     @station = Station.find_by(identifier: params[:identifier])
   end
 
   private
   def station_params
-    params.require(:station).permit(:name, :address, :identifier)
+    params.require(:station).permit(:name, :address, :identifier, :photo)
   end
     # ^ for all controllers
     # create & edit & update reference station_params 
