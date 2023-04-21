@@ -7,8 +7,4 @@ class Bike < ApplicationRecord
   has_many :rental
   has_many :user, through: :rental
 
-  # current_user = Bike.user.where(is_complete: false) 
-  # puts(current_user.id)
-  # return current_user.id 
-
 end

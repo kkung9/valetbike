@@ -1,9 +1,13 @@
+<% content_for :head do %>
+  <meta name="turbo-visit-control" content="reload">
+<% end %>
+
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
       <h1>Map</h1>
       <br>
-      <p>If the map doesn't load, try reloading the page.</p>
+      
       <!-- Leaflet's css header -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
       integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -16,7 +20,8 @@
       
       <div id="map"></div>
       
-      
+      </script>
+
       <script>
         var map = L.map('map').setView([42.32, -72.64], 13);
       </script>
@@ -27,17 +32,29 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
       </script>
-
+      
       <!-- Adding markers for each station:) -->
       <% @stations.each do |station| %>
+        
+
         <script>
-          var marker = L.marker([<%=station.lat%>, <%=station.long%>]).addTo(map);
-          marker.bindPopup('<%=link_to(station.name, station_path(station.identifier))%><br>Bikes available: ' + <%=station.bikes.count%>).openPopup();
+
+          var color = "assets/green-marker.png";
+          if (<%=station.bikes.count%> == 0)
+            color = "assets/grey-marker.png";
+
+          var customIcon = L.icon({
+            iconUrl: color, 
+            iconSize:     [26, 40],
+            iconAnchor:   [13, 40], 
+            popupAnchor:  [0, -30] 
+          });
+
+          var marker = L.marker([<%=station.lat%>, <%=station.long%>], {icon: customIcon}).addTo(map);
+          marker.bindPopup('<%=link_to(station.name, station_path(station.identifier))%><br>Bikes available: ' 
+          + <%=station.bikes.count%>).openPopup();
         </script>
       <%end%>
-
-
-
 
     </div>  
   </div>

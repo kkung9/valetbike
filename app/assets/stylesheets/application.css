@@ -1,43 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+- This is a manifest file that'll be compiled into application.css, which will include all the files
+- listed below.
+- 
+- Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+- vendor/assets/stylesheets directory can be referenced here using a relative path.
+- 
+- You're free to add application-wide styles to this file and they'll appear at the bottom of the
+- compiled file so the styles you add here take precedence over styles defined in any other CSS
+- files in this directory. Styles in this file should be added after the last require_* statement.
+- It is generally better to create a new file per style scope.
+- 
+- = require_tree .
+*= require_self
+*/
+
+/* basics ---------------------------------------------- */
 * {
     font-family: 'Comfortaa', cursive;
-    cursor: url();
     font-weight: 700;
 }
 
-:root{
-    --color1: #f7f9f5;
-    --color2: #3e7527;
+:root {
+    --light-bg-color: #f7f9f5;
+    --light-text-color: #3e7527;
+    --dark-bg-color: #444038;
+    --dark-text-color: #f7f9f5;
+    --color2: #E39F5F;
     --color3: #A0B64A;
-    --color4: #E39F5F;
-    --color5: #E2AB69;
+    --color4: #E2AB69;
     --xlarge: 48px;
     --large: 36px;
     --medium: 24px;
-    --small: 20px; 
+    --small: 20px;
+}      
+    
+h3 {
+    font-size: var(--medium);
+    margin-bottom: 5px;
 }
 
-nav{
-    background-color: var(--color2);
-    text-align: center;
-    font-size: var(--medium);
-    display: flex;
-    /* padding: 15px 50px 15px 50px; */
+p {
+    font-size: var(--small);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+    margin: 0px;
 }
 
 nav ul {
@@ -48,37 +56,281 @@ nav ul {
     width: 70%;
     margin: auto;
 }
+
 nav li a {
-    color: var(--color1);
-    text-decoration: none;   
+    color: var(--light-bg-color);
+    text-decoration: none;
 }
+
 nav li a:hover {
-    color: var(--color5);
+    color: var(--hover-color);
 }
-h1 {
-    font-size: var(--xlarge);
-    color: var(--color2);
-}
-h3 {
-    font-size: var(--medium);
-}
-p {
-    font-size: var(--small);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 500;
-}
-/* map styling: setting size */
-#map { 
-    height: 600px; 
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 .section-title {
     width: 80%;
     margin: auto;
 }
+
+.section-inner.flexbox.vertical.stretch {
+    padding: 10px;
+    width: 70%;
+    margin: auto;
+}
+
+#map {
+    height: 600px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #logo {
     width: 15%;
     margin-right: 5%;
 }
+
+#logo a:hover {
+    animation-name: wiggle;
+    animation-duration: 1s;
+}
+    
+
+/* buttons ---------------------------------------------- */
+.button {
+    background-color: var(--light-text-color);
+    border: none;
+    color: var(--light-bg-color);
+    padding: 15px 32px;
+    border-radius: 10px;
+    margin: 15px 0px;
+}
+
+.button:hover {
+    color: var(--light-bg-color);
+    background-color: var(--color2);
+}
+
+.button:visited {
+    color: var(--light-bg-color);
+}
+
+.altbutton {
+    background-color: var(--light-bg-color);
+    color: var(--color2);
+}
+
+#rectangle {
+    width:100%;
+    height:30px;
+    background: var(--color3);
+}
+
+#input {
+    width: 30%;
+}
+
+#profilebuttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.altbutton {
+    background-color: var(--color1);
+    color: var(--color4);
+}
+.deletebutton {
+    background-color: #FF0000;
+    color: "white";
+}
+
+
+/* tables ---------------------------------------------- */
+th {
+    padding: 10px 15px;
+    height: 30px;
+}
+
+table {
+    margin: auto;
+    margin-top: 15px;
+    text-align: center;
+    background-color: #f7f9f5;
+    border-collapse:collapse;
+    border-radius: 10px;
+}
+
+tr {
+    text-align: left;
+}
+
+td {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-bg-color);
+}
+
+
+/* wiggly bowtie ---------------------------------------------- */
+.bow {
+    background-image: url("bow0.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--light-text-color);
+    width: 250px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.bow:hover {
+    animation-name: wiggle;
+    animation-duration: 1s;
+}
+
+@keyframes wiggle {
+    0%   {background-image: url("bow0.png")}
+    30%  {background-image: url("bowr.png")}
+    90%  {background-image: url("bowl.png")}
+    100% {background-image: url("bow0.png")}
+}
+
+/* inspired by: 
+   https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_cards2
+*/
+/* search result card */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    height: 430px;
+    border-radius: 5px;
+    margin-inline-end: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    float:left;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 16px 16px;
+}
+
+.container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px 5px;
+}
+
+.select-btn {
+    border-radius: 5px 5px;
+    padding: 5px 5px;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+}
+
+.select-btn a {
+    text-decoration: none;
+}
+
+/* responsive */
+@media (max-width: 1500px) {
+    .card {
+        width: 100%;
+        height: auto;
+        border-radius: 0%;
+        margin: 0%;
+        margin-bottom: 5%;
+        position: relative;
+    }
+
+    .select-btn {
+        top: 10%;
+    }
+}
+
+/* light mode ---------------------------------------------- */
+@media (prefers-color-scheme: light) {
+    body {
+        background: var(--light-bg-color);
+        color: var(--light-text-color);
+    }
+
+    h1 {
+        font-size: var(--xlarge);
+        color: var(--light-text-color);
+        margin-bottom: 10px;
+    }
+
+    nav {
+        background-color: var(--light-text-color);
+        text-align: center;
+        font-size: var(--medium);
+        display: flex;
+        border-radius: 10px;
+    }
+    
+    body.dark {
+        background: var(--dark-bg-color);
+        color: var(--dark-text-color);
+    }
+
+    h1.dark {
+        font-size: var(--xlarge);
+        color: var(--dark-text-color);
+    }
+
+    nav.dark {
+        background-color: var(--light-text-color);
+        text-align: center;
+        font-size: var(--medium);
+        display: flex;
+    }
+}
+
+/* dark mode ---------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: var(--dark-bg-color);
+        color: var(--dark-text-color);
+    }
+
+    h1 {
+        font-size: var(--xlarge);
+        color: var(--dark-text-color);
+        margin-bottom: 10px;
+    }
+
+    nav {
+        background-color: var(--light-text-color);
+        text-align: center;
+        font-size: var(--medium);
+        display: flex;
+        border-radius: 10px;
+    }
+
+    body.light {
+        background: var(--light-bg-color);
+        color: var(--light-text-color);
+    }
+
+    h1.light {
+        color: var(--light-text-color);
+    }
+
+    nav.light {
+        background-color: var(--light-text-color);
+        text-align: center;
+        font-size: var(--medium);
+        display: flex;
+    }
+}
+  
+
+

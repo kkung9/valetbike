@@ -13,7 +13,7 @@
         </div>
     <% end %>
     <p>Type Code Here: <%= form.text_field :code, :placeholder => "0000" %></p> <br>
-    <%= form.submit "Submit Code" %>
+    <%= form.submit "Submit Code", :class => "button" %>
   <% end %>
 
   <%= link_to "Return to Login", "/user_login" %>
