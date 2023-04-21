@@ -1,23 +1,86 @@
 <div class="page-section flexbox vertical stretch">
-    <div class="section-inner flexbox vertical stretch">
-        <div class="section-title">
-            <h1>Welcome to ValetBike!</h1>
-
-            <h3>About Us</h3>
-            <p>ValetBike is a bike-renting business in Nipmuc Notch. We have stations all over for you to use! To start the rental process, you can click on Map to see stations in your area, or Search to look for specific stations.</p>
-            <p>We are a fun eclectic family business :)</p>
-
-            <h3>Announcements</h3>
-            <p>Unfortunately, ValetBike is closed in winter.</p>
-            <%= @current_user %>
-
-            <h3>Pricing</h3>
-            <p>FREE! For now...</p>
-
-            <h3>Contact</h3>
-            <p><a href = "mailto: valetbike223@gmail.com">valetbike223@gmail.com</a></p>
-            <p>(413)-123-4567</p>
-
-        </div>
+    <div class="cover-image">
+        <%= image_tag("cover-image.jpeg", :alt => "cover image", :id => "cover-image") %>
+        <h1 class="title">Explore Nipmuc Notch with ValetBike!</h1>
+        <%# <p class="title">ValetBike allows you explore NipMuc Notch Valley on two wheels</p> %>
+        <%= button_to("View Map", "/map", :method => "get", :class => "button", :id => "cover-button") %>
     </div>
-</div>
+    <%# <div class="section-inner flexbox vertical stretch"> %>
+    <div class="section-title">
+        <div class="announcement">
+            <h2>
+                Announcements
+            </h2>
+            <p>ValetBike bikes are freely available due to ValetBike being independently owned</p>
+        </div>
+        <%= @current_user %>
+        <h2>
+            Pricing
+        </h2>
+        <div class="container">
+            <div class="home-card">
+                <div>
+                    <h3>Monthly Membership</h3>
+                    <p>
+                        Access to the system for 1 month. Dock every 45 mins to avoid overage fees. One bike per phone.
+                    </p>
+                    <br>
+                        <h3>$19.13</h3>
+                        <%= button_to("Learn More", "/map", :method => "get", :class => "button") %>
+                    </div>
+                </div>
+                <div class="home-card">
+                    <div>
+                        <h3>Yearly Membership</h3>
+                        <p>Access for 1 year. Dock every 45 mins to avoid overage fees. 1 bike/membership.</p>
+                        <br>
+                            <h3>$76.50</h3>
+                            <%= button_to("Learn More", "/map", :method => "get", :class => "button") %>
+                        </div>
+                    </div>
+                    <div class="home-card">
+                        <div>
+                            <h3>Pay per Ride Pass</h3>
+                            <p>Pay per ride and per bike. Dock within 30 mins to avoid overage fees. Up to 4 bikes per phone.</p>
+                            <br>
+                                <h3>$2.40</h3>
+                                <%= button_to("Learn More", "/map", :method => "get", :class => "button") %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="how-to">
+                        <h2>How to use the System</h3>
+                        <div class="home-card">
+                            <h2>JOIN</h2>
+                            <i class="fa-solid fa-mobile-notch"></i>
+                        </div>
+                        <div class="home-card">
+                            <h2>UNLOCK</h2>
+                        </div>
+                        <div class="home-card">
+                            <h2>RIDE</h2>
+                        </div>
+                        <div class="home-card">
+                            <h2>RETURN</h2>
+                        </div>
+
+
+                    </div>
+
+                    <%# <h3>
+                                            Contact
+                                        </h3>
+                                        <p>
+                                            <a href="mailto: valetbike223@gmail.com">
+                                                valetbike223@gmail.com</a>
+                                        </p>
+                                        <p>(413)-123-4567</p>
+                                        <p>
+                                            ValetBike is a bike-renting business in Nipmuc Notch. We have stations all over for you to use! To start the rental process, you can click on Map to see stations in your area, or Search to look for specific stations.
+                                        </p>
+                                        <p>
+                                            We are a fun eclectic family business :)
+                                        </p> %>
+                </div>
+                <%# </div> %>
+            </div>

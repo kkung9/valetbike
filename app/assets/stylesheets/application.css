@@ -40,6 +40,9 @@ h3 {
     font-size: var(--medium);
     margin-bottom: 5px;
 }
+h2{
+    font-size: var(--large);
+}
 
 p {
     font-size: var(--small);
@@ -63,7 +66,7 @@ nav li a {
 }
 
 nav li a:hover {
-    color: var(--hover-color);
+    color: var(--color2);
 }
 
 .section-title {
@@ -172,7 +175,54 @@ td {
 tr:nth-child(even) {
     background-color: var(--light-bg-color);
 }
-
+.cover-image {
+    position: relative;
+    width: 100%;
+  }
+.title { 
+    position: absolute;
+    top: 8px;
+    right: 25px;
+    color: var(--light-bg-color); 
+}
+#cover-image{
+    width: 100%;
+    height: 40%;
+    border-radius: 10px;
+}
+#cover-button{
+    position: absolute;
+    bottom: 50px;
+    right: 75px
+}
+.announcement{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-inline-end: 5%;
+    margin-bottom: 5%;
+    padding: 25px 50px 25px 25px;
+    position: relative;
+    /* float:left; */
+}
+.home-card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 25%;
+    height: 50%;
+    border-radius: 5px;
+    padding: 15px 20px 20px 15px;
+    margin: 0px 50px 50px 0px;
+    display:inline-flex;
+    align-items:center;
+    align-content: center;
+    block-size: fit-content;
+}
+/* .price { */
+    /* width: fit-content; */
+    /* block-size: fit-content; */
+    /* align-items: center; */
+/* } */
 
 /* wiggly bowtie ---------------------------------------------- */
 .bow {
@@ -261,7 +311,10 @@ tr:nth-child(even) {
         background: var(--light-bg-color);
         color: var(--light-text-color);
     }
-
+    footer{
+        background: var(--light-text-color);
+        color: var(--light-bg-color);
+    }
     h1 {
         font-size: var(--xlarge);
         color: var(--light-text-color);
@@ -280,7 +333,6 @@ tr:nth-child(even) {
         background: var(--dark-bg-color);
         color: var(--dark-text-color);
     }
-
     h1.dark {
         font-size: var(--xlarge);
         color: var(--dark-text-color);
@@ -312,7 +364,8 @@ tr:nth-child(even) {
         text-align: center;
         font-size: var(--medium);
         display: flex;
-        border-radius: 10px;
+        border-radius: 10px 10px 0px 0px;
+        margin: 0px;
     }
 
     body.light {
@@ -331,6 +384,3 @@ tr:nth-child(even) {
         display: flex;
     }
 }
-  
-
-

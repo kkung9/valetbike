@@ -83,3 +83,7 @@ gem 'dotenv-rails'
 # gem 'paperclip
 # gem 'uniquify'
 # gem 'will_paginate'
+
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.1"
