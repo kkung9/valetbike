@@ -1,33 +1,27 @@
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
+    <div class="section-inner flexbox vertical stretch">
+        <div class="section-title">
 
-      <h1>Search</h1>
-      <!--<h3>Search by Station Name</h3>-->
+            <h1>Search</h1>
 
-      <p>Search functionality coming soon...</p>
+            <h3>Search by Station Name</h3>
 
-      <!--<%= form_tag(search_path(@name), method: :get) do %>-->
-        <!--<%= text_field_tag :name, params[:name] %>-->
-        <!--<%= submit_tag 'Search'%>-->
-        <!--<% end %>-->
+            <%= form_tag(search_path(@name), method: :get) do %>
+                <%= text_field_tag :name, params[:name] %>
+                <%= submit_tag 'Search'%>
+            <% end %>
 
-
-        <div class="flexbox vertical stretch" id="s" style="display:block">
-          <% if @stations.present? %>
-            <div class="record-row header flexbox horizontal justify-space-between">
+            <br>
+                <div class="flexbox vertical stretch" id="s" style="display:block">
+                    <% if @stations.present? %>
+                        <div class="record-row header flexbox horizontal justify-space-between"></div>
+                        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+                    <% else %>
+                        <p>
+                            No stations found.
+                        </p>
+                    <% end %>
+                </div>
             </div>
-            <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-          <% else %>
-            <div class="empty">
-              No stations found.
-            </div>
-          <% end %>
-          </div>
-
-
-        
-
-    </div>  
-  </div>
-</div>
+        </div>
+    </div>

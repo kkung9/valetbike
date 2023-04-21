@@ -1,0 +1,16 @@
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+
+    <h1>Confirm deletion</h1>
+        <%= button_to "Back to Profile", "/user_profile", class: "button"%>
+        <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+
+        <%= form_for(@user, method: 'delete', url: destroy_user_path(@user.id)) do |f| %>
+            <%= f.submit("DELETE ACCOUNT (Yes, I'm sure)", class: "button deletebutton")%>
+        <% end %> 
+
+
+    </div>  
+  </div>
+</div>

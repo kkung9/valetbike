@@ -9,14 +9,13 @@ class StationsController < ApplicationController
     render('search')
   end
 
-
-  # def search
-  #   if params[:name]
-  #     @station = Station.where('name LIKE ?', "%{params[:name]}%").first
-  #   else
-  #     @station = Station.all
-  #   end
-  # end
+  def search
+      if !params[:name].blank?
+        @stations = Station.all.where('name LIKE ?', "%#{params[:name]}%")
+      else
+        @stations = Station.all
+      end
+    end
   
   def index
   end
@@ -31,13 +30,12 @@ class StationsController < ApplicationController
   # end
 
   def station_view
-    
     @station = Station.find_by(identifier: params[:identifier])
   end
 
   private
   def station_params
-    params.require(:station).permit(:name, :address, :identifier)
+    params.require(:station).permit(:name, :address, :identifier, :photo)
   end
     # ^ for all controllers
     # create & edit & update reference station_params 

@@ -13,12 +13,10 @@
           </div>
         <% end %>
         <p> Please enter the 2-digit code on the station.</p>
-        <%= form.select(:station_code, @station_options, :selected => @rental.start_station) %> %>
+        <%= form.select(:station_code, @station_options, :selected => @rental.start_station) %>
         <p> Please enter the 2-digit code on the dock.</p>
         <%= form.text_field :dock_code %>
-        <div class="form-buttons">
-          <%= form.submit("Return Bike") %>
-        </div>
+        <%= form.submit("Return Bike", :class => "button") %>
       <% end %>
   </div>
 </div>

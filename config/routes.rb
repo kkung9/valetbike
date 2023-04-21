@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'guests/create'
   # home page
   root to: "stations#index"
 
@@ -23,8 +24,6 @@ Rails.application.routes.draw do
   post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
-  match '/receipt', to: "rentals#receipt", via: :get
-  match '/current_ride', to: "rentals#current_ride", via: :get
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
@@ -34,11 +33,17 @@ Rails.application.routes.draw do
   post 'users', to: 'users#create', as: 'create'
   match '/user_login', to: "users#user_login", via: :get
   match '/login_verification', to: "users#login_verification", via: :get
+  get '/delete_user/:id', to: 'users#delete', as: 'delete_user'
+  delete 'hellowearedeleting/:id', to: 'users#destroy', as: 'destroy_user'
+  resources :users, only: [:delete]
 
   # sessions routes
   post 'temps', to: 'sessions#create', as: 'create_session'
   match '/user_logout', to: "sessions#logout", via: :get  
   get 'sessions/create'
   post 'code', to: "sessions#login", as: 'start_login'
+  get '/guest_option', to: 'users#guest_or_login', as: 'guest_option'
+  post 'start_guest', to: 'guests#create', as: 'start_guest'
 
+  get 'set_theme', to: 'theme#update'
 end

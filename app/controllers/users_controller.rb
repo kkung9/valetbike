@@ -23,8 +23,24 @@ class UsersController < ApplicationController
     else 
       @user.save
       session[:email] = params[:email]
-      redirect_to account_confirmation_path
+      session[:vcode] = 4.times.map{rand(10)}.join
+      session[:new] = true
+      UserMailer.with(user: @user, vcode: session[:vcode]).verification_email.deliver_later
+
+      redirect_to login_verification_path
     end
   end
-  
+
+  def delete
+    puts params[:id]
+    @user = User.find_by(id: params[:id])
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    session.delete(:email)
+    redirect_to index_path
+  end
+
 end
