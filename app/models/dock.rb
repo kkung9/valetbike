@@ -9,7 +9,7 @@ class Dock < ApplicationRecord
   end
 
   def redock(b)
-    self.update(bike: b)
+    self.update_attribute(:bike, b)
   end
 
   private

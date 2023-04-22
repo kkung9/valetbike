@@ -1,0 +1,73 @@
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
+
+      <h1>Welcome, <%= @user&.first_name %></h1>
+
+      <button> <%= link_to("Your current rides", current_path)%> </button>
+      <button> <%= link_to("Your past purchases", purchases_path(@user.id))%> </button>
+      <button> <%= link_to("Log Out", "/user_logout")%> </button>
+
+      <table>
+        <tr>
+        <th></th>
+        <th>This Month</th>
+        <th>This Year</th>
+        <th>All Time</th>
+        </tr>
+        <tr>
+        <th>Trips taken:</th>
+        <td><%= @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).count %></td>
+        <td><%= @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).count %> </td>
+        <td><%= @rentals.count %> </td>
+        </tr>
+        <tr>
+        <th>Time ridden:</th>
+        <td> <% time = 0 %>
+        <% @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).each do |rental| %>
+          <% if rental.actual_end_time %>
+            <% time += (rental.actual_end_time - rental.start_time)/60 %>
+          <% else %>
+            <% time += (Time.current - rental.start_time)/60 %>
+          <% end %>
+        <% end %>
+        <%= time.round() %></td>
+        <td> <% time = 0 %>
+        <% @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).each do |rental| %>
+          <% if rental.actual_end_time %>
+            <% time += (rental.actual_end_time - rental.start_time)/60 %>
+          <% else %>
+            <% time += (Time.current - rental.start_time)/60 %>
+          <% end %>
+        <% end %>
+        <%= time.round() %></td>
+        <td> <% time = 0 %>
+          <% @rentals.each do |rental| %>
+            <% if rental.actual_end_time %>
+              <% time += (rental.actual_end_time - rental.start_time)/60 %>
+            <% else %>
+              <% time += (Time.current - rental.start_time)/60 %>
+            <% end %>
+          <% end %>
+          <%= time.round() %></td>
+        </tr>
+        <tr>
+        <th>Miles ridden:</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+        <tr>
+        <th>Longest ride:</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+
+        <!-- Add styling for the table ^^ -->
+
+
+      
+    </div>  
+  </div>
+</div>

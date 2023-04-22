@@ -46,4 +46,5 @@ Rails.application.routes.draw do
   post 'start_guest', to: 'guests#create', as: 'start_guest'
 
   get 'set_theme', to: 'theme#update'
+  get '/faq', to: 'users#faq', as: 'faq'
 end
