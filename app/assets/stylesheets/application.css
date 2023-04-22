@@ -312,6 +312,7 @@ tr:nth-child(even) {
         color: var(--light-text-color);
     }
     footer{
+        position: absolute;
         background: var(--light-text-color);
         color: var(--light-bg-color);
     }
@@ -383,4 +384,14 @@ tr:nth-child(even) {
         font-size: var(--medium);
         display: flex;
     }
+
+
+    .page-section {
+  display: flex;
+  flex-direction: column;
+}
+.foot {
+  margin-top: auto;
+}
+
 }
