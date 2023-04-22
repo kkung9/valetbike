@@ -313,6 +313,7 @@ tr:nth-child(even) {
     }
     footer{
         position: absolute;
+        margin-top: auto;
         background: var(--light-text-color);
         color: var(--light-bg-color);
     }
@@ -385,13 +386,9 @@ tr:nth-child(even) {
         display: flex;
     }
 
-
     .page-section {
-  display: flex;
-  flex-direction: column;
-}
-.foot {
-  margin-top: auto;
-}
+        display: flex;
+        flex-direction: column;
+    }
 
 }
