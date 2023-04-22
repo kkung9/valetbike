@@ -62,10 +62,10 @@
             <% end %>
 
             <div id="site-container" class="flexbox vertical stretch flex-1">
-                <div class="flexbox vertical center">
+                <div class="flexbox vertical center page-content">
                     <%= yield %>
                 </div>
-                <footer>
+                <footer class="footer-container">
                     <h3>
                         Contact
                     </h3>
@@ -74,6 +74,9 @@
                             valetbike223@gmail.com</a>
                     </p>
                     <p>(413)-123-4567</p>
+                    <h3>
+                        <%= link_to("FAQ", faq_path) %>
+                    </h3>
                 </footer>
             </div>
         </body>

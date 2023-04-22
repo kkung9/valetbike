@@ -312,6 +312,9 @@ tr:nth-child(even) {
         color: var(--light-text-color);
     }
     footer{
+        left: 0;
+        bottom: 0px;
+        width: 100%;
         background: var(--light-text-color);
         color: var(--light-bg-color);
     }
@@ -383,4 +386,18 @@ tr:nth-child(even) {
         font-size: var(--medium);
         display: flex;
     }
+
+    .page-content {
+        min-height: 100vh;
+        margin-bottom: -142px;
+    }
+
+    .page-content:after{
+        content: "";
+        display: block;
+    }
+
+    .footer-container, .page-content:after {
+        margin-top: auto;
+    } 
 }

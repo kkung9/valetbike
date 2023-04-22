@@ -8,7 +8,7 @@
             </div>
             <h3><b><%= station.name %></b></h3>
             <p><%= station.address %></p> 
-            <p><span style="color: var(--color2)"><%= station.dock_ids.count%></span> bikes currently docked.</p> 
+            <p><span style="color: var(--color2)"><%= station.bikes.count%></span> bikes currently docked.</p> 
             <div class="select-btn">
                 <%= link_to 'Select', station_path(station.identifier), class: "button" %>
             </div>
