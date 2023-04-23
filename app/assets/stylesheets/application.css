@@ -69,6 +69,12 @@ nav li a:hover {
     color: var(--color2);
 }
 
+.page-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 650px;
+}
+
 .section-title {
     width: 80%;
     margin: auto;
@@ -384,14 +390,5 @@ tr:nth-child(even) {
         font-size: var(--medium);
         display: flex;
     }
-
-
-    .page-section {
-  display: flex;
-  flex-direction: column;
-}
-.foot {
-  margin-top: auto;
-}
 
 }
