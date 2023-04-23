@@ -7,10 +7,10 @@
       <div id = "profilebuttons">
         <%= button_to("Your current rides", current_path, :method => "get", :class => "button")%> 
         <%= button_to("Your past purchases", purchases_path(@user.id), :method => "get", :class => "button")%> 
-        <%= button_to("Log Out", "/user_logout", :method => "get", :class => "button altbutton")%> 
-        <%= button_to("DELETE ACCOUNT", delete_user_path(@user.id), :method => "get", :class => "button deletebutton")%> 
+        <%= button_to("Subscribe!", subscribe_path(@user.id), :method => "get", :class => "button") %>
       </div>
 
+      <div>
       <table>
         <tr>
         <th></th>
@@ -54,20 +54,15 @@
           <% end %>
           <%= time.round() %></td>
         </tr>
-        <tr>
-        <th>Miles ridden:</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
-        <tr>
-        <th>Longest ride:</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
+        </table>
+        </div>
 
         <!-- Add styling for the table ^^ -->
+
+        <div id = "profilebuttons">
+          <%= button_to("Log Out", "/user_logout", :method => "get", :class => "button altbutton")%> 
+          <%= button_to("DELETE ACCOUNT", delete_user_path(@user.id), :method => "get", :class => "button deletebutton")%> 
+        </div>
 
 
       

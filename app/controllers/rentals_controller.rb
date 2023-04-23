@@ -16,7 +16,9 @@ class RentalsController < ApplicationController
 
     def purchase_confirm
       @station = Station.find_by(identifier: params[:station_identifier])
+      cookies[:station] = @station.name
       @bike = Bike.find_by(identifier: params[:bike_identifier])
+      cookies[:bike] = @bike.identifier
     end
 
     def create

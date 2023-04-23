@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
+  get 'rentals/checkout', to: 'rentals#checkout'
+  get 'rentals/success', to: 'rentals#success'
+  get 'rentals/cancel', to: 'rentals#cancel'
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
@@ -36,6 +39,8 @@ Rails.application.routes.draw do
   get '/delete_user/:id', to: 'users#delete', as: 'delete_user'
   delete 'hellowearedeleting/:id', to: 'users#destroy', as: 'destroy_user'
   resources :users, only: [:delete]
+  get '/subscribe', to: 'users#subscribe', as: 'subscribe'
+  get '/subscription_success', to: 'users#sub_scess', as: 'sub_scess'
 
   # sessions routes
   post 'temps', to: 'sessions#create', as: 'create_session'

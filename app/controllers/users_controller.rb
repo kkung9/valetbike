@@ -43,4 +43,14 @@ class UsersController < ApplicationController
     redirect_to index_path
   end
 
+  def sub_scess
+    @user = User.find_by(email: session[:email])
+    @button = params[:____]
+    @user.update(subscription: Time.current + @button.month)
+  end
+
+  def sub_cookie
+    
+  end
+
 end
