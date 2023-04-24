@@ -2,42 +2,12 @@
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
 
-    <h1>Your Past Purchases</h1>
-    <p><%= @user.first_name %> <%= @user.last_name %> </p>
-    <button> <%= link_to("Back to Profile", profile_path)%> </button>
+      <h1>Your Past Purchases</h1>
+      <p><%= @user.first_name %> <%= @user.last_name %> </p>
+      <button> <%= link_to("Back to Profile", profile_path)%> </button>
 
-    <table>
-        <tr>
-        <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Start Station</th>
-        <th>End Station</th>
-        <th>Cost</th>
-        </tr>
-
-      <% @rentals.each do |rental| %>
-        <tr>
-        <td><%= rental.start_time.to_date.strftime('%b %d, %Y')%></td>
-        <td><%= rental.start_time.in_time_zone("America/New_York").strftime("%I:%M %p") %></td>
-        <% if rental.end_station %>
-          <td><%= rental.actual_end_time.in_time_zone("America/New_York").strftime("%I:%M %p") %></td>
-        <% else %>
-          <td>In progress.</td>
-        <% end %>
-        <td><%= Station.find_by(identifier: rental.start_station).name %></td>
-        <% if rental.end_station %>
-          <td><%= Station.find_by(identifier: rental.end_station).name %></td>
-        <% else %>
-          <td>In progress.</td>
-        <% end %>
-        <td></td>
-        </tr>
-      <% end %>
-    </table>
-
-    </div>
+      <%= render(partial: "users/purchase_table", rentals: @rentals) %>
+    
+    </div>  
   </div>
-</div> 
-
-<!-- Continuous table styling ^^ -->
+</div>
