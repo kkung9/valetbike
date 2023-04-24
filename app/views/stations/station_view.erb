@@ -14,10 +14,11 @@
         <% end %>
       </div>
 
-      <div><% if @station.photo %>
-        <%= image_tag(@station.photo, style: 'width:30%;')%>
-      <% end %> </div>
-
+      <div class="station-image" >
+        <% if @station.photo %>
+          <%= image_tag(@station.photo)%>
+        <% end %>
+      </div>
 
     </div>
   </div>
