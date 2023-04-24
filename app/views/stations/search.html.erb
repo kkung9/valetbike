@@ -12,16 +12,18 @@
             <% end %>
 
             <br>
-                <div class="flexbox vertical stretch" id="s" style="display:block">
-                    <% if @stations.present? %>
-                        <div class="record-row header flexbox horizontal justify-space-between"></div>
-                        <%= render(partial: "stations/row", collection: @stations, as: :station) %>
-                    <% else %>
-                        <p>
-                            No stations found.
-                        </p>
-                    <% end %>
-                </div>
+
+            <div class="flexbox vertical stretch" id="s" style="display:block">
+                <% if @stations.present? %>
+                    <div class="record-row header flexbox horizontal justify-space-between"></div>
+                    <%= render(partial: "stations/row", collection: @stations, as: :station) %>
+                <% else %>
+                    <p>
+                        No stations found.
+                    </p>
+                <% end %>
             </div>
+            
         </div>
     </div>
+</div>
