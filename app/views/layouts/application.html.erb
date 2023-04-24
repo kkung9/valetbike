@@ -9,72 +9,61 @@
         <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
         <%= javascript_importmap_tags %>
         <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
-            <%= favicon_link_tag asset_path('bike.ico') %>
-            <title>ValetBike</title>
-            <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-            <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-            <script src="https://kit.fontawesome.com/c69731a102.js" crossorigin="anonymous"></script>
-        </head>
-        <body class="<%= cookies[:theme] %>">
-            <header>
-                <%= cookies[:theme] %>
-                <%= link_to 'light', set_theme_path(theme: 'light') %>
-                <%= link_to 'dark', set_theme_path(theme: 'dark') %>
-                <%= link_to 'system default', set_theme_path %>
-                <nav>
-                    <%= link_to content_tag(:div, nil, class: "bow"), "/index" %>
-                    <ul>
+        <%= favicon_link_tag asset_path('bike.ico') %>
+        <title>ValetBike</title>
+        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+        <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+        <script src="https://kit.fontawesome.com/c69731a102.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="<%= cookies[:theme] %>">
+        <header>
+            <%= cookies[:theme] %>
+            <%= link_to 'light', set_theme_path(theme: 'light') %>
+            <%= link_to 'dark', set_theme_path(theme: 'dark') %>
+            <%= link_to 'system default', set_theme_path %>
+            <nav>
+                <%= link_to content_tag(:div, nil, class: "bow"), "/index" %>
+                <ul>
+                    <li>
+                        <a href="/index">Home</a>
+                    </li>
+                    <li>
+                        <a href="/search">Search</a>
+                    </li>
+                    <li>
+                        <a href="/map">Map</a>
+                    </li>
+                    <% if logged_in? %>
                         <li>
-                            <a href="/index">Home</a>
+                            <a href="/profile">
+                                Profile
+                            </a>
                         </li>
+                    <% else %>
                         <li>
-                            <a href="/search">Search</a>
+                            <a href="/user_login">
+                                Log In
+                            </a>
                         </li>
-                        <li>
-                            <a href="/map">Map</a>
-                        </li>
-                        <!--<li><a href="/profile">Profile</a></li>-->
-                        <% if logged_in? %>
-                            <li>
-                                <a href="/profile">
-                                    Profile
-                                </a>
-                            </li>
-                        <% else %>
-                            <li>
-                                <a href="/user_login">
-                                    Log In
-                                </a>
-                            </li>
-                        <% end %>
-                    </ul>
-                </nav>
-            </header>
+                    <% end %>
+                </ul>
+            </nav>
+        </header>
 
-            <% @user = User.find_by(email: session[:email]) %>
-            <% @rental = Rental.find_by(user: @user, end_station: nil) %>
-            <% @guest = Guest.find_by(last_name: session[:guest]) %>
-            <% @grental = Rental.find_by(user: @guest, end_station: nil) %>
-            <% if @user and @rental %>
-                <div id="rectangle"><%= link_to("Your current rides", current_path)%></div>
-                <% elsif @guest and @grental %>
-                <div id="rectangle"><%= link_to("Your current rides", current_path)%></div>
-            <% end %>
+        <% @user = User.find_by(email: session[:email]) %>
+        <% @rental = Rental.find_by(user: @user, end_station: nil) %>
+        <% @guest = Guest.find_by(last_name: session[:guest]) %>
+        <% @grental = Rental.find_by(user: @guest, end_station: nil) %>
+        <% if @user and @rental %>
+            <div id="rectangle"><%= link_to("Your current rides", current_path)%></div>
+        <% elsif @guest and @grental %>
+            <div id="rectangle"><%= link_to("Your current rides", current_path)%></div>
+        <% end %>
 
-            <div id="site-container" class="flexbox vertical stretch flex-1">
-                <div class="flexbox vertical center">
-                    <%= yield %>
-                </div>
-                <footer>
-                    <h3>
-                        Contact
-                    </h3>
-                    <p>
-                        <a href="mailto: valetbike223@gmail.com">
-                            valetbike223@gmail.com</a>
-                    </p>
-                    <p>(413)-123-4567</p>
-                </footer>
-            </div>
-        </body>
-    </html>
+        <div class="flexbox vertical center">
+            <%= yield %>
+        </div>
+        <%= render "layouts/footer" %>
+          
+    </body>
+</html>

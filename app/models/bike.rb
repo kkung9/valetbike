@@ -7,4 +7,6 @@ class Bike < ApplicationRecord
   has_many :rental
   has_many :user, through: :rental
 
+  validates_length_of :identifier, is: 4
+
 end
