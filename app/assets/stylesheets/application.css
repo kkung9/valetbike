@@ -49,6 +49,7 @@ p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     margin: 0px;
+    color: #000;
 }
 
 nav ul {
@@ -236,9 +237,9 @@ tr:nth-child(odd) {
     background-repeat: no-repeat;
     background-size: contain;
     background-color: var(--light-text-color);
-    width: 250px;
-    height: 100px;
-    border-radius: 10px;
+    width: 150px;
+    height: 80px;
+    margin: 0px;
 }
 
 .bow:hover {
@@ -388,7 +389,6 @@ tr:nth-child(odd) {
         font-size: var(--medium);
         display: flex;
         border-radius: 10px 10px 0px 0px;
-        margin: 0px;
     }
 
     body.light {
