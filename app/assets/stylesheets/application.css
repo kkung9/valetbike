@@ -96,7 +96,23 @@ nav li a:hover {
     animation-name: wiggle;
     animation-duration: 1s;
 }
-    
+
+#wrapper{
+    margin-left:auto;
+    margin-right:auto;
+    height:auto; 
+    width:auto;
+}
+#icon-above-text{
+    position:relative;
+    left: calc(40% - 20px);
+}
+
+#text-below-icon{
+    float: left; 
+    clear: left;
+    text-align: center;
+} 
 
 /* buttons ---------------------------------------------- */
 .button {
@@ -208,21 +224,47 @@ tr:nth-child(even) {
 }
 .home-card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 25%;
-    height: 50%;
+    width: auto;
+    height: auto;
     border-radius: 5px;
     padding: 15px 20px 20px 15px;
-    margin: 0px 50px 50px 0px;
+    /*margin: 0px 50px 50px 0px;
+    */
+    margin-left: auto;
+    margin-right: auto;
     display:inline-flex;
-    align-items:center;
+    align-items:inline-block;
     align-content: center;
     block-size: fit-content;
+}
+.home-card-icon{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 200px;
+    height: auto;
+    border-radius: 5px;
+    padding: 15px 20px 20px 20px;
+    /*margin: 0px 50px 50px 0px;
+    */
+    margin-left: auto;
+    margin-right: auto;
+    display:inline-flex;
+    align-items:inline-block;
+    align-content: center;
+    block-size: 15%;
+    
 }
 /* .price { */
     /* width: fit-content; */
     /* block-size: fit-content; */
     /* align-items: center; */
 /* } */
+
+i {
+    text-align: center;
+
+}
+
+
 
 /* wiggly bowtie ---------------------------------------------- */
 .bow {
@@ -288,7 +330,10 @@ tr:nth-child(even) {
 .select-btn a {
     text-decoration: none;
 }
-
+.how-to{
+    float: left;
+    clear: left;
+}
 /* responsive */
 @media (max-width: 1500px) {
     .card {
@@ -400,4 +445,6 @@ tr:nth-child(even) {
     .footer-container, .page-content:after {
         margin-top: auto;
     } 
+
+
 }
