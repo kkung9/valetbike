@@ -1,4 +1,3 @@
-<body>
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
@@ -10,12 +9,19 @@
     <p>Station: <%= @station.name %> </p>
     <p>Bike: <%= @bike.identifier %> </p>
 
-    <p>How much time?</p>
-    <%= form_with url: rent_path(@station.identifier, @bike.identifier), method: 'post' do |form| %>
-      <p> <%= form.number_field :duration, in: 0..120, step: 5 %> minutes</p>
-      <%= form.submit("UNLOCK NOW", :class => "button") %>
-    <% end %>
 
-  </div>
+<p>How much time?</p>
+<% if @user and @user.sub_id %>
+    <%= form_with url: member_ride_path, remote: true, method: 'post' do |form| %>
+      <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+      <%= form.submit "continue", class: "button" %>
+    <% end %>
+<% else %>
+  <%= form_with url: pay_path(@station.identifier, @bike.identifier), remote: true, method: 'post' do |form| %>
+    <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+    <%= form.submit "buy", class: "button" %>
+  <% end %>
+<% end %>
+
 </div>
-</body>
+</div>

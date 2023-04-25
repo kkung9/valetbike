@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # for admin
   # resources :bikes,    only: [:index]
   resources :stations, only: [:index]
-  resources :rentals,  only: [:create]
+  # resources :rentals,  only: [:create]
 
 
   # stations routes
@@ -22,9 +22,13 @@ Rails.application.routes.draw do
   get '/confirm/:station_identifier/:bike_identifier', to: 'rentals#purchase_confirm', as: 'confirm'
   get '/receipt/:id', to: 'rentals#receipt', as: 'receipt'
   get '/current_ride', to: 'rentals#current_ride', as: 'current'
-  post '/rental/:station_identifier/:bike_identifier', to: 'rentals#create', as: 'rent'
+  post '/rental/:station_identifier/:bike_identifier/:duration', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
+  get 'rentals/checkout', to: 'rentals#checkout'
+  get 'rentals/success/:duration', to: 'rentals#success', as: "success"
+  get 'rentals/cancel', to: 'rentals#cancel'
+  post 'member_ride', to: "rentals#member_ride", as: "member_ride"
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
@@ -37,6 +41,10 @@ Rails.application.routes.draw do
   get '/delete_user/:id', to: 'users#delete', as: 'delete_user'
   delete 'hellowearedeleting/:id', to: 'users#destroy', as: 'destroy_user'
   resources :users, only: [:delete]
+  get '/subscriptions', to: 'users#subscriptions', as: 'subscriptions'
+  get '/subscription_success', to: 'users#sub_scess', as: 'sub_scess'
+  post 'subscribe', to: 'users#subscribe', as: 'subscribe'
+  post '/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
 
   # sessions routes
   post 'temps', to: 'sessions#create', as: 'create_session'
@@ -47,5 +55,6 @@ Rails.application.routes.draw do
   post 'start_guest', to: 'guests#create', as: 'start_guest'
 
   get 'set_theme', to: 'theme#update'
+  post "pay", to: "rentals#pay", as: "pay"
   get '/faq', to: 'users#faq', as: 'faq'
 end
