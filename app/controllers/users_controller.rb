@@ -70,9 +70,6 @@ class UsersController < ApplicationController
       @user.save
     end
 
-    puts "lllll"
-    puts params[:price]
-
     @session = Stripe::Checkout::Session.create({
       customer: @id,
       payment_method_types: ['card'],
@@ -91,8 +88,23 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
+
     @user = User.find_by(email: session[:email])
-    Stripe::Subscription.cancel(@user.sub_id)
+    @cust_id = Stripe::Customer.retrieve(@user.stripe_id).id
+    # @subscriptions = Stripe::Subscription.list({limit: 3, customer: Stripe::Customer.retrieve(@user.stripe_id).id})
+    Stripe::Subscription.list({}).each do |sub|
+      puts "tttttt"
+      puts sub.customer
+      puts @cust_id
+      if sub.customer == @cust_id
+        @sub_id = sub.id
+        puts @sub_id
+      end
+    end
+
+    # Stripe::Subscription.cancel(@user.sub_id)
+    redirect_to "/index"
   end
 
 end

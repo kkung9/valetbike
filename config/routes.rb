@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   get '/subscriptions', to: 'users#subscriptions', as: 'subscriptions'
   get '/subscription_success', to: 'users#sub_scess', as: 'sub_scess'
   post 'subscribe', to: 'users#subscribe', as: 'subscribe'
-  post 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
+  post '/unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
 
   # sessions routes
   post 'temps', to: 'sessions#create', as: 'create_session'

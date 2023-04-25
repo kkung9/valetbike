@@ -1,38 +1,26 @@
-<html>
-  <head>
-      <script>
-          function make_cookie(time_choice) {
-              var choice = time_choice;
-              document.cookie = choice;
-          }
-      </script>
-  </head>
-  <body>
-    <div class="page-section flexbox vertical stretch">
-      <div class="section-inner flexbox vertical stretch">
-        <div class="section-title">
+<div class="page-section flexbox vertical stretch">
+  <div class="section-inner flexbox vertical stretch">
+    <div class="section-title">
 
-            <h1>Confirm Your Purchase</h1>
+        <h1>Confirm Your Purchase</h1>
 
-        </div>
-
-        <p>Station: <%= @station.name %> </p>
-        <p>Bike: <%= @bike.identifier %> </p>
-
-
-    <p>How much time?</p>
-    <% if @user.sub_id %>
-      <%= form_with url: member_ride_path, remote: true, method: 'post' do |form| %>
-        <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
-        <%= form.submit "continue", class: "button" %>
-      <% end %>
-    <% else %>
-      <%= form_with url: pay_path(@station.identifier, @bike.identifier), remote: true, method: 'post' do |form| %>
-        <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
-        <%= form.submit "buy", class: "button" %>
-      <% end %>
-    <% end %>
     </div>
-    </div>
-  </body>
-</html>
+
+    <p>Station: <%= @station.name %> </p>
+    <p>Bike: <%= @bike.identifier %> </p>
+
+
+<p>How much time?</p>
+<% if @user.sub_id %>
+  <%= form_with url: member_ride_path, remote: true, method: 'post' do |form| %>
+    <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+    <%= form.submit "continue", class: "button" %>
+  <% end %>
+<% else %>
+  <%= form_with url: pay_path(@station.identifier, @bike.identifier), remote: true, method: 'post' do |form| %>
+    <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+    <%= form.submit "buy", class: "button" %>
+  <% end %>
+<% end %>
+</div>
+</div>
