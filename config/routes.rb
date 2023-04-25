@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
   patch '/update/:id', to: 'rentals#update', as: 'update'
   get 'rentals/checkout', to: 'rentals#checkout'
-  get 'rentals/success/:duration', to: 'rentals#success'
+  get 'rentals/success/:duration', to: 'rentals#success', as: "success"
   get 'rentals/cancel', to: 'rentals#cancel'
+  post 'member_ride', to: "rentals#member_ride", as: "member_ride"
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'

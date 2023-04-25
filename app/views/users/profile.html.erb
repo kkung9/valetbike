@@ -7,7 +7,7 @@
       <div id = "profilebuttons">
         <%= button_to("Your current rides", current_path, :method => "get", :class => "button")%> 
         <%= button_to("Your past purchases", purchases_path(@user.id), :method => "get", :class => "button")%> 
-        <% if !@user.sub_status %>
+        <% if !@user.sub_id %>
           <%= button_to("Subscribe!", subscriptions_path(@user.id), :method => "get", :class => "button") %>
         <% else %>
           <%= button_to("Cancel Subscription", unsubscribe(@user.id), :method => "get", :class => "button") %>

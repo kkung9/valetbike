@@ -19,6 +19,7 @@ class RentalsController < ApplicationController
       cookies[:station] = @station.name
       @bike = Bike.find_by(identifier: params[:bike_identifier])
       cookies[:bike] = @bike.identifier
+      @user = User.find_by(email: session[:email])
     end
 
     def create
@@ -128,6 +129,10 @@ class RentalsController < ApplicationController
         cancel_url: "http://localhost:3000/rentals/cancel",
       })
       redirect_to @session.url, status: 303, allow_other_host: true
+    end
+
+    def member_ride
+      redirect_to success_path(params[:duration])
     end
 
 end

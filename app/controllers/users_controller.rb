@@ -82,10 +82,11 @@ class UsersController < ApplicationController
       }],
       allow_promotion_codes: true,
       mode: 'subscription',
-      success_url: "http://localhost:3000/sub_scess" + @session,
+      success_url: "http://localhost:3000/subscription_success",
       cancel_url: "http://localhost:3000/index",
     })
-  
+    @user.sub_id = "true"
+    @user.save
     redirect_to @session.url, status: 303, allow_other_host: true
   end
 

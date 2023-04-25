@@ -21,11 +21,17 @@
 
 
     <p>How much time?</p>
-    <%= form_with url: pay_path(@station.identifier, @bike.identifier), remote: true, method: 'post' do |form| %>
-    <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
-    <%= form.submit "buy", class: "button" %>
+    <% if @user.sub_id %>
+      <%= form_with url: member_ride_path, remote: true, method: 'post' do |form| %>
+        <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+        <%= form.submit "continue", class: "button" %>
+      <% end %>
+    <% else %>
+      <%= form_with url: pay_path(@station.identifier, @bike.identifier), remote: true, method: 'post' do |form| %>
+        <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+        <%= form.submit "buy", class: "button" %>
+      <% end %>
     <% end %>
-
     </div>
     </div>
   </body>
