@@ -17,10 +17,7 @@
     </head>
     <body class="<%= cookies[:theme] %>">
         <header>
-            <%= cookies[:theme] %>
-            <%= link_to 'light', set_theme_path(theme: 'light') %>
-            <%= link_to 'dark', set_theme_path(theme: 'dark') %>
-            <%= link_to 'system default', set_theme_path %>
+
             <nav>
                 <%= link_to content_tag(:div, nil, class: "bow"), "/index" %>
                 <ul>

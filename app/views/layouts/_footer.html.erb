@@ -1,17 +1,68 @@
+<style>
+footer {
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color);
+    padding: 20px;
+    font-size: var(--small);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+
+}
+.content {
+    display: inline-flex;
+    float: right;
+    text-align:right;
+}
+a {
+    color: var(--dark-text-color);
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    color: var(--dark-text-color);
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;
+}
+a:hover {
+    text-decoration: underline;
+}
+.col {
+    margin: 0px 40px;
+}
+.bow {
+    margin: 30px;
+    vertical-align: middle;
+}
+</style>
+
 <div>
     <footer>
-        <h3>
-            Contact
-        </h3>
+    <div class = "test"><%= link_to content_tag(:div, nil, class: "bow"), "/index" %></div>
+    <div class = "content">
+        <div class = "col">
+            <h3> Contact us </h3>
+            <ul>
+                <li><a href="mailto: valetbike223@gmail.com"> valetbike223@gmail.com</a></li>
+                <li>(413)-123-4567</li>
+                <li>Nipmuc Notch!!!</li>
+            </ul>
+        </div>
+        <div class = "col">
+            <h3>Learn more</h3>
+            <ul>
+                <li><%= link_to("FAQs", '/faqs') %></li>
+                <li><%= link_to("Meet the team", '/meet-the-team') %></li>
+                <li><%= link_to("Payment plans", '/???') %></li>
+            </ul>
+        </div>
+    </div>
 
-        <p>
-            <a href="mailto: valetbike223@gmail.com">
-                valetbike223@gmail.com
-            </a>
-        </p>
-
-        <p>(413)-123-4567</p>
-
-        <%= link_to("FAQ", '/faqs') %>
     </footer>
 </div>
