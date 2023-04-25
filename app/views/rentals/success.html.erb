@@ -17,7 +17,8 @@
     <p>Station: <%= @station.name %> </p>
     <p>Bike: <%= @bike.identifier %> </p>
 
-    <%= form_with url: rent_path(@station.identifier, @bike.identifier), method: 'post' do |form| %>
+    <p><%= params[:duration] %>
+    <%= form_with url: rent_path(@station.identifier, @bike.identifier, params[:duration]), method: 'post' do |form| %>
       <%= form.submit("UNLOCK NOW", :class => "button") %>
     <% end %>
 

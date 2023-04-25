@@ -22,6 +22,10 @@ class RentalsController < ApplicationController
     end
 
     def create
+      puts "vvvvvvv"
+      puts params[:station_identifier]
+      puts params[:bike_identifier]
+      puts params[:duration]
       @bike = Bike.find_by(identifier: params[:bike_identifier])
       @station = Station.find_by(identifier: params[:station_identifier])
       @rental = Rental.new
@@ -87,10 +91,43 @@ class RentalsController < ApplicationController
       else 
         redirect_to lock_path(@rental.id)
         flash[:error] = "Invalid station code."
-      end
-
-      
+      end      
     end
 
+    def pay
+      if !!session[:email]
+        @user = User.find_by(email: session[:email])
+      elsif !!session[:guest]
+        @user = Guest.find_by(last_name: session[:guest])
+      end
+
+      Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
+
+      if !!@user.stripe_id
+        @id = Stripe::Customer.retrieve(@user.stripe_id)
+      else
+        @stripe_user = Stripe::Customer.create({
+          name: @user.first_name + " " + @user.last_name,
+          email: @user.email,
+          metadata: {user_id: @user.id}
+        })
+        @user.stripe_id = @stripe_user["id"]
+        @user.save
+      end
+
+      @session = Stripe::Checkout::Session.create({
+        customer: @id,
+        payment_method_types: ['card'],
+        line_items: [{
+          price: 'price_1N0aHtDRwtZV86UmuNxcpLPe',
+          quantity: (params[:duration].to_i)/10,
+        }],
+        allow_promotion_codes: true,
+        mode: 'payment',
+        success_url: "http://localhost:3000/rentals/success/" + params[:duration],
+        cancel_url: "http://localhost:3000/rentals/cancel",
+      })
+      redirect_to @session.url, status: 303, allow_other_host: true
+    end
 
 end

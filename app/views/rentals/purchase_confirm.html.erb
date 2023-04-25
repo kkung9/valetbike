@@ -19,63 +19,12 @@
         <p>Station: <%= @station.name %> </p>
         <p>Bike: <%= @bike.identifier %> </p>
 
-        <script async
-          src="https://js.stripe.com/v3/buy-button.js">
-        </script>
 
-    <stripe-buy-button
-      onclick="make_cookie(15)"
-      buy-button-id="buy_btn_1MzntkDRwtZV86UmQRdZyXqo"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(30)"
-      buy-button-id="buy_btn_1MzqoVDRwtZV86UmtJdH88Mp"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(60)"
-      buy-button-id="buy_btn_1MzqsKDRwtZV86UmJGHMhIZq"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(90)"
-      buy-button-id="buy_btn_1MzquwDRwtZV86UmNRM6hEnA"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(120)"
-      buy-button-id="buy_btn_1MzqwJDRwtZV86Um2ZFbIBJs"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(180)"
-      buy-button-id="buy_btn_1MzqyYDRwtZV86UmHA6Z9WD4"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(240)"
-      buy-button-id="buy_btn_1Mzr03DRwtZV86UmtPN1cJFq"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(300)"
-      buy-button-id="buy_btn_1Mzr2zDRwtZV86Um8ZNCUhVF"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
-
-    <stripe-buy-button
-      onclick="make_cookie(360)"
-      buy-button-id="buy_btn_1Mzr3yDRwtZV86UmIQwPZhRk"
-      publishable-key="pk_test_51Mu2DBDRwtZV86Umj3yAaaqr5cMuaAm1ZGbLOcjJrT6kWvyzykJP4sikHMT0bE5mfXwtq2L1Z0bKljLzVLf9byIA00DlXV7Omp">
-    </stripe-buy-button>
+    <p>How much time?</p>
+    <%= form_with url: pay_path(@station.identifier, @bike.identifier), remote: true, method: 'post' do |form| %>
+    <p> <%= form.number_field :duration, in: 0..120, step: 10 %> minutes</p>
+    <%= form.submit "buy", class: "button" %>
+    <% end %>
 
     </div>
     </div>
