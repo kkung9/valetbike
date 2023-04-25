@@ -74,7 +74,7 @@ class RentalsController < ApplicationController
             @rental.actual_end_time = Time.current
             @rental.save
             @d.redock(@rental.bike)
-
+            @d.save
             if !!session[:guest]
               @guest = Guest.find_by(last_name: session[:guest])
               @all_rentals = Rental.where(user: @guest, end_station: nil)
@@ -82,7 +82,8 @@ class RentalsController < ApplicationController
                 session.delete(:guest)
               end
             end
-
+            puts "bbbb"
+            puts @d.bike.id
             redirect_to receipt_path(@rental.id)
           end
         else

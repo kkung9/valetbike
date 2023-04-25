@@ -9,13 +9,13 @@ class Dock < ApplicationRecord
   end
 
   def redock(b)
-    self.update(bike: b)
+    self.update_attribute(:bike, b)
   end
 
   private
 
   def bike_is_not_in_both_active_rental_and_dock
-    if bike.nil? == false
+    if bike.present?
       if bike.rental.where(is_complete: nil).count >= 1
         errors.add(:description, "cannot be in both active rental and dock")
       end

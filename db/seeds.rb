@@ -49,7 +49,6 @@ Station.find_by(identifier: 31).update(photo: "mainstreetupdated.png")
 Station.find_by(identifier: 32).update(photo: "bridgestation.png")
 Station.find_by(identifier: 33).update(photo: "highschool.jpeg")
 
-
 require 'csv'
 csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')

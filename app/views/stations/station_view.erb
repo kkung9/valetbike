@@ -1,4 +1,4 @@
-<div class="page-section flexbox vertical stretch">
+<div class="page-section flexbox vertical stretch contentttt">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
       <h1><%= @station.name %></h1>
@@ -14,10 +14,11 @@
         <% end %>
       </div>
 
-      <div><% if @station.photo %>
-        <%= image_tag(@station.photo, style: 'width:30%;')%>
-      <% end %> </div>
-
+      <div class="station-image" >
+        <% if @station.photo %>
+          <%= image_tag(@station.photo)%>
+        <% end %>
+      </div>
 
     </div>
   </div>

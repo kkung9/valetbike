@@ -1,17 +1,41 @@
+<style>
+  .button1 {
+    background-color: green;
+    color: black;
+    padding: 50px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  .button2 {
+    background-color: gray;
+    color: black;
+    padding: 50px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+</style>
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
+      <h1>Choose Your Bike</h1>
+      <p>You are at <%= @station.name %>.</p>
+      
+        <% @station.docks.each do |dock| %>
+            <% if dock.bike %>
+              <button class="button1"> <%= link_to(dock.bike.identifier, confirm_path(@station.identifier, dock.bike.identifier)) %> </button>
+            <% else %>
+              <button class="button2"> ___ </button>
+            <% end %>
+        <% end %>
 
-        <h1>Receipt</h1>
+      <p> There are <%= @station.docks.count %> docks here.
+      <p> There are <%= @station.bikes.count %> bikes here.
 
-    </div>
-
-    <div>
-        <p>Start Station: <%= Station.find_by(identifier: @rental.start_station).name %> </p>
-        <p>End Station: <%= Station.find_by(identifier: @rental.end_station).name %> </p>
-        <p>Time: <%= ((@rental.actual_end_time - @rental.start_time) / 60).round %> minutes </p>
-    </div>
-
-    
+      
+    </div>  
   </div>
 </div>

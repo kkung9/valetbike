@@ -1,8 +1,12 @@
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
-
-      <h1>Welcome, <%= @user&.first_name %></h1>
+    <div class="section-inner flexbox vertical stretch">
+        <div class="section-title"style="width: 100%">
+            <%= cookies[:theme] %>
+            <div class="button" style="display: inline-block"><%= link_to 'light', set_theme_path(theme: 'light')%></div>
+            <div class="button" style="display: inline-block"><%= link_to 'dark', set_theme_path(theme: 'dark') %></div>
+            <div class="button" style="display: inline-block"><%= link_to 'system default', set_theme_path %></div>
+            <h1>Welcome,
+                <%= @user&.first_name %></h1>
 
       <div id = "profilebuttons">
         <%= button_to("Your current rides", current_path, :method => "get", :class => "button")%> 
@@ -14,62 +18,13 @@
         <% end %>
       </div>
 
-      <div>
-      <table>
-        <tr>
-        <th></th>
-        <th>This Month</th>
-        <th>This Year</th>
-        <th>All Time</th>
-        </tr>
-        <tr>
-        <th>Trips taken:</th>
-        <td><%= @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).count %></td>
-        <td><%= @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).count %> </td>
-        <td><%= @rentals.count %> </td>
-        </tr>
-        <tr>
-        <th>Time ridden:</th>
-        <td> <% time = 0 %>
-        <% @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).each do |rental| %>
-          <% if rental.actual_end_time %>
-            <% time += (rental.actual_end_time - rental.start_time)/60 %>
-          <% else %>
-            <% time += (Time.current - rental.start_time)/60 %>
-          <% end %>
-        <% end %>
-        <%= time.round() %></td>
-        <td> <% time = 0 %>
-        <% @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).each do |rental| %>
-          <% if rental.actual_end_time %>
-            <% time += (rental.actual_end_time - rental.start_time)/60 %>
-          <% else %>
-            <% time += (Time.current - rental.start_time)/60 %>
-          <% end %>
-        <% end %>
-        <%= time.round() %></td>
-        <td> <% time = 0 %>
-          <% @rentals.each do |rental| %>
-            <% if rental.actual_end_time %>
-              <% time += (rental.actual_end_time - rental.start_time)/60 %>
-            <% else %>
-              <% time += (Time.current - rental.start_time)/60 %>
-            <% end %>
-          <% end %>
-          <%= time.round() %></td>
-        </tr>
-        </table>
-        </div>
-
-        <!-- Add styling for the table ^^ -->
-
         <div id = "profilebuttons">
           <%= button_to("Log Out", "/user_logout", :method => "get", :class => "button altbutton")%> 
           <%= button_to("DELETE ACCOUNT", delete_user_path(@user.id), :method => "get", :class => "button deletebutton")%> 
         </div>
 
 
-      
+          <%= render(partial: "users/profile_table", rentals: @rentals) %>
     </div>  
   </div>
 </div>
