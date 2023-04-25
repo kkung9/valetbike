@@ -32,13 +32,13 @@ class UsersController < ApplicationController
   end
 
   def delete
-    puts params[:id]
     @user = User.find_by(id: params[:id])
   end
 
   def destroy
     @user = User.find_by(id: params[:id])
-    @user.destroy
+    @user.update(email: "deleted_user@deleted")
+    # @user.destroy
     session.delete(:email)
     redirect_to index_path
   end
@@ -61,9 +61,11 @@ class UsersController < ApplicationController
     Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
     if !!@user.stripe_id
-      @id = Stripe::Customer.retrieve(@user.stripe_id)
+      @id = Stripe::Customer.retrieve(@user.stripe_id).id
     else
       @stripe_user = Stripe::Customer.create({
+        name: @user.first_name + " " + @user.last_name,
+        email: @user.email,
         metadata: {user_id: @user.id}
       })
       @user.stripe_id = @stripe_user["id"]
@@ -92,19 +94,13 @@ class UsersController < ApplicationController
 
     @user = User.find_by(email: session[:email])
     @cust_id = Stripe::Customer.retrieve(@user.stripe_id).id
-    # @subscriptions = Stripe::Subscription.list({limit: 3, customer: Stripe::Customer.retrieve(@user.stripe_id).id})
-    Stripe::Subscription.list({}).each do |sub|
-      puts "tttttt"
-      puts sub.customer
-      puts @cust_id
-      if sub.customer == @cust_id
-        @sub_id = sub.id
-        puts @sub_id
-      end
-    end
-
-    # Stripe::Subscription.cancel(@user.sub_id)
-    redirect_to "/index"
+    puts "nnnnn"
+    puts @cust_id 
+    @subscriptions = Stripe::Subscription.list({customer: @cust_id})
+    Stripe::Subscription.cancel(@subscriptions.first().id)
+    @user.update(sub_id: nil)
+      # flash
+    redirect_to "/profile"
   end
 
 end

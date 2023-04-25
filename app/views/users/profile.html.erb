@@ -11,9 +11,6 @@
           <%= button_to("Subscribe!", subscriptions_path(@user.id), :method => "get", :class => "button") %>
         <% else %>
           <%= button_to("Cancel Subscription", unsubscribe_path, :method => "post", :class => "button") %>
-          <form method="POST" action="/create-customer-portal-session">
-            <button type="submit">Manage billing</button>
-          </form>
         <% end %>
       </div>
 

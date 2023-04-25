@@ -34,7 +34,7 @@
                             <a href="/map">Map</a>
                         </li>
                         <!--<li><a href="/profile">Profile</a></li>-->
-                        <% if logged_in? %>
+                        <% if !!session[:email] %>
                             <li>
                                 <a href="/profile">
                                     Profile
