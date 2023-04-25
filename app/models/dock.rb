@@ -15,7 +15,7 @@ class Dock < ApplicationRecord
   private
 
   def bike_is_not_in_both_active_rental_and_dock
-    if bike.nil? == false
+    if bike.present?
       if bike.rental.where(is_complete: nil).count >= 1
         errors.add(:description, "cannot be in both active rental and dock")
       end

@@ -1,0 +1,62 @@
+<table>
+    <tr>
+        <th></th>
+        <th>This Month</th>
+        <th>This Year</th>
+        <th>All Time</th>
+    </tr>
+    <tr>
+        <th>Trips taken:</th>
+        <td><%= @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).count %></td>
+        <td><%= @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).count %> </td>
+        <td><%= @rentals.count %> </td>
+    </tr>
+    <tr>
+        <th>Time ridden:</th>
+        <td>
+            <% time = 0 %>
+            <% @rentals.where(start_time: (Date.today.beginning_of_month..Date.current.end_of_day)).each do |rental| %>
+                <% if rental.actual_end_time %>
+                    <% time += (rental.actual_end_time - rental.start_time)/60 %>
+                <% else %>
+                    <% time += (Time.current - rental.start_time)/60 %>
+                <% end %>
+            <% end %>
+            <%= time.round() %>
+        </td>
+        <td>
+            <% time = 0 %>
+            <% @rentals.where(start_time: (Date.today.beginning_of_year..Date.current.end_of_day)).each do |rental| %>
+                <% if rental.actual_end_time %>
+                <% time += (rental.actual_end_time - rental.start_time)/60 %>
+                <% else %>
+                <% time += (Time.current - rental.start_time)/60 %>
+                <% end %>
+            <% end %>
+            <%= time.round() %>
+        </td>
+        <td>
+            <% time = 0 %>
+            <% @rentals.each do |rental| %>
+                <% if rental.actual_end_time %>
+                    <% time += (rental.actual_end_time - rental.start_time)/60 %>
+                <% else %>
+                    <% time += (Time.current - rental.start_time)/60 %>
+                <% end %>
+            <% end %>
+            <%= time.round() %>
+        </td>
+    </tr>
+    <tr>
+        <th>Miles ridden:</th>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Longest ride:</th>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
