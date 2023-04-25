@@ -48,45 +48,46 @@ class UsersController < ApplicationController
     @user.sub_id
   end
 
-  def sub_cookie
-    
-  end
-
   def subscriptions
   end
 
   def subscribe
-    @user = User.find_by(email: session[:email])
-
-    Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
-
-    if !!@user.stripe_id
-      @id = Stripe::Customer.retrieve(@user.stripe_id).id
+    if !session[:email]
+      cookies[:subscribe] = true
+      redirect_to '/user_login'
     else
-      @stripe_user = Stripe::Customer.create({
-        name: @user.first_name + " " + @user.last_name,
-        email: @user.email,
-        metadata: {user_id: @user.id}
-      })
-      @user.stripe_id = @stripe_user["id"]
-      @user.save
-    end
+      @user = User.find_by(email: session[:email])
 
-    @session = Stripe::Checkout::Session.create({
-      customer: @id,
-      payment_method_types: ['card'],
-      line_items: [{
-        price: params[:price],
-        quantity: 1,
-      }],
-      allow_promotion_codes: true,
-      mode: 'subscription',
-      success_url: "http://localhost:3000/subscription_success",
-      cancel_url: "http://localhost:3000/index",
-    })
-    @user.sub_id = "true"
-    @user.save
-    redirect_to @session.url, status: 303, allow_other_host: true
+      Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
+
+      if !!@user.stripe_id
+        @id = Stripe::Customer.retrieve(@user.stripe_id).id
+      else
+        @stripe_user = Stripe::Customer.create({
+          name: @user.first_name + " " + @user.last_name,
+          email: @user.email,
+          metadata: {user_id: @user.id}
+        })
+        @user.stripe_id = @stripe_user["id"]
+        @user.save
+      end
+
+      @session = Stripe::Checkout::Session.create({
+        customer: @id,
+        payment_method_types: ['card'],
+        line_items: [{
+          price: params[:price],
+          quantity: 1,
+        }],
+        allow_promotion_codes: true,
+        mode: 'subscription',
+        success_url: "http://localhost:3000/subscription_success",
+        cancel_url: "http://localhost:3000/index",
+      })
+      @user.sub_id = "true"
+      @user.save
+      redirect_to @session.url, status: 303, allow_other_host: true
+    end
   end
 
   def unsubscribe
@@ -99,8 +100,9 @@ class UsersController < ApplicationController
     @subscriptions = Stripe::Subscription.list({customer: @cust_id})
     Stripe::Subscription.cancel(@subscriptions.first().id)
     @user.update(sub_id: nil)
-      # flash
     redirect_to "/profile"
+    flash[:alert] = "You have successfully cancelled your subscription."
+    # flash not working right now --> keep trying
   end
 
 end
