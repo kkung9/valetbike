@@ -1,6 +1,12 @@
 <html>
     <body>
         <h1> Subscrigb2! </h1>
+        
+        <% flash.each do |type, msg| %>
+            <div>
+              <%= msg %>
+            </div>
+          <% end %>
 
         <div class="home-card">
             <div>
