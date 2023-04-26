@@ -22,6 +22,10 @@ class SessionsController < ApplicationController
         cookies.delete(:current_station)
         session[:verified] = true
         redirect_to rental_path(s)
+      elsif cookies[:subscribe]
+        cookies.delete(:subscribe)
+        redirect_to subscriptions_path
+        flash[:error] = "You successfully logged in. You may now subscribe."
       else
         if session[:new] == true
           session[:verified] = true

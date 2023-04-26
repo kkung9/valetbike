@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thanks for your order!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section>
+    <p>
+      We appreciate your business! If you have any questions, please email
+      <a href="mailto:valetbike223@gmail.com">valetbike223@gmail.com</a>.
+    </p>
+
+    <% @station = Station.find_by(name: cookies[:station]) %>
+    <% @bike = Bike.find_by(identifier: cookies[:bike]) %>
+
+    <p>Station: <%= @station.name %> </p>
+    <p>Bike: <%= @bike.identifier %> </p>
+
+    <%= form_with url: rent_path(@station.identifier, @bike.identifier, params[:duration]), method: 'post' do |form| %>
+      <%= form.submit("UNLOCK NOW", :class => "button") %>
+    <% end %>
+
+  </section>
+</body>
+</html>
