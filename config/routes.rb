@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   get '/current_ride', to: 'rentals#current_ride', as: 'current'
   post '/rental/:station_identifier/:bike_identifier/:duration', to: 'rentals#create', as: 'rent'
   get '/lock/:id', to: 'rentals#lock', as: 'lock'
-  patch '/update/:id', to: 'rentals#update', as: 'update'
+  patch '/return/:id', to: 'rentals#return', as: 'return'
   get 'rentals/checkout', to: 'rentals#checkout'
   get 'rentals/success/:duration', to: 'rentals#success', as: "success"
   get 'rentals/cancel', to: 'rentals#cancel'
   post 'member_ride', to: "rentals#member_ride", as: "member_ride"
+  get '/extend.:id', to: "rentals#extend", as: "extend"
+  post 'extend_time.:id', to: "rentals#extend_time", as: "extend_time"
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'

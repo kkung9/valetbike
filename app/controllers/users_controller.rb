@@ -47,8 +47,6 @@ class UsersController < ApplicationController
     @user = User.find_by(email: session[:email])
     @subscriptions = Stripe::Subscription.list({customer: @user.stripe_id})
     @user.sub_id = @subscriptions.first().id
-    puts "gggggg"
-    puts @user.sub_id
     @user.save
   end
 
@@ -97,15 +95,10 @@ class UsersController < ApplicationController
     Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
     @user = User.find_by(email: session[:email])
-    # @cust_id = Stripe::Customer.retrieve(@user.stripe_id).id
-    # puts "nnnnn"
-    # puts @cust_id 
-    # @subscriptions = Stripe::Subscription.list({customer: @cust_id})
     Stripe::Subscription.cancel(@user.sub_id)
     @user.update(sub_id: nil)
     redirect_to "/profile"
     flash[:alert] = "You have successfully cancelled your subscription."
-    # flash not working right now --> keep trying
   end
 
 end

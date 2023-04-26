@@ -23,10 +23,6 @@ class RentalsController < ApplicationController
     end
 
     def create
-      puts "vvvvvvv"
-      puts params[:station_identifier]
-      puts params[:bike_identifier]
-      puts params[:duration]
       @bike = Bike.find_by(identifier: params[:bike_identifier])
       @station = Station.find_by(identifier: params[:station_identifier])
       @rental = Rental.new
@@ -58,7 +54,7 @@ class RentalsController < ApplicationController
       @station_options = Station.all.map{ |u| [ u.name, u.identifier ] }
     end
 
-    def update
+    def return
       @rental = Rental.find(params[:id])
 
       @s = Station.find_by(identifier: params[:station_code])
@@ -82,9 +78,31 @@ class RentalsController < ApplicationController
                 session.delete(:guest)
               end
             end
-            puts "bbbb"
-            puts @d.bike.id
-            redirect_to receipt_path(@rental.id)
+
+            if @rental.actual_end_time > @rental.predicted_end_time
+              if !!session[:email]
+                @user = User.find_by(email: session[:email])
+              elsif !!session[:guest]
+                @user = Guest.find_by(last_name: session[:guest])
+              end
+              @session = Stripe::Checkout::Session.create({
+              customer: @user.stripe_id,
+              payment_method_types: ['card'],
+              line_items: [{
+                price: 'price_1N189uDRwtZV86UmrgwQB7E3',
+                quantity: ((@rental.actual_end_time - @rental.predicted_end_time).to_i)/60,
+              }],
+              allow_promotion_codes: true,
+              mode: 'payment',
+              success_url: "http://localhost:3000/receipt/" + @rental.id.to_s,
+              cancel_url: "http://localhost:3000/rentals/cancel",
+            })
+            redirect_to @session.url, status: 303, allow_other_host: true
+            flash[:alert] = "We are very disappointed in you for returning your bike late. Please don't do it again."
+            else
+              redirect_to receipt_path(@rental.id)
+            end
+
           end
         else
           redirect_to lock_path(@rental.id)
@@ -135,6 +153,16 @@ class RentalsController < ApplicationController
 
     def member_ride
       redirect_to success_path(params[:duration])
+    end
+
+    def extend
+      @rental = Rental.find_by(id: params[:id])
+    end
+
+    def extend_time
+      @rental = Rental.find_by(id: params[:id])
+      @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
+      redirect_to current_path
     end
 
 end
