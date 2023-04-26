@@ -9,12 +9,16 @@
         <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
         <%= javascript_importmap_tags %>
         <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet" type="text/css">
-        <%= favicon_link_tag asset_path('bike.ico') %>
-        <title>ValetBike</title>
-        <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-        <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-        <script src="https://kit.fontawesome.com/c69731a102.js" crossorigin="anonymous"></script>
-    </head>
+
+            <%= favicon_link_tag asset_path('bike.ico') %>
+            <title>ValetBike</title>
+            <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+            <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+            # <script src="https://kit.fontawesome.com/c69731a102.js" crossorigin="anonymous"></script>
+            <script src="https://kit.fontawesome.com/32a98081c5.js" crossorigin="anonymous"></script>
+            
+        </head>
+
     <body class="<%= cookies[:theme] %>">
         <header>
 
@@ -30,7 +34,9 @@
                     <li>
                         <a href="/map">Map</a>
                     </li>
+
                     <% if !!session[:email] %>
+
                         <li>
                             <a href="/profile">
                                 Profile
