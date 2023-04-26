@@ -30,7 +30,7 @@
                     <li>
                         <a href="/map">Map</a>
                     </li>
-                    <% if logged_in? %>
+                    <% if !!session[:email] %>
                         <li>
                             <a href="/profile">
                                 Profile
@@ -42,6 +42,7 @@
                                 Log In
                             </a>
                         </li>
+
                     <% end %>
                 </ul>
             </nav>

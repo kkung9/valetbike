@@ -1,0 +1,38 @@
+<html>
+    <body>
+        <h1> Subscription Plans </h1>
+
+        <% flash.each do |type, msg| %>
+            <div>
+              <%= msg %>
+            </div>
+          <% end %>
+
+        <div class="home-card">
+            <div>
+                <h3>Monthly Membership</h3>
+                    <p>
+                        Access to the system for 1 month. Dock every 45 mins to avoid overage fees. One bike per phone.
+                    </p>
+                    <br>
+                    <h3>$19.13</h3>
+                    <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
+                        <%= hidden_field_tag(:price, "price_1Mzr9uDRwtZV86UmtOiQFnzq") %>
+                        <%= form.submit "Monthly", class: "button" %>
+                    <% end %>
+            </div>
+        </div>
+        <div class="home-card">
+            <div>
+                <h3>Yearly Membership</h3>
+                    <p>Access for 1 year. Dock every 45 mins to avoid overage fees. 1 bike/membership.</p>
+                    <br>
+                    <h3>$76.50</h3>
+                    <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
+                        <%= hidden_field_tag(:price, "price_1MzrAjDRwtZV86UmAainx1pb") %>
+                        <%= form.submit "Annual", class: "button" %>
+                    <% end %>
+            </div>
+        </div>
+    </body>
+</html>
