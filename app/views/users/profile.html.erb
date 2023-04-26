@@ -2,6 +2,11 @@
     <div class="section-inner flexbox vertical stretch">
         <div class="section-title"style="width: 100%">
             <%= cookies[:theme] %>
+            <% flash.each do |type, msg| %>
+              <div>
+                <%= msg %>
+              </div>
+            <% end %>
             <div class="button" style="display: inline-block"><%= link_to 'light', set_theme_path(theme: 'light')%></div>
             <div class="button" style="display: inline-block"><%= link_to 'dark', set_theme_path(theme: 'dark') %></div>
             <div class="button" style="display: inline-block"><%= link_to 'system default', set_theme_path %></div>

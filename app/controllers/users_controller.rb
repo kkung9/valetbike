@@ -45,7 +45,11 @@ class UsersController < ApplicationController
 
   def sub_scess
     @user = User.find_by(email: session[:email])
-    @user.sub_id
+    @subscriptions = Stripe::Subscription.list({customer: @user.stripe_id})
+    @user.sub_id = @subscriptions.first().id
+    puts "gggggg"
+    puts @user.sub_id
+    @user.save
   end
 
   def subscriptions
@@ -70,6 +74,7 @@ class UsersController < ApplicationController
         })
         @user.stripe_id = @stripe_user["id"]
         @user.save
+        @id = @user.stripe_id
       end
 
       @session = Stripe::Checkout::Session.create({
@@ -84,8 +89,6 @@ class UsersController < ApplicationController
         success_url: "http://localhost:3000/subscription_success",
         cancel_url: "http://localhost:3000/index",
       })
-      @user.sub_id = "true"
-      @user.save
       redirect_to @session.url, status: 303, allow_other_host: true
     end
   end
@@ -94,11 +97,11 @@ class UsersController < ApplicationController
     Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
     @user = User.find_by(email: session[:email])
-    @cust_id = Stripe::Customer.retrieve(@user.stripe_id).id
-    puts "nnnnn"
-    puts @cust_id 
-    @subscriptions = Stripe::Subscription.list({customer: @cust_id})
-    Stripe::Subscription.cancel(@subscriptions.first().id)
+    # @cust_id = Stripe::Customer.retrieve(@user.stripe_id).id
+    # puts "nnnnn"
+    # puts @cust_id 
+    # @subscriptions = Stripe::Subscription.list({customer: @cust_id})
+    Stripe::Subscription.cancel(@user.sub_id)
     @user.update(sub_id: nil)
     redirect_to "/profile"
     flash[:alert] = "You have successfully cancelled your subscription."

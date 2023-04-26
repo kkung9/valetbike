@@ -115,6 +115,7 @@ class RentalsController < ApplicationController
         })
         @user.stripe_id = @stripe_user["id"]
         @user.save
+        @id = @user.stripe_id
       end
 
       @session = Stripe::Checkout::Session.create({
