@@ -2,6 +2,7 @@ class Dock < ApplicationRecord
   belongs_to :bike, optional: true
   belongs_to :station
 
+  validates :identifier, presence: true, uniqueness: true, length: { is: 4 }
   validate :bike_is_not_in_both_active_rental_and_dock
 
   def undock
@@ -17,7 +18,7 @@ class Dock < ApplicationRecord
   def bike_is_not_in_both_active_rental_and_dock
     if bike.present?
       if bike.rental.where(is_complete: nil).count >= 1
-        errors.add(:description, "cannot be in both active rental and dock")
+        errors.add(:bike, "cannot be in both active rental and dock")
       end
     end
   end
