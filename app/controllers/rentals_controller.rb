@@ -123,6 +123,11 @@ class RentalsController < ApplicationController
         @user = Guest.find_by(last_name: session[:guest])
       end
 
+      puts "aaaaa"
+      puts session[:guest]
+      puts @user
+      puts @user.last_name
+
       Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
       if !!@user && !!@user.stripe_id
