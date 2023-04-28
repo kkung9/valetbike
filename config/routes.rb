@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   match '/list', to: "stations#list", via: :get
   match '/map', to: "stations#map", via: :get
   match '/faqs', to: "stations#faqs", via: :get
+  match '/meet-the-team', to: "stations#meet_the_team", via: :get
   
   # rentals routes
   get '/rental/:identifier', to: 'rentals#rental', as: 'rental'
