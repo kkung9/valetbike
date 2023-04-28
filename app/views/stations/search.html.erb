@@ -8,7 +8,7 @@
 
             <%= form_tag(search_path(@name), method: :get) do %>
                 <%= text_field_tag :name, params[:name] %>
-                <%= submit_tag 'Search'%>
+                <%= submit_tag 'Search', class: "button"%>
             <% end %>
 
             <br>
