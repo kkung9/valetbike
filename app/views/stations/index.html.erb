@@ -1,11 +1,11 @@
 <div class="page-section flexbox vertical stretch">
     <div class="cover-image">
         <%= image_tag("cover-image.jpeg", :alt => "cover image", :id => "cover-image") %>
-        <h1 class="title">Explore Nipmuc Notch with ValetBike!</h1>
-        <%# <p class="title">ValetBike allows you explore NipMuc Notch Valley on two wheels</p> %>
+        <h1 class="title"> Explore Nipmuc Notch with ValetBike!</h1>
+        <p class="title">ValetBike allows you explore NipMuc Notch Valley on two wheels</p> 
         <%= button_to("View Map", "/map", :method => "get", :class => "button", :id => "cover-button") %>
     </div>
-    <%# <div class="section-inner flexbox vertical stretch"> %>
+    <div class="section-inner flexbox vertical stretch"> 
     <div class="section-title">
         <div class="announcement">
             <h2>
@@ -17,7 +17,7 @@
         <h2>
             Pricing
         </h2>
-        <div class="container">
+        <div class="flexbox horizontal wrap justify-space-between">
             <div class="home-card">
                 <div>
                     <h3>Monthly Membership</h3>
@@ -48,20 +48,61 @@
                             </div>
                         </div>
                     </div>
-                    <div class="how-to">
+
                         <h2>How to use the System</h3>
-                        <div class="home-card">
-                            <h2>JOIN</h2>
-                            <i class="fa-solid fa-mobile-notch"></i>
+                        <div class="home-card-icon">
+                            <div id="wrapper">
+                                <div id="icon-above-text">
+                                    <i class="fa-solid fa-map-location-dot fa-5x"></i>
+                                </div>
+
+                                <div id="text-below-icon">
+                                    <h3>FIND A STATION</h3>
+                                    <h5>Use our search or map feature to find a station.</h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class="home-card">
-                            <h2>UNLOCK</h2>
+
+                        
+
+                        <div class="home-card-icon">
+                            <div id="wrapper">
+                                <div id="icon-above-text">
+                                    <i class="fa-solid fa-unlock fa-5x"></i>
+                                </div>
+
+                                <div id="text-below-icon">
+                                    <h3>UNLOCK</h3>
+                                    <h5>Rent and unlock a bike from its dock.</h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class="home-card">
-                            <h2>RIDE</h2>
+                        <div class="home-card-icon">
+                            <div id="wrapper">
+                            <div id="icon-above-text">
+                                <i class="fa-solid fa-person-biking fa-5x"></i>
+                            </div>
+
+                            <div id="text-below-icon">
+                                <h3>RIDE</h3>
+                                <h5>Explore Nipmuc Notch and have fun!<h5>
+                            </div>
+                            
                         </div>
-                        <div class="home-card">
-                            <h2>RETURN</h2>
+
+                           
+                        </div>
+                        <div class="home-card-icon">
+                            <div id="wrapper">
+                                <div id="icon-above-text">
+                                    <i class="fa-solid fa-lock fa-5x"></i>
+                                </div>
+
+                                <div id="text-below-icon">
+                                    <h3>RETURN</h3>
+                                    <h5>Return your bike to a an empty dock at any station.<h5>
+                                </div>
+                            </div>
                         </div>
 
 
