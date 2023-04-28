@@ -14,6 +14,7 @@
             <title>ValetBike</title>
             <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
             <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+            
             <script src="https://kit.fontawesome.com/32a98081c5.js" crossorigin="anonymous"></script>
             
         </head>
@@ -34,7 +35,7 @@
                         <a href="/map">Map</a>
                     </li>
 
-                    <% if !!session[:email] %>
+                    <% if logged_in? %>
 
                         <li>
                             <a href="/profile">
