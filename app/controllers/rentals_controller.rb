@@ -79,12 +79,14 @@ class RentalsController < ApplicationController
               end
             end
 
-            if @rental.actual_end_time > @rental.predicted_end_time
-              if !!session[:email]
-                @user = User.find_by(email: session[:email])
-              elsif !!session[:guest]
-                @user = Guest.find_by(last_name: session[:guest])
-              end
+            if !!session[:email]
+              @user = User.find_by(email: session[:email])
+            elsif !!session[:guest]
+              @user = Guest.find_by(last_name: session[:guest])
+            end
+
+            if @rental.actual_end_time > @rental.predicted_end_time && !@user.sub_id
+              
               @session = Stripe::Checkout::Session.create({
               customer: @user.stripe_id,
               payment_method_types: ['card'],
@@ -123,7 +125,7 @@ class RentalsController < ApplicationController
 
       Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
-      if !!@user.stripe_id
+      if !!@user && !!@user.stripe_id
         @id = Stripe::Customer.retrieve(@user.stripe_id).id
       else
         @stripe_user = Stripe::Customer.create({
@@ -161,8 +163,46 @@ class RentalsController < ApplicationController
 
     def extend_time
       @rental = Rental.find_by(id: params[:id])
-      @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
-      redirect_to current_path
+      @user = User.find_by(email: session[:email])
+      if @user && @user.sub_id
+        @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
+        redirect_to current_path
+      else
+        if !!session[:guest]
+          @user = Guest.find_by(last_name: session[:guest])
+        end
+
+        Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
+
+        if !!@user.stripe_id
+          @id = Stripe::Customer.retrieve(@user.stripe_id).id
+        else
+          @stripe_user = Stripe::Customer.create({
+            name: @user.first_name + " " + @user.last_name,
+            email: @user.email,
+            metadata: {user_id: @user.id}
+          })
+          @user.stripe_id = @stripe_user["id"]
+          @user.save
+          @id = @user.stripe_id
+        end
+
+        @session = Stripe::Checkout::Session.create({
+          customer: @id,
+          payment_method_types: ['card'],
+          line_items: [{
+            price: 'price_1N0aHtDRwtZV86UmuNxcpLPe',
+            quantity: (params[:duration].to_i)/10,
+          }],
+          allow_promotion_codes: true,
+          mode: 'payment',
+          success_url: "http://localhost:3000/current_ride",
+          cancel_url: "http://localhost:3000/rentals/cancel",
+        })
+        @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
+        redirect_to @session.url, status: 303, allow_other_host: true
+      
+      end
     end
 
 end
