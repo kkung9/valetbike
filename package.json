@@ -1,6 +1,9 @@
 {
     "name": "valetbike",
     "private": true,
+    "scripts": {
+        "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css"
+      },
     "version": "0.1.0"
   }
   
