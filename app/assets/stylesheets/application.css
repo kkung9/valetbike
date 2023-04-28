@@ -28,7 +28,7 @@
     --dark-bg-color: #444038;
     --dark-text-color: #f7f9f5;
     --color2: #E39F5F;
-    --color3: #A0B64A;x
+    --color3: #A0B64A;
     --color4: #E2AB69;
     --xlarge: 48px;
     --large: 36px;
@@ -79,7 +79,7 @@ nav li a:hover {
 
 .section-title {
     width: 80%;
-    margin: auto;
+    margin-left:0px;
 }
 
 .section-inner.flexbox.vertical.stretch {
@@ -231,26 +231,33 @@ tr:nth-child(odd) {
     width: 100%;
     height: auto;
     border-radius: 5px;
+
+
     margin-inline-end: 5%;
     margin-bottom: 5%;
-    padding: 25px 50px 25px 25px;
+    padding: 15px 20px 20px 15px;
     position: relative;
+    border-radius: 5px;
+
+    /* display:inline-flex;
+    align-items:inline-block;
+    align-content: center; */
     /* float:left; */
 }
 .home-card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: auto;
+    width: 100%;
     height: auto;
     border-radius: 5px;
     padding: 15px 20px 20px 15px;
     /*margin: 0px 50px 50px 0px;
     */
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     display:inline-flex;
     align-items:inline-block;
     align-content: center;
-    block-size: fit-content;
+    /* block-size: fit-content; */
 }
 .home-card-icon{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -261,11 +268,15 @@ tr:nth-child(odd) {
     /*margin: 0px 50px 50px 0px;
     */
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 3%;
     display:inline-flex;
     align-items:inline-block;
     align-content: center;
     block-size: 15%;
+    width: 17%;
+    height: 250px;
+    margin-bottom: 3%;
+    float:left;
     
 }
 /* .price { */
@@ -378,6 +389,11 @@ i {
 
     .select-btn {
         top: 10%;
+    }
+
+    .home-card-icon{
+        width: 100%;
+        margin-bottom: 3%;
     }
 }
 
