@@ -3,7 +3,7 @@
     <div class="section-title">
 
     <h1>Confirm deletion</h1>
-        <%= button_to "Back to Profile", "/user_profile", class: "button"%>
+        <%= button_to "Back to Profile", "/profile", method: 'get', class: "button"%>
         <p>Are you sure you want to delete your account? This action cannot be undone.</p>
 
         <%= form_for(@user, method: 'delete', url: destroy_user_path(@user.id)) do |f| %>

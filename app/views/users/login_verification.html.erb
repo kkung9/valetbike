@@ -16,7 +16,7 @@
     <%= form.submit "Submit Code", :class => "button" %>
   <% end %>
 
-  <%= link_to "Return to Login", "/user_login" %>
+  <%= button_to("Return to Login", user_login_path, :method => "get", :class => "button") %> 
 
   </div>
 </div
