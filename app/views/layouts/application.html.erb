@@ -58,7 +58,7 @@
         <% @rental = Rental.find_by(user: @user, end_station: nil) %>
         <% @guest = Guest.find_by(last_name: session[:guest]) %>
         <% @grental = Rental.find_by(user: @guest, end_station: nil) %>
-        <% if @user and @rental %>
+        <% if @user and !!session[:verified] and @rental %>
             <div id="rectangle"><%= link_to("Your current rides", current_path)%></div>
         <% elsif @guest and @grental %>
             <div id="rectangle"><%= link_to("Your current rides", current_path)%></div>
