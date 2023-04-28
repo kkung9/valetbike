@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+"caniuse-lite@^1.0.30001481":
+  "integrity" "sha512-KCqHwRnaa1InZBtqXzP98LPg0ajCVujMKjqKDhZEthIpAsJl/YEIa3YvXjGXPVqzZVguccuu7ga9KOE1J9rKPQ=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001481.tgz"
+  "version" "1.0.30001481"
