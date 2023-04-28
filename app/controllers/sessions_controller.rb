@@ -8,8 +8,11 @@ class SessionsController < ApplicationController
       UserMailer.with(user: @existing, vcode: session[:vcode]).verification_email.deliver_later
 
       redirect_to login_verification_path
+    elsif params[:email].blank?
+      redirect_to user_login_path
+      flash[:error] = "Please input a valid email address."
     else
-      redirect_to create_session_path
+      redirect_to user_login_path
       flash[:error] = "You do not yet have an account with the email provided. Please create a new account."
     end
   end

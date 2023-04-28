@@ -6,12 +6,16 @@
     <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
-    <section>
+    <div class="page-section flexbox vertical stretch">
+      <div class="section-inner flexbox vertical stretch">
+    <section class="section-title">
       <div class="product">
       </div>
       <form action="/create-checkout-session" method="POST">
-        <button type="submit" id="checkout-button">Checkout</button>
+        <button type="submit" id="checkout-button"  class="button">Checkout</button>
       </form>
     </section>
+    </div>
+    </div>
   </body>
 </html>
