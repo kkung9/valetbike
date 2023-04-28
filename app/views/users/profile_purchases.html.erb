@@ -1,13 +1,17 @@
 <div class="page-section flexbox vertical stretch">
-  <div class="section-inner flexbox vertical stretch">
-    <div class="section-title">
+    <div class="section-inner flexbox vertical stretch">
+        <div class="section-title">
 
-      <h1>Your Past Purchases</h1>
-      <p><%= @user.first_name %> <%= @user.last_name %> </p>
-      <button> <%= link_to("Back to Profile", profile_path)%> </button>
+            <h1>Your Past Purchases</h1>
+            <p><%= @user.first_name %>
+                <%= @user.last_name %>
+            </p>
+            <button class="button">
+              <%= link_to("Back to Profile", profile_path)%>
+            </button>
 
-      <%= render(partial: "users/purchase_table", rentals: @rentals) %>
-    
-    </div>  
-  </div>
+            <%= render(partial: "users/purchase_table", rentals: @rentals) %>
+
+        </div>
+    </div>
 </div>
