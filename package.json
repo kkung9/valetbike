@@ -1,9 +1,6 @@
 {
     "name": "valetbike",
     "private": true,
-    "scripts": {
-        "build:css": ""
-      },
     "version": "0.1.0"
   }
   
