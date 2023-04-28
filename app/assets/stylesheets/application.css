@@ -39,7 +39,6 @@
 h3 {
     font-size: var(--medium);
     margin-bottom: 5px;
-    color: var(--light-text-color);
 }
 h2{
     font-size: var(--large);
@@ -50,7 +49,7 @@ p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     margin: 0px;
-    color: #000;
+    
 }
 
 nav ul {
