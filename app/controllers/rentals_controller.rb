@@ -161,7 +161,7 @@ class RentalsController < ApplicationController
         }],
         allow_promotion_codes: true,
         mode: 'payment',
-        success_url: "valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
+        success_url: "https/://valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
         cancel_url: "https/://valetbike-rr.herokuapp.com/rentals/cancel",
       })
       redirect_to @session.url, status: 303, allow_other_host: true
