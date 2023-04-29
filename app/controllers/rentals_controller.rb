@@ -7,7 +7,6 @@ class RentalsController < ApplicationController
       else
         @station = Station.find_by(identifier: params[:identifier])
       end
-      render('rental')
     end
 
     def receipt
@@ -19,7 +18,22 @@ class RentalsController < ApplicationController
       cookies[:station] = @station.name
       @bike = Bike.find_by(identifier: params[:bike_identifier])
       cookies[:bike] = @bike.identifier
-      @user = User.find_by(email: session[:email])
+      if session[:email]
+        @user = User.find_by(email: session[:email])
+      elsif session[:guest]
+        @user = Guest.find_by(last_name: session[:guest])
+      end
+      puts 'aaaaa'
+      puts @user.bikes.count
+      if @user.bikes.count  >= 4
+        if session[:email] || !!session[:guest]
+          puts 'bbb'
+          puts 'Flash triggered!'
+          redirect_to rental_path(@station.identifier)
+          flash[:alert] = "You cannot rent more than four bikes at a time. Please return a bike before proceeding."
+        end
+      end
+      
     end
 
     def create
@@ -122,11 +136,6 @@ class RentalsController < ApplicationController
       elsif !!session[:guest]
         @user = Guest.find_by(last_name: session[:guest])
       end
-
-      puts "aaaaa"
-      puts session[:guest]
-      puts @user
-      puts @user.last_name
 
       Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 

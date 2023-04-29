@@ -6,7 +6,7 @@
 
     <%= form_with url: create_session_path, remote: true, method: 'post' do |form| %>
     <% flash.each do |type, msg| %>
-        <div>
+        <div class='alert'>
             <%= msg %>
         </div>
     <% end %>

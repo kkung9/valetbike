@@ -8,11 +8,13 @@
 <div class="page-section flexbox vertical stretch">
 <div class="section-inner flexbox vertical stretch">
   <section class="section-title">
+    <h1>Payment Successful</h1>
+    <p>DO NOT LEAVE THIS PAGE UNTIL YOU HAVE CLICKED 'UNLOCK NOW'.</p>
     <p>
       We appreciate your business! If you have any questions, please email
       <a href="mailto:valetbike223@gmail.com">valetbike223@gmail.com</a>.
     </p>
-
+    <br>
     <% @station = Station.find_by(name: cookies[:station]) %>
     <% @bike = Bike.find_by(identifier: cookies[:bike]) %>
 
