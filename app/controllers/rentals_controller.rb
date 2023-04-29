@@ -110,8 +110,8 @@ class RentalsController < ApplicationController
               }],
               allow_promotion_codes: true,
               mode: 'payment',
-              success_url: "http://https://valetbike-rr.herokuapp.com/receipt/" + @rental.id.to_s,
-              cancel_url: "http://https://valetbike-rr.herokuapp.com/rentals/cancel",
+              success_url: "https://valetbike-rr.herokuapp.com/receipt/" + @rental.id.to_s,
+              cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
             })
             redirect_to @session.url, status: 303, allow_other_host: true
             flash[:alert] = "We are very disappointed in you for returning your bike late. Please don't do it again."
@@ -161,8 +161,8 @@ class RentalsController < ApplicationController
         }],
         allow_promotion_codes: true,
         mode: 'payment',
-        success_url: "http://https://valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
-        cancel_url: "http://https://valetbike-rr.herokuapp.com/rentals/cancel",
+        success_url: "https%3A://valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
+        cancel_url: "https/://valetbike-rr.herokuapp.com/rentals/cancel",
       })
       redirect_to @session.url, status: 303, allow_other_host: true
     end
@@ -210,8 +210,8 @@ class RentalsController < ApplicationController
           }],
           allow_promotion_codes: true,
           mode: 'payment',
-          success_url: "http://https://valetbike-rr.herokuapp.com/current_ride",
-          cancel_url: "http://https://valetbike-rr.herokuapp.com/rentals/cancel",
+          success_url: "https://valetbike-rr.herokuapp.com/current_ride",
+          cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
         })
         @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
         redirect_to @session.url, status: 303, allow_other_host: true
