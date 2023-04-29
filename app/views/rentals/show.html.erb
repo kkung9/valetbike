@@ -23,7 +23,6 @@
     <div class="section-title">
       <h1>Choose Your Bike</h1>
       <p>You are at <%= @station.name %>.</p>
-      
         <% @station.docks.each do |dock| %>
             <% if dock.bike %>
               <button class="button1"> <%= link_to(dock.bike.identifier, confirm_path(@station.identifier, dock.bike.identifier)) %> </button>

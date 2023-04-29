@@ -8,7 +8,7 @@
       
       <%= form_with url: return_path(@rental.id), method: 'patch' do |form| %>
         <% flash.each do |type, msg| %>
-          <div>
+          <div class='alert'>
             <%= msg %>
           </div>
         <% end %>

@@ -7,7 +7,7 @@
         <h1> Subscription Plans </h1>
 
         <% flash.each do |type, msg| %>
-            <div>
+            <div class='alert'>
               <%= msg %>
             </div>
           <% end %>
@@ -15,9 +15,11 @@
         <div class="home-card">
             <div>
                 <h3>Monthly Membership</h3>
-                    <p>
-                        Access to the system for 1 month. Dock every 45 mins to avoid overage fees. One bike per phone.
-                    </p>
+                    <p>- Low-commitment</p>
+                    <p>- Month-to-month subscription fee</p>
+                    <p>- Unlimited rides</p>
+                    <p>- No overage fees</p>
+                    <p>- Up to four bikes per user</p>
                     <br>
                     <h3>$19.13</h3>
                     <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
@@ -29,7 +31,11 @@
         <div class="home-card">
             <div>
                 <h3>Yearly Membership</h3>
-                    <p>Access for 1 year. Dock every 45 mins to avoid overage fees. 1 bike/membership.</p>
+                    <p>- Higher-commitment</p>
+                    <p>- Annual subscription fee</p>
+                    <p>- Unlimited rides</p>
+                    <p>- No overage fees</p>
+                    <p>- Up to four bikes per user</p>
                     <br>
                     <h3>$76.50</h3>
                     <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>

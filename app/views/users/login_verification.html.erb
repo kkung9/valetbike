@@ -8,7 +8,7 @@
 
     <%= form_with url: start_login_path, remote: true, method: 'post' do |form| %>
     <% flash.each do |type, msg| %>
-        <div>
+        <div class='alert'>
             <%= msg %>
         </div>
     <% end %>

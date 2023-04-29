@@ -34,6 +34,12 @@
     </div>  
 
     <h3>You are at <%= @station.name %>.</h3>
+    <% flash.each do |type, msg| %>
+      <div class='alert'>
+        <%= msg %>
+      </div>
+    <% end %>
+    <br>
     <p> There are <%= @station.docks.count %> docks here, and <%= @station.bikes.count %> bikes are available. </p>
     <p> Select your bike below. </p>
     <div class = "allbikes">
