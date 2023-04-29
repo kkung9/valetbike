@@ -49,7 +49,6 @@ p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     margin: 0px;
-    
 }
 
 nav ul {
@@ -88,7 +87,7 @@ nav li a:hover {
 }
 
 #map {
-    height: 600px;
+    height: 800px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
