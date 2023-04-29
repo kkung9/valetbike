@@ -23,8 +23,8 @@ class RentalsController < ApplicationController
       elsif session[:guest]
         @user = Guest.find_by(last_name: session[:guest])
       end
-      puts 'aaaaa'
-      puts @user.bikes.count
+      puts "aaaa"
+      puts session[:guest]
       if @user.bikes.count  >= 4
         if session[:email] || !!session[:guest]
           puts 'bbb'
