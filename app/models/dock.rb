@@ -2,8 +2,8 @@ class Dock < ApplicationRecord
   belongs_to :bike, optional: true
   belongs_to :station
 
-  validates :identifier, presence: true, uniqueness: true, length: { is: 4 }
-  validate :bike_is_not_in_both_active_rental_and_dock
+  # validates :identifier, presence: true, uniqueness: true, length: { is: 4 }
+  # validate :bike_is_not_in_both_active_rental_and_dock
 
   def undock
     self.update(bike: nil)

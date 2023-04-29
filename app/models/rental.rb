@@ -3,13 +3,13 @@ class Rental < ApplicationRecord
   belongs_to :bike, optional: true
 
   # start_station and end_station store station_id (not station Obj)
-  validate :bike_is_not_in_both_active_rental_and_dock
-  validate :predicted_end_time_after_start_time
-  validate :actual_end_time_after_start_time
-  validates_presence_of :start_time
-  validates_length_of :start_station, is: 2
-  validates_length_of :end_station, is: 2, allow_blank: true
-  validates_numericality_of :actual_fee, greater_than_or_equal_to: :predicted_fee, allow_blank: true
+  # validate :bike_is_not_in_both_active_rental_and_dock
+  # validate :predicted_end_time_after_start_time
+  # validate :actual_end_time_after_start_time
+  # validates_presence_of :start_time
+  # validates_length_of :start_station, is: 2
+  # validates_length_of :end_station, is: 2, allow_blank: true
+  # validates_numericality_of :actual_fee, greater_than_or_equal_to: :predicted_fee, allow_blank: true
 
   private
 

@@ -387,7 +387,7 @@ i {
         color: var(--light-text-color);
     }
     footer{
-        position: absolute;
+        /* position: absolute; */
         margin-top: auto;
         left: 0;
         bottom: 0px;
