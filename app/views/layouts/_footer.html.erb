@@ -46,6 +46,19 @@ a:hover {
     <footer>
     <div class = "test"><%= link_to content_tag(:div, nil, class: "bow"), "/index" %></div>
     <div class = "content">
+        <div class="col">
+        <ul>
+            <li>
+                <div><%= link_to 'light', set_theme_path(theme: 'light')%></div>
+            </li>
+            <li>
+                <div><%= link_to 'dark', set_theme_path(theme: 'dark') %></div>
+            </li>
+            <li>
+                <div><%= link_to 'system default', set_theme_path %></div>
+            </li>
+        </ul>
+        </div>
         <div class = "col">
             <h3> Contact us </h3>
             <ul>
