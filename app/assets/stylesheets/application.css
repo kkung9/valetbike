@@ -422,8 +422,7 @@ i {
         width: 100%;
         background: var(--light-text-color);
         color: var(--light-bg-color);
-        border-bottom-left-radius: 8%;
-        border-bottom-right-radius: 8%;
+        border-radius: 0px 0px 10px 10px;
     }
     /* h1 {
         font-size: var(--xlarge);
