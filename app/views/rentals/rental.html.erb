@@ -33,17 +33,17 @@
       <h1>Choose Your Bike</h1>
     </div>  
 
-      <h3>You are at <%= @station.name %>.</h3>
-      <p> There are <%= @station.docks.count %> docks here, and <%= @station.bikes.count %> bikes are available. </p>
-      <p> Select your bike below. </p>
-      <div class = "allbikes">
-        <% @station.docks.each do |dock| %>
-            <% if dock.bike %>
-              <%= button_to(dock.bike.identifier, confirm_path(@station.identifier, dock.bike.identifier), :method => "get", :class => "rental availbike") %>
-            <% else %>
-              <button class="rental notavailbike"> ___ </button>
-            <% end %>
-        <% end %>
-      </div>
+    <h3>You are at <%= @station.name %>.</h3>
+    <p> There are <%= @station.docks.count %> docks here, and <%= @station.bikes.count %> bikes are available. </p>
+    <p> Select your bike below. </p>
+    <div class = "allbikes">
+      <% @station.docks.each do |dock| %>
+          <% if dock.bike %>
+            <%= button_to(dock.bike.identifier, confirm_path(@station.identifier, dock.bike.identifier), :method => "get", :class => "rental availbike") %>
+          <% else %>
+            <button class="rental notavailbike"> ___ </button>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
