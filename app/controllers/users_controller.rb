@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by(id: params[:id])
     @user.update(email: "deleted_user@deleted")
-    # @user.destroy
     session.delete(:email)
     redirect_to index_path
   end
