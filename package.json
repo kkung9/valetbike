@@ -3,7 +3,7 @@
     "private": true,
     "scripts": {
         "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css",
-        "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+        "build": "esbuild app/javascript/*.* --bundle"
     },
     "version": "0.1.0",
     "dependencies": {
