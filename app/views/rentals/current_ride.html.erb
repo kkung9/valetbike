@@ -14,6 +14,7 @@
     <p>To return a bike, approach a ValetBike station and type in the code on the dock you wish to return it to.</p><br/>
 
     <% @rentals.each do |rental| %>
+      <div class="bike-card">
       <p>Bike: <%= rental.bike.identifier %></p>
       <p>Return by: <%= rental.predicted_end_time.in_time_zone("America/New_York").strftime("%I:%M %p") %> (<%= rental.start_time.to_date.strftime('%b %d, %Y')%>)</p>
       <%= button_to("Return Bike", lock_path(rental.id), :method => "get", :class => "button") %> 
@@ -21,6 +22,7 @@
         <%= button_to("Extend Ride", extend_path(rental.id), :method => "get", :class => "button") %> 
       <% end %>
       <br/>
+      </div>
     <% end %>
 
   </div>

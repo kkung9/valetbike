@@ -5,7 +5,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <section>
+<div class="page-section flexbox vertical stretch">
+<div class="section-inner flexbox vertical stretch">
+  <section class="section-title">
     <p>
       We appreciate your business! If you have any questions, please email
       <a href="mailto:valetbike223@gmail.com">valetbike223@gmail.com</a>.
@@ -17,10 +19,14 @@
     <p>Station: <%= @station.name %> </p>
     <p>Bike: <%= @bike.identifier %> </p>
 
+    <div class="bike-buttons">
     <%= form_with url: rent_path(@station.identifier, @bike.identifier, params[:duration]), method: 'post' do |form| %>
       <%= form.submit("UNLOCK NOW", :class => "button") %>
     <% end %>
+    </div>
 
   </section>
+  </div>
+  </div>
 </body>
 </html>
