@@ -28,7 +28,7 @@
     --dark-bg-color: #444038;
     --dark-text-color: #f7f9f5;
     --color2: #E39F5F;
-    --color3: #A0B64A;x
+    --color3: #A0B64A;
     --color4: #E2AB69;
     --xlarge: 48px;
     --large: 36px;
@@ -49,7 +49,6 @@ p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     margin: 0px;
-    color: #000;
 }
 
 nav ul {
@@ -89,7 +88,7 @@ nav li a:hover {
 }
 
 #map {
-    height: 600px;
+    height: 800px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
