@@ -83,8 +83,8 @@ class UsersController < ApplicationController
         }],
         allow_promotion_codes: true,
         mode: 'subscription',
-        success_url: "http://localhost:3000/subscription_success",
-        cancel_url: "http://localhost:3000/index",
+        success_url: "http://https://valetbike-rr.herokuapp.com/subscription_success",
+        cancel_url: "http://https://valetbike-rr.herokuapp.com/index",
       })
       redirect_to @session.url, status: 303, allow_other_host: true
     end
