@@ -2,7 +2,7 @@
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
 
-    <h1>Confirm deletion</h1>
+    <h2>Confirm deletion</h2>
         <%= button_to "Back to Profile", "/profile", method: 'get', class: "button"%>
 
         <% @rental = Rental.find_by(user: @user, end_station: nil) %>
