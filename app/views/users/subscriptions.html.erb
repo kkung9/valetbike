@@ -28,12 +28,12 @@
                     <% if @rental %>
                         <p> You cannot subscribe while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
                     <% elsif @user and @user.sub_id %>
-                        <p> You are already subscribed. <p>
+                        <p> You are already subscribed. </p>
                     <% else %>
                         <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
                             <%= hidden_field_tag(:price, "price_1Mzr9uDRwtZV86UmtOiQFnzq") %>
-                            <%= form.submit "Monthly", class: "button" %>
-                        <% end %> 
+                            <%= form.submit "Annual", class: "button" %>
+                        <% end %>
                     <% end %>
             </div>
         </div>
@@ -54,10 +54,10 @@
                     <% elsif @user and @user.sub_id %>
                         <p> You are already subscribed. </p>
                     <% else %>
-                    <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
-                        <%= hidden_field_tag(:price, "price_1MzrAjDRwtZV86UmAainx1pb") %>
-                        <%= form.submit "Annual", class: "button" %>
-                    <% end %>
+                        <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
+                            <%= hidden_field_tag(:price, "price_1MzrAjDRwtZV86UmAainx1pb") %>
+                            <%= form.submit "Annual", class: "button" %>
+                        <% end %>
                     <% end %>
             </div>
         </div>
