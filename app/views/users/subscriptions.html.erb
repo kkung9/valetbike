@@ -22,9 +22,18 @@
                     <p>- Up to four bikes per user</p>
                     <br>
                     <h3>$19.13</h3>
-                    <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
-                        <%= hidden_field_tag(:price, "price_1Mzr9uDRwtZV86UmtOiQFnzq") %>
-                        <%= form.submit "Monthly", class: "button" %>
+
+                    <% @rental = Rental.find_by(user: @user, end_station: nil) %>
+                    <% @user = User.find_by(email: session[:email]) %>
+                    <% if @rental %>
+                        <p> You cannot subscribe while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
+                    <% elsif @user and @user.sub_id %>
+                        <p> You are already subscribed. %>
+                    <% else %>
+                        <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
+                            <%= hidden_field_tag(:price, "price_1Mzr9uDRwtZV86UmtOiQFnzq") %>
+                            <%= form.submit "Monthly", class: "button" %>
+                        <% end %> 
                     <% end %>
             </div>
         </div>
@@ -38,9 +47,17 @@
                     <p>- Up to four bikes per user</p>
                     <br>
                     <h3>$76.50</h3>
+                    <% @rental = Rental.find_by(user: @user, end_station: nil) %>
+                    <% @user = User.find_by(email: session[:email]) %>
+                    <% if @rental %>
+                        <p> You cannot subscribe while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
+                    <% elsif @user and @user.sub_id %>
+                        <p> You are already subscribed. %>
+                    <% else %>
                     <%= form_with url: subscribe_path, remote: true, method: 'post' do |form| %>
                         <%= hidden_field_tag(:price, "price_1MzrAjDRwtZV86UmAainx1pb") %>
                         <%= form.submit "Annual", class: "button" %>
+                    <% end %>
                     <% end %>
             </div>
         </div>
