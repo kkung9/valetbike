@@ -311,9 +311,13 @@ tr:nth-child(odd) {
 }
 
 .bike-card .button{
-    display:inline-block;
-    /* float:right; */
+    display:inline-flex;
+    float:right;
     margin-left: 5%;
+}
+
+.button-align {
+    text-align:center;
 }
 
 i {
