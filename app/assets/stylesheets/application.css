@@ -132,7 +132,7 @@ input[type="text"], #textbox {
     text-align: center;
     border-radius: 10px;
     padding-top: 10px;
-    padding-bottom: 1000px;
+    padding-bottom: 20px;
 }
 
 .current_banner a {
@@ -307,11 +307,12 @@ tr:nth-child(odd) {
     /* float:right; */
     align-items:inline-block;
     /* align-content: center; */
+    text-align: left;
 }
 
 .bike-card .button{
     display:inline-flex;
-    float:right;
+    /* float:right; */
     margin-left: 5%;
 
 }
