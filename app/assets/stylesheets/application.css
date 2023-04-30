@@ -132,7 +132,7 @@ input[type="text"], #textbox {
     text-align: center;
     border-radius: 10px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 1000px;
 }
 
 .current_banner a {
@@ -305,7 +305,7 @@ tr:nth-child(odd) {
     padding: 15px 20px 20px 15px;
     display:flex-column;
     /* float:right; */
-    /* align-items:inline-block; */
+    align-items:inline-block;
     /* align-content: center; */
 }
 
