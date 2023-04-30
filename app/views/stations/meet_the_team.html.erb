@@ -4,40 +4,89 @@
             
             <h1>Meet the team!</h1>
 
+            <div style = text-align:justify;>
+                <div style = text-align:center;>
+                <%= image_tag("rr-team-picture.png", :alt => "team picture", :id => "team-picture", :class => "team-image") %>
+                </div>
+                <br>
+                <p> The Ruby Renegades ValetBike team is a fun, eclectic family business, representative of the American dream: having parents that are divorced and re-married, then divorced again, then re-married again. Talented in music, short-ripping, sleeping through class, and never remembering to change the database.yml password before running migrations, this team has seen it all. Read on to meet the team's C-Suite! </p>
+                <br>
+            </div>
+
             <div class = "announcement">
+                <%= image_tag("mercer.png", :alt => "team picture", :class => "team-mem-image") %>
                 <h4>CEO</h4>
                 <h3>Mercer Kriese</h3>
-                <p></p>
+                <h5>by Lucia </h5>
+                <p>Mercer Kriese (vegan) is our amazing scrum leader and CEO of ValetBike. In their 3 week tenure at ValetBike, Mercer has grown the organization to be one of the largest and most prestigious websites in this class. </p>
+                <p>Mercer is a junior at Smith College where they are a neuroscience major and computer science <em>minor</em> and act as a valued member of the masc community. While they can only deadlift 205 lbs, they make up for it by never shutting up about their research on zebrafish, which is about embryos or something. </p>
+                <p>Most importantly, Mercer is the Fire Safety Captain of Gillett House, an incredible community that they will ABANDON when they move to a Friedman next year. Mercer lives in Northampton, Massachusetts with their work-partner Karenna, where they have gotten work-married, work-divorced, and then work-married again.</p>
             </div>
 
             <div class = "announcement">
+                <%= image_tag("karenna.png", :alt => "team picture", :class => "team-mem-image") %>
                 <h4>CTO</h4>
                 <h3>Ka[??take your pick] Kung</h3>
-                <p></p>
+                <h5>by Audrey </h5>
+                <p>Meet Karenan! Despite this Chief Technology Officer’s fear that Rails will one day take over (“It knows too much, and I don’t like it”), their dance with models, views, and controllers is truly mesmerizing. A git hero, we are so grateful to them for addressing all of our merge conflicts and risking the irredeemable shame of making a pull request to Mayor Johanna’s repo. Most hours, you can find Karnean neck-deep in silly little characters, digits, chevrons, and angle brackets alongside longtime business partner and spouse, CEO Mercer Kriese, but outside the matrix, this Certified Student-Athlete is happy to give you a tour around campus, as long as you don’t pay them. One cheer for [insert one more Karenna-iteration?,] the #1 CTO (and stoles-and-cords-collector) in Nipmuc Notch. Hip hip, hooray!</p>
             </div>
 
             <div class = "announcement">
+            <%= image_tag("lucia.png", :alt => "team picture", :class => "team-mem-image") %>
                 <h4>CIO</h4>
                 <h3>Lucia Vaccaro</h3>
-                <p></p>
+                <h5>by Hillary</h5>
+                <p>Lucia is a freshly 22 year old senior at Smith College studying Computer Science and Mathematics. When Lucia's not busy being the backbone of the group as the wise person with amazing insights, Lucia busies herself with her math lab and wearing baseball caps. Although she is addled with mystery allergies, she packs a punch with her coding skills! After a long and laborious process, Lucia has landed a job at a battery company whose name I don't remember right now.</p>
+                <p>Hailing from a suburb outside of Boston, Lucia has two brothers, and a mother and father. Her favorite catchphrase is "I know, right?", and she loves wearing shorts that are not ripped. She excelled in archery in high school after realizing that she was not good at soccer. Lucia is not just an athlete but also an artist: she played the viola for many years and even performed in highly selective orchestras in the Boston area. She also studied in Italy for a semester, and is all the better for it. </p>
              </div>
 
             <div class = "announcement">
+            <%= image_tag("yurika.png", :alt => "team picture", :class => "team-mem-image") %>
                 <h4>COO</h4>
                 <h3>Yurika Nakagawa</h3>
-                <p></p>
+                <h5>by Mercer</h5>
+                <p>Chief Operations Officer Yurika Nakagawa is a jack-of-all trades and true master of one: ValetBike! Handling both front- and back-end operations for the team, Yurika really puts in the hours for Ruby Renegades - even though she pays for it by sleeping through the beginning of Chinese class most days. Late mornings aside, COO Yurika has single-handedly held this dev team’s mental health together over the course of the semester with her beautifully-designed logos and incredibly-implemented bow tie wiggling skills. Good days or bad, you can always find Yurika at the source of an exclamatory “oh!” and a contagious giggle that will light up everyone’s day.</p>
             </div>
 
             <div class = "announcement">
+            <%= image_tag("hillary.png", :alt => "team picture", :class => "team-mem-image") %>
                 <h4>CFO</h4>
                 <h3>Hillary Dunkley</h3>
-                <p></p>
+                <h5>by Yurika</h5>
+                <p>Our CFO, Hillary, enjoys styling our website with her brilliant CSS skills.
+                Border-radius attribute is her friend, and she secretly has the ambition to master Bootstrap. She loves working on her music assignments during our weekly meetings, but we tolerate it because she is a great singer. Or do we? She has a laid-back, friendly, beautiful personality, but being on time is not her greatest strength. She would show up (accidentally) an hour early for our meeting on one day and fifteen minutes late on another day. Still, although it might not be as much as she adores her cat, we like Hillary.</p>
             </div>
 
             <div class = "announcement">
+                <%= image_tag("audrey.png", :alt => "team picture", :class => "team-mem-image") %>
                 <h4>CMO</h4>
                 <h3>Audrey Kim</h3>
-                <p></p>
+                <h5>by Karenna</h5>
+                <p>CMO Audrey is a shining asset to the Ruby Renegades team, often too flawless to even have failures to report. Audrey shows resilience in overcoming the challenge of being sabotaged by her own brother, who told her to buy a Windows computer because they were better for development. Now, Audrey lives out her days changing the socket line in the database.yml file before pushing and after pulling because her fellow Renegades refuse to yield. In addition to her development talents, Audrey is also authoring the future New York Times bestseller ValetBike: A Memoir. Beware your next of kin.</p>
+            </div>
+
+            <div class = "announcement">
+                <h3> ValetBike Office Locations </h3>
+                <%= image_tag("office-map.png", :alt => "team picture", :id => "office-map-image") %>
+                <ul id = "location-list">
+                    <li>Nielson LRT Classroom</li>
+                    <li>Compass Café Basement (This Table and That Table)</li>
+                    <li>Bass 211 (CEO Mercer's Genetics Tutoring Hours)</li>
+                    <li>Ford 342 (TA Hours)</li>
+                    <li>Nielson 12E</li>
+                    <li>Nielson 12F</li>
+                    <li>Zoom</li>
+                    <li>Dawes</li>
+                    <li>Compass Café Upper Level</li>
+                    <li>Alumni Gym</li>
+                    <li>Gillett Living Room</li>
+                    <li>CEO Mercer's Car</li>
+                    <li>CIO Lucia's Car</li>
+                    <li>Ford Atrium Floor</li>
+                    <li>Campus Center Café</li>
+                    <li>Lamont Octagon (During Senior Banquet)</li>
+                    <li>CEO Mercer's Fish Lab (Barresi Lab)</li>
+                </ul>
             </div>
 
         </div>
