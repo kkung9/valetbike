@@ -317,6 +317,14 @@ tr:nth-child(odd) {
     position: relative;
 }
 
+.child1 {
+    flex: 1;
+}
+
+.child2 {
+    margin-right: 20px;
+}
+
 i {
     text-align: center;
 
