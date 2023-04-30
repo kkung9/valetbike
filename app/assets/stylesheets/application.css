@@ -314,10 +314,7 @@ tr:nth-child(odd) {
     display:inline-flex;
     float:right;
     margin-left: 5%;
-}
-
-.button-align {
-    text-align:center;
+    position: relative;
 }
 
 i {
