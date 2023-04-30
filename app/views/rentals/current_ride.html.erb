@@ -15,11 +15,11 @@
 
     <% @rentals.each do |rental| %>
       <div class="bike-card">
-        <div class="child1">
+        <div>
           <p>Bike: <%= rental.bike.identifier %></p>
           <p>Return by: <%= rental.predicted_end_time.in_time_zone("America/New_York").strftime("%I:%M %p") %> (<%= rental.start_time.to_date.strftime('%b %d, %Y')%>)</p>
         </div>
-        <div class="child2">
+        <div>
           <%= button_to("Return Bike", lock_path(rental.id), :method => "get", :class => "button") %> 
           <% if Time.now < rental.predicted_end_time %>
             <%= button_to("Extend Ride", extend_path(rental.id), :method => "get", :class => "button") %> 
