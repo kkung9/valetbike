@@ -16,7 +16,9 @@
     </p>
     <br>
     <% @station = Station.find_by(name: cookies[:station]) %>
+    <% cookies.delete(:station) %>
     <% @bike = Bike.find_by(identifier: cookies[:bike]) %>
+    <% cookies.delete(:bike) %>
 
     <p>Station: <%= @station.name %> </p>
     <p>Bike: <%= @bike.identifier %> </p>

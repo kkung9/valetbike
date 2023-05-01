@@ -85,32 +85,32 @@ puts "There are now #{Dock.count} rows in the dock table"
 #     b.save
 # end
 
-require 'csv'
-csv_text = File.read(Rails.root.join('notes', 'user-data-test.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
-    u = User.new
-    u.identifier = row['identifier']
-    u.first_name = row['first_name']
-    u.last_name = row['last_name']
-    u.email = row['email']
-    u.save
-end
-puts "There are now #{User.count} rows in the user table"
+# require 'csv'
+# csv_text = File.read(Rails.root.join('notes', 'user-data-test.csv'))
+# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#     u = User.new
+#     u.identifier = row['identifier']
+#     u.first_name = row['first_name']
+#     u.last_name = row['last_name']
+#     u.email = row['email']
+#     u.save
+# end
+# puts "There are now #{User.count} rows in the user table"
 
-require 'csv'
-csv_text = File.read(Rails.root.join('notes', 'rental-data-test.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
-    r = Rental.new
-    r.user = User.find_by(first_name: row['name'])
-    r.bike = Bike.find_by(identifier: row['bike_id'])
-    r.start_time = DateTime.parse(row['start_time'])
-    r.predicted_end_time = DateTime.parse(row['predicted_end_time'])
-    r.actual_end_time = DateTime.parse(row['actual_end_time'])
-    r.start_station = row['start_station']
-    r.end_station = row['end_station']
-    r.is_complete = row['is_complete']
-    r.save
-end
-puts "There are now #{Rental.count} rows in the rental table"
+# require 'csv'
+# csv_text = File.read(Rails.root.join('notes', 'rental-data-test.csv'))
+# csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+# csv.each do |row|
+#     r = Rental.new
+#     r.user = User.find_by(first_name: row['name'])
+#     r.bike = Bike.find_by(identifier: row['bike_id'])
+#     r.start_time = DateTime.parse(row['start_time'])
+#     r.predicted_end_time = DateTime.parse(row['predicted_end_time'])
+#     r.actual_end_time = DateTime.parse(row['actual_end_time'])
+#     r.start_station = row['start_station']
+#     r.end_station = row['end_station']
+#     r.is_complete = row['is_complete']
+#     r.save
+# end
+# puts "There are now #{Rental.count} rows in the rental table"
