@@ -246,7 +246,7 @@ tr:nth-child(odd) {
 }
 
 #office-map-image {
-    width: 75%;
+    width: 50%;
     float: left;
     margin-top: 10px;
     margin-right: 30px;
@@ -508,6 +508,7 @@ i {
     ul.dark {
         color: var(--dark-text-color)
     }
+    
 }
 
 /* dark mode ---------------------------------------------- */
@@ -517,11 +518,10 @@ i {
         color: var(--dark-text-color);
     }
 
-    /* h1 {
-        font-size: var(--xlarge);
+    h1 {
         color: var(--dark-text-color);
         margin-bottom: 10px;
-    } */
+    }
 
     nav {
         background-color: var(--light-text-color);
