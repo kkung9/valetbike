@@ -1,14 +1,6 @@
 class StationsController < ApplicationController
 
-  def search
-    if params[:reverse].blank? || params[:reverse] == "0"
-      @stations = Station.all.order(identifier: :asc)
-    else
-      @stations = Station.all.order(identifier: :desc)
-    end
-    render('search')
-  end
-
+  # searches the databse and returns all stations with names similar to those entered by the user in the search bar.
   def search
       if !params[:name].blank?
         @stations = Station.all.where('name LIKE ?', "%#{params[:name]}%")
@@ -20,15 +12,13 @@ class StationsController < ApplicationController
   def index
   end
 
+  # displays all stations on the map interface.
   def map
     @stations = Station.all
     render('map')
   end
 
-  # def ???
-  #   @vacancy = Station.find().capacity - Station.find().bikes.count
-  # end
-
+  # returns the station that should be displayed in the station view, based on the params entered by the user.
   def station_view
     @station = Station.find_by(identifier: params[:identifier])
   end

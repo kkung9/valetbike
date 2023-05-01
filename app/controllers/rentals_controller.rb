@@ -85,8 +85,8 @@ class RentalsController < ApplicationController
       }],
       allow_promotion_codes: true,
       mode: 'payment',
-      success_url: "https://valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
-      cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
+      success_url: "http://localhost:3000/rentals/success/" + params[:duration],
+      cancel_url: "http://localhost:3000/rentals/cancel",
     })
     redirect_to @session.url, status: 303, allow_other_host: true
   end
@@ -143,7 +143,7 @@ class RentalsController < ApplicationController
             end
           end
 
-          # find user or gueest
+          # find user or guest
           if !!session[:email]
             @user = User.find_by(email: session[:email])
           elsif !!session[:guest]
@@ -161,8 +161,8 @@ class RentalsController < ApplicationController
             }], # number of minutes of overtime
             allow_promotion_codes: true,
             mode: 'payment',
-            success_url: "https://valetbike-rr.herokuapp.com/receipt/" + @rental.id.to_s,
-            cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
+            success_url: "http://localhost:3000/receipt/" + @rental.id.to_s,
+            cancel_url: "http://localhost:3000/rentals/cancel",
           })
           redirect_to @session.url, status: 303, allow_other_host: true
           flash[:alert] = "We are very disappointed in you for returning your bike late. Please don't do it again."
@@ -198,13 +198,14 @@ class RentalsController < ApplicationController
     @rental = Rental.find_by(id: params[:id])
     @user = User.find_by(email: session[:email])
 
-    #allow subscribed users to bypass payment
-    if @user && @user.sub_id
-      @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
-      redirect_to current_path
-    else
-      if !!session[:guest]
-        @user = Guest.find_by(last_name: session[:guest])
+    # begin/rescue block to check for time input less than 1 minute
+    begin
+      #allow subscribed users to bypass payment
+      if @user && @user.sub_id
+        @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
+        redirect_to current_path
+      elsif !!session[:guest]
+          @user = Guest.find_by(last_name: session[:guest])
       end
 
       Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
@@ -218,12 +219,16 @@ class RentalsController < ApplicationController
         }],
         allow_promotion_codes: true,
         mode: 'payment',
-        success_url: "https://valetbike-rr.herokuapp.com/current_ride",
-        cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
+        success_url: "http://localhost:3000/current_ride",
+        cancel_url: "http://localhost:3000/rentals/cancel",
       })
       @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes) # increase predicted end time
       redirect_to @session.url, status: 303, allow_other_host: true
+    rescue Stripe::InvalidRequestError => invalid
+      redirect_to extend_path
+      flash[:error] = "Please input a time greater than 0."
     end
+
   end
 
 end

@@ -5,6 +5,9 @@
       <h2>Return Your Bike</h2>
 
       </div>
+
+      <%# contains a form which collects information about the station and dock wherein a user is returning their bike at the #%>
+      <%# end of a rental. #%>
       
       <%= form_with url: return_path(@rental.id), method: 'patch' do |form| %>
         <% flash.each do |type, msg| %>

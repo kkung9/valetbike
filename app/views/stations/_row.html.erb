@@ -1,6 +1,9 @@
 <div class="record-row <%= cycle "odd", "even", name: "row-cycler" %> flexbox vertical stretch">
     <div class="card">
         <div class="container">
+
+        <%# displays station information within station cards on search page #%>
+
             <div>
                 <% if station.photo %>
                     <%= image_tag(station.photo)%>

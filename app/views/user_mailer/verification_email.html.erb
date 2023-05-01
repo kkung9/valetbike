@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+<%# contains information to go in the authentication code email sent to the user. #%>
+
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h2>Hello <%= @user.first_name %></h2>
-    <p>
-      your code is <%= @vcode %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Dear <%= @user.first_name %>,</p>
+    <p>Thank you for signing into ValetBike! Your authentication code is: <b><%= @vcode %></b>.</p>
+    <br>
+    <p>Enjoy your ride!</p>
+    <p><i>The ValetBike Team</i></p>
   </body>
 </html>

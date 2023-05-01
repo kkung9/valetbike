@@ -6,6 +6,8 @@
 
     </div>
 
+    <%# displays information about the user's ongoing rentals and offers options to extend or complete rentals. #%>
+
     <p>You currently have: <%= @rentals.count %> bikes </p>
     <%= button_to("View Map", "/map", :method => "get", :class => "button") %> 
 

@@ -6,6 +6,15 @@
 
     </div>
 
+    <%# displays information for the user regarding their most recently completed rental, including details about overtime if #%>
+    <%# the user kept the bike beyond their allotted time. #%>
+
+    <% flash.each do |type, msg| %>
+      <div class='alert'>
+        <%= msg%>
+      </div>
+    <% end %>
+
     <div>
         <p>Start Station: <%= Station.find_by(identifier: @rental.start_station).name %> </p>
         <p>End Station: <%= Station.find_by(identifier: @rental.end_station).name %> </p>

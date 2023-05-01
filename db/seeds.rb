@@ -73,6 +73,9 @@ csv.each do |row|
 end
 puts "There are now #{Dock.count} rows in the dock table"
 
+
+# DEVELOPMENT SEED CODE BELOW: ONLY USE WHEN DEBUGGING USER, RENTAL, OR BIKE MODELS 
+
 # require 'csv'
 # csv_text = File.read(Rails.root.join('notes', 'bike-data-test.csv'))
 # csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')

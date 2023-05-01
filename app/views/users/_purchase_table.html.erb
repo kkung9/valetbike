@@ -1,3 +1,5 @@
+<%# contains the user purchase history to be linked to the profile view. #%>
+
 <table>
   <tr>
     <th>Date</th>
@@ -23,7 +25,11 @@
     <% else %>
       <td>In progress.</td>
     <% end %>
-    <td></td>
+    <% if rental.actual_end_time > rental.predicted_end_time %>
+      <td> $ <%= ((((((rental.actual_end_time - rental.predicted_end_time)/60).ceil)*0.5)+((((rental.predicted_end_time - rental.start_time)/60).ceil)*0.09))).ceil  %> </td>
+    <% else %>
+      <td> $ <%= ((((rental.predicted_end_time - rental.start_time)/60).ceil)*0.09).ceil %> </td>
+    <% end %>
   </tr>
   <% end %>
 </table>

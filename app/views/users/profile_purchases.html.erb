@@ -1,13 +1,17 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
+
+  <%# displays information regarding a user's past purchases by rendering a table with details from purchase_table.html.erb #%>
+
     <div class="section-title">
-
       <h2>Your Past Purchases</h2>
-      <p><%= @user.first_name %> <%= @user.last_name %> </p>
-      <button> <%= link_to("Back to Profile", profile_path)%> </button>
+    </div>
 
-      <%= render(partial: "users/purchase_table", rentals: @rentals) %>
+    <p><%= @user.first_name %> <%= @user.last_name %> </p>
+    <button> <%= link_to("Back to Profile", profile_path)%> </button>
+
+    <%= render(partial: "users/purchase_table", rentals: @rentals) %>
     
-    </div>  
+      
   </div>
 </div>

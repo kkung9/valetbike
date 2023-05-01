@@ -1,31 +1,34 @@
 <div class="page-section flexbox vertical stretch">
-    <div class="section-inner flexbox vertical stretch">
-        <div class="section-title"style="width: 100%">
-            <% cookies[:theme] %>
-            <% flash.each do |type, msg| %>
-              <div class='alert'>
-                <%= msg %>
-              </div>
-            <% end %>
-            <h2>Welcome,
-                <%= @user&.first_name %></h2>
+  <div class="section-inner flexbox vertical stretch">
 
-      <div>
-        <div style="text-align: center">
+  <%# displays all information regarding a user's profile and contains links to view current rides, past purchases, create or #%>
+  <%# cancel a subscription, log out, and delete the account. #%>
+
+      <div class="section-title"style="width: 100%">
+    </div>
+    <% cookies[:theme] %>
+    <% flash.each do |type, msg| %>
+      <div class='alert'>
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <h2>Welcome, <%= @user&.first_name %></h2>
+    <div>
+      <div style="text-align: center">
         <div class="profilebuttondiv"><%= button_to("Your current rides", current_path, :method => "get", :class => "button")%></div>
         <div class="profilebuttondiv"><%= button_to("Your past purchases", purchases_path(@user.id), :method => "get", :class => "button")%></div> 
         <% if !@user.sub_id %>
-        <div class="profilebuttondiv"><%= button_to("Subscribe!", subscriptions_path(@user.id), :method => "get", :class => "button") %></div>
+          <div class="profilebuttondiv"><%= button_to("Subscribe!", subscriptions_path(@user.id), :method => "get", :class => "button") %></div>
         <% else %>
-        <div class="profilebuttondiv"><%= button_to("Cancel Subscription", unsubscribe_path, :method => "post", :class => "button") %></div>
+          <div class="profilebuttondiv"><%= button_to("Cancel Subscription", unsubscribe_path, :method => "post", :class => "button") %></div>
         <% end %>
-        </div>
-        <%= render(partial: "users/profile_table", rentals: @rentals) %>
-        <div style="text-align: center">
+      </div>
+      <%= render(partial: "users/profile_table", rentals: @rentals) %>
+      <div style="text-align: center">
         <div class="profilebuttondiv"><%= button_to("Log Out", "/user_logout", :method => "get", :class => "button altbutton")%></div> 
         <div class="profilebuttondiv"><%= button_to("DELETE ACCOUNT", delete_user_path(@user.id), :method => "get", :class => "button deletebutton")%></div> 
-        </div>
-        </div>
-    </div>  
+      </div>
+    </div> 
   </div>
 </div>
