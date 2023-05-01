@@ -12,13 +12,14 @@ class RentalsController < ApplicationController
 
   # pass station and bike info before allowing user to choose time
   def purchase_confirm
+    # find and save station and bike
     @station = Station.find_by(identifier: params[:station_identifier])
     cookies[:station] = @station.name
     @bike = Bike.find_by(identifier: params[:bike_identifier])
     cookies[:bike] = @bike.identifier
-    if session[:email]
+    if session[:email] # if user is logged in 
       @user = User.find_by(email: session[:email])
-    elsif session[:guest]
+    elsif session[:guest] # if ride is by a guest
       @user = Guest.find_by(last_name: session[:guest])
     end
     if @user.bikes.count  >= 4
