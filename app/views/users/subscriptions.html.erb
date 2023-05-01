@@ -21,9 +21,7 @@
                     <p>- Up to four bikes per user</p>
                     <br>
                     <h3>$19.13</h3>
-
                     <% @rental = Rental.find_by(user: @user, end_station: nil) %>
-                    <%= @rental.id %>
                     <% @user = User.find_by(email: session[:email]) %>
                     <% if !!@rental %>
                         <p> You cannot subscribe while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
