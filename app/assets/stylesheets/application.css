@@ -18,7 +18,7 @@
 
 /* basics ---------------------------------------------- */
 * {
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa';
     font-weight: 700;
 }
 
@@ -35,13 +35,14 @@
     --medium: 24px;
     --small: 20px;
 }      
-    
+   
+h2 {
+    font-size: var(--large);
+}
+
 h3 {
     font-size: var(--medium);
     margin-bottom: 5px;
-}
-h2{
-    font-size: var(--large);
 }
 
 p {
@@ -49,6 +50,26 @@ p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 500;
     margin: 0px;
+}
+
+p a {
+    color: var(--light-text-color);
+}
+
+input, select, textarea {
+    color: var(--dark-bg-color);
+}
+
+i {
+    text-align: center;
+}
+
+nav {
+    background-color: var(--light-text-color);
+    text-align: center;
+    font-size: var(--medium);
+    display: flex;
+     border-radius: 10px;
 }
 
 nav ul {
@@ -70,6 +91,63 @@ nav li a:hover {
     text-decoration: none;
 }
 
+footer {
+    margin-top: auto;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    background-color: var(--light-text-color);
+    color: var(--dark-text-color);
+    font-size: var(--small);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0px 0px 10px 10px;
+}
+
+footer .content {
+    display: inline-flex;
+    float: right;
+    text-align: right;
+}
+
+footer a {
+    color: var(--dark-text-color);
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer li {
+    color: var(--dark-text-color);
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .col {
+    margin: 0px 40px;
+}
+
+footer .bow {
+    margin: 30px;
+    vertical-align: middle;
+}
+
+.alert {
+    color:#E39F5F;
+}
+
 .page-section {
     display: flex;
     flex-direction: column;
@@ -78,7 +156,7 @@ nav li a:hover {
 
 .section-title {
     width: 80%;
-    margin-left:0px;
+    margin-left: 0px;
 }
 
 .section-inner.flexbox.vertical.stretch {
@@ -86,6 +164,20 @@ nav li a:hover {
     width: 70%;
     margin: auto;
 }
+
+.page-content {
+    min-height: 100vh;
+    margin-bottom: -142px;
+}
+
+.page-content:after {
+    content: "";
+    display: block;
+}
+
+.footer-container, .page-content:after {
+    margin-top: auto;
+} 
 
 #map {
     height: 800px;
@@ -104,28 +196,23 @@ nav li a:hover {
     animation-duration: 1s;
 }
 
-#wrapper{
-    margin-left:auto;
-    margin-right:auto;
-    height:auto; 
-    width:auto;
+#input {
+    width: 30%;
 }
-#icon-above-text{
-    position:relative;
-    left: calc(40% - 20px);
-}
-
-#text-below-icon{
-    float: left; 
-    clear: left;
-    text-align: center;
-} 
 
 input[type="text"], #textbox { 
     padding: 5px; 
     line-height: 28px; 
     border: 2px solid var(--color2);
     border-radius: 5px;
+}
+
+/* current ride banner related -------------------------- */
+
+#rectangle {
+    width: 100%;
+    height: 30px;
+    background: var(--color3);
 }
 
 .current_banner {
@@ -137,19 +224,6 @@ input[type="text"], #textbox {
 
 .current_banner a {
     color: #444038;
-}
-
-.alert {
-    color:#E39F5F;
-}
-
-#location-list {
-    list-style-type: circle;
-    margin-left: 10px;
-}
-
-input, select, textarea{
-    color: var(--dark-bg-color);
 }
 
 /* buttons ---------------------------------------------- */
@@ -178,31 +252,19 @@ input, select, textarea{
     color: var(--color2);
 }
 
-.profilebuttondiv {
-    display: inline-block;
-}
-
-#rectangle {
-    width:100%;
-    height:30px;
-    background: var(--color3);
-}
-
-#input {
-    width: 30%;
-}
-
 .deletebutton {
     background-color: #FF0000;
     border-color: #FF0000;
     color: "white";
 }
 
-#prof {
-    display: flex;
-    justify-content: space-around;
+.profile-button-wrap {
+    text-align: center;
 }
 
+.profilebuttondiv {
+    display: inline-block;
+}
 
 /* tables ---------------------------------------------- */
 th {
@@ -234,123 +296,37 @@ tr:nth-child(odd) {
     background-color: #FFFFFF;
 }
 
-.team-image {
-    position:relative;
-    width: 50%;
+/* choose your bike related ---------------------------------------------- */
+.availbike {
+    background-color: #55A135;
+    color: white;
 }
 
-.team-mem-image {
-    width: 15%;
-    float: left;
-    padding-right: 20px;
+.availbike:hover {
+    background-color: #A0B64A;
+    color: black;
 }
 
-#office-map-image {
-    width: 50%;
-    float: left;
-    margin-top: 10px;
-    margin-right: 30px;
-    border: 5px solid #555;
+.notavailbike {
+    background-color: gray;
+        color: black;
 }
 
-.cover-image {
-    position: relative;
-    width: 100%;
-}
-.title { 
-    position: absolute;
-    top: 8px;
-    right: 25px;
-    color: var(--light-bg-color); 
-}
-#cover-image {
-    width: 100%;
-    height: 40%;
-    border-radius: 0px 0px 10px 10px;
-}
-#cover-button {
-    position: absolute;
-    bottom: 50px;
-    right: 75px
-}
-
-.announcement{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 100%;
-    height: auto;
+.rental{
+    width: 70px;
+    height: 130px;
+    border: none;
     border-radius: 5px;
-
-
-    margin-inline-end: 5%;
-    margin-bottom: 5%;
-    padding: 15px 20px 20px 15px;
-    position: relative;
-    border-radius: 5px;
-
-    /* display:inline-flex;
-    align-items:inline-block;
-    align-content: center; */
-    /* float:left; */
-}
-.home-card{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    padding: 15px 20px 20px 15px;
-    /*margin: 0px 50px 50px 0px;
-    */
-    /* margin-left: auto;
-    margin-right: auto; */
-    display:inline-flex;
-    align-items:inline-block;
-    align-content: center;
-    /* block-size: fit-content; */
-}
-.home-card-icon{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    max-width: 200px;
-    height: auto;
-    border-radius: 5px;
-    padding: 15px 20px 20px 20px;
-    /*margin: 0px 50px 50px 0px;
-    */
-    margin-left: auto;
-    margin-right: 3%;
-    display:inline-flex;
-    align-items:inline-block;
-    align-content: center;
-    block-size: 15%;
-    width: 17%;
-    height: 250px;
-    margin-bottom: 3%;
-    float:left;
-    
-}
-.bike-card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 100%;
-    height: 100px;
-    border-radius: 5px;
-    padding: 15px 20px 150px 15px;
-    display:flex-column;
-    /* float:right; */
-    align-items:inline-block;
-    /* align-content: center; */
-    text-align: left;
-}
-
-.bike-card .button{
-    display:inline-flex;
-    float:right;
-    margin-left: 5%;
-    /* position: relative; */
-}
-
-i {
+    font-size: 16px;
     text-align: center;
+    margin: 3px;
 }
 
+.allbikes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px 15px;
+}
 
 /* wiggly bowtie ---------------------------------------------- */
 .bow {
@@ -360,7 +336,8 @@ i {
     background-color: var(--light-text-color);
     width: 150px;
     height: 80px;
-    margin: 0px;
+    margin-top: 8%;
+    margin-left: 5%;
 }
 
 .bow:hover {
@@ -375,10 +352,8 @@ i {
     100% {background-image: url("bow0.png")}
 }
 
-/* inspired by: 
-   https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_cards2
-*/
-/* search result card */
+/* inspired by: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_cards2*/
+/* search result card ---------------------------------------------- */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -405,6 +380,10 @@ i {
     border-radius: 5px 5px;
 }
 
+.container span {
+    color: var(--color2);
+}
+
 .select-btn {
     border-radius: 5px 5px;
     padding: 5px 5px;
@@ -417,11 +396,114 @@ i {
     text-decoration: none;
 }
 
-.how-to{
-    float: left;
-    clear: left;
+/* announcement card (card without a picture) ------------------------------ */
+
+.announcement{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-inline-end: 5%;
+    margin-bottom: 5%;
+    padding: 15px 20px 20px 15px;
+    position: relative;
+    border-radius: 5px;
 }
 
+/* main page (station#index) related -------------------------------------- */
+
+.home-card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    padding: 15px 20px 20px 15px;
+    display:inline-flex;
+    align-items:inline-block;
+    align-content: center;
+}
+
+.home-card a {
+    color: var(--light-text-color);
+}
+
+.home-card-icon {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 200px;
+    border-radius: 5px;
+    padding: 15px 20px 20px 20px;
+    margin-left: auto;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    display: inline-flex;
+    align-items: inline-block;
+    align-content: center;
+    block-size: 15%;
+    width: 17%;
+    height: 250px;
+    float: left;
+}
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    height: auto; 
+    width: auto;
+}
+
+#icon-above-text {
+    position: relative;
+    left: calc(40% - 20px);
+}
+
+#text-below-icon {
+    float: left; 
+    clear: left;
+    text-align: center;
+} 
+
+.cover-image {
+    position: relative;
+    width: 100%;
+}
+
+.title { 
+    position: absolute;
+    top: 8px;
+    right: 25px;
+    color: var(--light-bg-color); 
+}
+
+#cover-image {
+    width: 100%;
+    height: 40%;
+    border-radius: 0px 0px 10px 10px;
+}
+
+#cover-button {
+    position: absolute;
+    bottom: 50px;
+    right: 75px
+}
+
+/* current ride related -------------------------------------- */
+
+.bike-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    padding: 15px 20px 150px 15px;
+    display: flex-column;
+    align-items:inline-block;
+    text-align: left;
+}
+
+.bike-card .button {
+    display: inline-flex;
+    float: right;
+    margin-left: 5%;
+}
 
 /* station-view images -------------------------------------- */
 .station-image {
@@ -435,8 +517,39 @@ i {
     object-fit:cover;
 }
 
+/* meet us page related ---------------------------------------------- */
+.office-loc p {
+    font-size:medium;
+}
 
-/* responsive */
+.team-intro {
+    text-align:justify;
+}
+
+.team-intro .content {
+    text-align:center;
+}
+
+.team-image {
+    position:relative;
+    width: 50%;
+}
+
+.team-mem-image {
+    width: 15%;
+    float: left;
+    padding-right: 20px;
+}
+
+#office-map-image {
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+    margin-right: 30px;
+    border: 5px solid #555;
+}
+
+/* responsive  ---------------------------------------------- */
 @media (max-width: 1500px) {
     .card {
         width: 100%;
@@ -463,42 +576,18 @@ i {
         background: var(--light-bg-color);
         color: var(--light-text-color);
     }
-    footer{
-        /* position: absolute; */
-        margin-top: auto;
-        left: 0;
-        bottom: 0px;
-        width: 100%;
-        background: var(--light-text-color);
-        color: var(--light-bg-color);
-        border-radius: 0px 0px 10px 10px;
-    }
+
     h1 {
         color: var(--light-text-color);
         margin-bottom: 10px;
     }
 
-    nav {
-        background-color: var(--light-text-color);
-        text-align: center;
-        font-size: var(--medium);
-        display: flex;
-        border-radius: 10px;
-    }
-    
     body.dark {
         background: var(--dark-bg-color);
         color: var(--dark-text-color);
     }
     h1.dark {
         color: var(--dark-text-color);
-    }
-
-    nav.dark {
-        background-color: var(--light-text-color);
-        text-align: center;
-        font-size: var(--medium);
-        display: flex;
     }
 
     a.dark {
@@ -523,14 +612,6 @@ i {
         margin-bottom: 10px;
     }
 
-    nav {
-        background-color: var(--light-text-color);
-        text-align: center;
-        font-size: var(--medium);
-        display: flex;
-        border-radius: 10px 10px 0px 0px;
-    }
-
     body.light {
         background: var(--light-bg-color);
         color: var(--light-text-color);
@@ -541,13 +622,6 @@ i {
         font-size: var(--xlarge);
     }
 
-    nav.light {
-        background-color: var(--light-text-color);
-        text-align: center;
-        font-size: var(--medium);
-        display: flex;
-    }
-
     a.light {
         color: var(--light-text-color)
     }
@@ -555,20 +629,4 @@ i {
     ul.light {
         color: var(--light-text-color)
     }
-
-    .page-content {
-        min-height: 100vh;
-        margin-bottom: -142px;
-    }
-
-    .page-content:after{
-        content: "";
-        display: block;
-    }
-
-    .footer-container, .page-content:after {
-        margin-top: auto;
-    } 
-
 }
-
