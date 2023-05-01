@@ -11,12 +11,9 @@
             </div>
           <% end %>
 
-        <div class="home-card">
-            <div>
-                    <% @rental = Rental.find_by(user: @user, end_station: nil) %>
-                    <% @user = User.find_by(email: session[:email]) %>
-                    
-            </div>
+        <div>
+                <% @rental = Rental.find_by(user: @user, end_station: nil) %>
+                <% @user = User.find_by(email: session[:email]) %>
         </div>
         <div class="home-card">
         <div>
