@@ -501,7 +501,7 @@ i {
     }
 
     a.dark {
-        color: var(--dark-text-color)
+        color: var(--light-text-color)
     }
 
     ul.dark {
@@ -547,7 +547,7 @@ i {
         display: flex;
     }
 
-    a.light {
+    p a.light {
         color: var(--light-text-color)
     }
 
