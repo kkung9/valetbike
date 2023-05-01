@@ -13,14 +13,6 @@
 
         <div class="home-card">
             <div>
-                <h3>Monthly Membership</h3>
-                    <p>- Low-commitment</p>
-                    <p>- Month-to-month subscription fee</p>
-                    <p>- Unlimited rides</p>
-                    <p>- No overage fees</p>
-                    <p>- Up to four bikes per user</p>
-                    <br>
-                    <h3>$19.13</h3>
                     <% @rental = Rental.find_by(user: @user, end_station: nil) %>
                     <% @user = User.find_by(email: session[:email]) %>
                     <% if !!@rental %>
