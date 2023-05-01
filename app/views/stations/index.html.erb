@@ -1,127 +1,103 @@
 <div class="page-section flexbox vertical stretch">
+
+    <%# Website home page view #%>
+
     <div class="cover-image">
         <%= image_tag("cover-image.jpeg", :alt => "cover image", :id => "cover-image") %>
-        <h1 class="title"> Explore Nipmuc Notch with ValetBike!</h1>
+        <h2 class="title"> Explore Nipmuc Notch with ValetBike!</h2>
         <%= button_to("View Map", "/map", :method => "get", :class => "button", :id => "cover-button") %>
     </div>
+
     <div class="section-inner flexbox vertical stretch"> 
     <div class="section-title">
+
         <div class="announcement">
-            <h2>
-                Announcements
-            </h2>
+            <h2>Announcements</h2>
             <br>
             <p>ValetBike bikes are freely available due to ValetBike being independently owned</p>
-            </div>
-        <%= @current_user %>
-        <h2>
-            Pricing
-        </h2>
+        </div>
+
+        <h2>Pricing</h2>
         <div class="flexbox horizontal wrap justify-space-between">
             <div class="home-card">
                 <div>
                     <h3>Monthly Membership</h3>
-                    <p>
-                        Pay a lower-commitment month-to-month subscription fee for unlimited rides and no overage fees, with as many as four bikes per user.
-                    </p>
+                    <p>Pay a lower-commitment month-to-month subscription fee for unlimited rides and no overage fees, with as many as four bikes per user.</p>
                     <br>
                         <h3>$19.13</h3>
                         <%= button_to("Learn More", "/subscriptions", :method => "get", :class => "button") %>
-                    </div>
                 </div>
+            </div>
                 <div class="home-card">
                     <div>
                         <h3>Yearly Membership</h3>
                         <p>Pay an annual subscription fee for unlimited rides and no overage fees, with as many as four bikes per user.</p>
                         <br>
-                            <h3>$76.50</h3>
-                            <%= button_to("Learn More", "/subscriptions", :method => "get", :class => "button") %>
-                        </div>
+                        <h3>$76.50</h3>
+                        <%= button_to("Learn More", "/subscriptions", :method => "get", :class => "button") %>
                     </div>
-                    <div class="home-card">
-                        <div>
-                            <h3>Pay per Ride Pass</h3>
-                            <p>Pay per ride and per bike. Dock within your allotted time to avoid overage fees. Up to four bikes per user.</p>
-                            <br>
-                                <h3>$2.40</h3>
-                                <%= button_to("Learn More", "/map", :method => "get", :class => "button") %>
-                            </div>
-                        </div>
-                    </div>
-
-                        <h2>How to use the System</h3>
-                        <div class="home-card-icon">
-                            <div id="wrapper">
-                                <div id="icon-above-text">
-                                    <i class="fa-solid fa-map-location-dot fa-5x"></i>
-                                </div>
-
-                                <div id="text-below-icon">
-                                    <h3>FIND A STATION</h3>
-                                    <h5>Use our search or map feature to find a station.</h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-
-                        <div class="home-card-icon">
-                            <div id="wrapper">
-                                <div id="icon-above-text">
-                                    <i class="fa-solid fa-unlock fa-5x"></i>
-                                </div>
-
-                                <div id="text-below-icon">
-                                    <h3>UNLOCK</h3>
-                                    <h5>Rent and unlock a bike from its dock.</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="home-card-icon">
-                            <div id="wrapper">
-                            <div id="icon-above-text">
-                                <i class="fa-solid fa-person-biking fa-5x"></i>
-                            </div>
-
-                            <div id="text-below-icon">
-                                <h3>RIDE</h3>
-                                <h5>Explore Nipmuc Notch and have fun!<h5>
-                            </div>
-                            
-                        </div>
-
-                           
-                        </div>
-                        <div class="home-card-icon">
-                            <div id="wrapper">
-                                <div id="icon-above-text">
-                                    <i class="fa-solid fa-lock fa-5x"></i>
-                                </div>
-
-                                <div id="text-below-icon">
-                                    <h3>RETURN</h3>
-                                    <h5>Return your bike to a an empty dock at any station.<h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <%# <h3>
-                                            Contact
-                                        </h3>
-                                        <p>
-                                            <a href="mailto: valetbike223@gmail.com">
-                                                valetbike223@gmail.com</a>
-                                        </p>
-                                        <p>(413)-123-4567</p>
-                                        <p>
-                                            ValetBike is a bike-renting business in Nipmuc Notch. We have stations all over for you to use! To start the rental process, you can click on Map to see stations in your area, or Search to look for specific stations.
-                                        </p>
-                                        <p>
-                                            We are a fun eclectic family business :)
-                                        </p> %>
                 </div>
-                <%# </div> %>
+                <div class="home-card">
+                    <div>
+                        <h3>Pay per Ride Pass</h3>
+                        <p>Pay per ride and per bike. Dock within your allotted time to avoid overage fees. Up to four bikes per user.</p>
+                        <br>
+                            <h3>$2.40</h3>
+                            <%= button_to("Learn More", "/map", :method => "get", :class => "button") %>
+                    </div>
+                </div>
             </div>
+
+            <h2>How to use the System</h3>
+            <div class="home-card-icon">
+                <div id="wrapper">
+                    <div id="icon-above-text">
+                        <i class="fa-solid fa-map-location-dot fa-5x"></i>
+                    </div>
+
+                    <div id="text-below-icon">
+                        <h3>FIND A STATION</h3>
+                        <h5>Use our search or map feature to find a station.</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="home-card-icon">
+                <div id="wrapper">
+                    <div id="icon-above-text">
+                        <i class="fa-solid fa-unlock fa-5x"></i>
+                    </div>
+
+                    <div id="text-below-icon">
+                        <h3>UNLOCK</h3>
+                        <h5>Rent and unlock a bike from its dock.</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="home-card-icon">
+                <div id="wrapper">
+                    <div id="icon-above-text">
+                        <i class="fa-solid fa-person-biking fa-5x"></i>
+                    </div>
+
+                    <div id="text-below-icon">
+                        <h3>RIDE</h3>
+                        <h5>Explore Nipmuc Notch and have fun!<h5>
+                    </div>              
+                </div>
+            </div>
+            <div class="home-card-icon">
+                <div id="wrapper">
+                    <div id="icon-above-text">
+                        <i class="fa-solid fa-lock fa-5x"></i>
+                    </div>
+
+                    <div id="text-below-icon">
+                        <h3>RETURN</h3>
+                        <h5>Return your bike to a an empty dock at any station.<h5>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

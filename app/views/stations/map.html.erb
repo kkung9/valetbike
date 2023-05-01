@@ -2,10 +2,12 @@
   <meta name="turbo-visit-control" content="reload">
 <% end %>
 
+<%# displays the map view using Leaflet API #%>
+
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
-      <h1>Map</h1>
+      <h2>Map</h2>
       <br>
       
       <!-- Leaflet's css header -->
@@ -19,8 +21,6 @@
           crossorigin=""></script>
       
       <div id="map"></div>
-      
-      </script>
 
       <script>
         var map = L.map('map').setView([42.32, -72.64], 13);
@@ -33,10 +33,9 @@
         }).addTo(map);
       </script>
       
-      <!-- Adding markers for each station:) -->
+      <!-- Adding markers for each station: -->
       <% @stations.each do |station| %>
         
-
         <script>
 
           var color = "assets/green-marker.png";

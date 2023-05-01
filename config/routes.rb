@@ -4,10 +4,7 @@ Rails.application.routes.draw do
   root to: "stations#index"
 
   # for admin
-  # resources :bikes,    only: [:index]
   resources :stations, only: [:index]
-  # resources :rentals,  only: [:create]
-
 
   # stations routes
   get '/station/:identifier', to: 'stations#station_view', as: 'station'
@@ -32,6 +29,7 @@ Rails.application.routes.draw do
   post 'member_ride', to: "rentals#member_ride", as: "member_ride"
   get '/extend.:id', to: "rentals#extend", as: "extend"
   post 'extend_time.:id', to: "rentals#extend_time", as: "extend_time"
+  post "pay", to: "rentals#pay", as: "pay"
 
   # users routes
   get '/past_purchases/:identifier', to: 'users#profile_purchases', as: 'purchases'
@@ -58,6 +56,4 @@ Rails.application.routes.draw do
   post 'start_guest', to: 'guests#create', as: 'start_guest'
 
   get 'set_theme', to: 'theme#update'
-  post "pay", to: "rentals#pay", as: "pay"
-  get '/faq', to: 'users#faq', as: 'faq'
 end

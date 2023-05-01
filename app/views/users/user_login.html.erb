@@ -1,7 +1,10 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
+
+  <%# displays user login page, allows user to input email and send authentication code. #%>
+
     <div class="section-title" style = "margin-left:0;">
-      <h1>Login</h1>
+      <h2>Login</h2>
     </div>
 
     <%= form_with url: create_session_path, remote: true, method: 'post' do |form| %>

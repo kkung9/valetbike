@@ -1,9 +1,10 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
+
+  <%# provides a form for the user to verify the authentication code which was sent to their email as a part of login verification. #%>
+
     <div class="section-title">
-
-    <h1>Verify Email Code</h1>
-
+    <h2>Verify Email Code</h2>
     </div>
 
     <%= form_with url: start_login_path, remote: true, method: 'post' do |form| %>

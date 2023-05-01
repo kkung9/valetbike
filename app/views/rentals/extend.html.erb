@@ -2,9 +2,17 @@
   <div class="section-inner flexbox vertical stretch">
     <div class="section-title">
 
-        <h1>Extend Your Ride</h1>
+        <h2>Extend Your Ride</h2>
 
     </div>
+
+    <%# contains a form which allows users to extend rentals beyond their proposed end time. #%>
+    
+    <% flash.each do |type, msg| %>
+      <div class='alert'>
+        <%= msg%>
+      </div>
+    <% end %>
 
     <p>Bike: <%= @rental.bike.identifier %> </p>
 

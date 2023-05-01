@@ -1,8 +1,11 @@
 <div class="page-section flexbox vertical stretch">
   <div class="section-inner flexbox vertical stretch">
+
+  <%# contains a form which allows the user to input information as part of the account creation process. #%>
+
     <div class="section-title">
 
-    <h1>Create New Account</h1>
+    <h2>Create New Account</h2>
 
     </div>
     <%= form_with url: create_path, remote: true, method: 'post' do |form| %>

@@ -28,7 +28,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -91,18 +91,18 @@ Rails.application.configure do
   # # Do not dump schema after migrations.
   # config.active_record.dump_schema_after_migration = false
 
-  #   #Sending emails using gmail as default.
-  #   config.action_mailer.delivery_method = :smtp
-  #   host = '127.0.0.1:9292' #replace with your own url
-  #   config.action_mailer.default_url_options = { :host => '127.0.0.1:9292', protocol: 'http' }
+    #Sending emails using gmail as default.
+    config.action_mailer.delivery_method = :smtp
+    host = '127.0.0.1:9292' #replace with your own url
+    config.action_mailer.default_url_options = { :host => '127.0.0.1:9292', protocol: 'http' }
   
-  #   # SMTP settings for gmail
-  #   config.action_mailer.smtp_settings = {
-  #   :address              => "smtp.gmail.com",
-  #   :port                 => 587,
-  #   :user_name            => <valetbike223@gmail.com>,
-  #   :password             => <xwivjsduhhtxlzgd>,
-  #   :authentication       => "plain",
-  #   :enable_starttls_auto => true
-  #   }
+    # SMTP settings for gmail
+    config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "valetbike223@gmail.com",
+    :password             => "uorzrzahaqnptvbk",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+    }
 end

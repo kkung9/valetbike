@@ -132,6 +132,7 @@ input[type="text"], #textbox {
     text-align: center;
     border-radius: 10px;
     padding-top: 10px;
+    padding-bottom: 35px;
 }
 
 .current_banner a {
@@ -140,6 +141,15 @@ input[type="text"], #textbox {
 
 .alert {
     color:#E39F5F;
+}
+
+#location-list {
+    list-style-type: circle;
+    margin-left: 10px;
+}
+
+input, select, textarea{
+    color: var(--dark-bg-color);
 }
 
 /* buttons ---------------------------------------------- */
@@ -223,6 +233,26 @@ td {
 tr:nth-child(odd) {
     background-color: #FFFFFF;
 }
+
+.team-image {
+    position:relative;
+    width: 50%;
+}
+
+.team-mem-image {
+    width: 15%;
+    float: left;
+    padding-right: 20px;
+}
+
+#office-map-image {
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+    margin-right: 30px;
+    border: 5px solid #555;
+}
+
 .cover-image {
     position: relative;
     width: 100%;
@@ -243,6 +273,7 @@ tr:nth-child(odd) {
     bottom: 50px;
     right: 75px
 }
+
 .announcement{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     width: 100%;
@@ -301,23 +332,23 @@ tr:nth-child(odd) {
     width: 100%;
     height: 100px;
     border-radius: 5px;
-    padding: 15px 20px 20px 15px;
+    padding: 15px 20px 150px 15px;
     display:flex-column;
     /* float:right; */
-    /* align-items:inline-block; */
+    align-items:inline-block;
     /* align-content: center; */
+    text-align: left;
 }
 
 .bike-card .button{
     display:inline-flex;
     float:right;
     margin-left: 5%;
-
+    /* position: relative; */
 }
 
 i {
     text-align: center;
-
 }
 
 
@@ -442,11 +473,10 @@ i {
         color: var(--light-bg-color);
         border-radius: 0px 0px 10px 10px;
     }
-    /* h1 {
-        font-size: var(--xlarge);
+    h1 {
         color: var(--light-text-color);
         margin-bottom: 10px;
-    } */
+    }
 
     nav {
         background-color: var(--light-text-color);
@@ -461,7 +491,6 @@ i {
         color: var(--dark-text-color);
     }
     h1.dark {
-        font-size: var(--xlarge);
         color: var(--dark-text-color);
     }
 
@@ -471,6 +500,15 @@ i {
         font-size: var(--medium);
         display: flex;
     }
+
+    a.dark {
+        color: var(--dark-text-color)
+    }
+
+    ul.dark {
+        color: var(--dark-text-color)
+    }
+    
 }
 
 /* dark mode ---------------------------------------------- */
@@ -480,11 +518,10 @@ i {
         color: var(--dark-text-color);
     }
 
-    /* h1 {
-        font-size: var(--xlarge);
+    h1 {
         color: var(--dark-text-color);
         margin-bottom: 10px;
-    } */
+    }
 
     nav {
         background-color: var(--light-text-color);
@@ -509,6 +546,14 @@ i {
         text-align: center;
         font-size: var(--medium);
         display: flex;
+    }
+
+    a.light {
+        color: var(--light-text-color)
+    }
+
+    ul.light {
+        color: var(--light-text-color)
     }
 
     .page-content {
