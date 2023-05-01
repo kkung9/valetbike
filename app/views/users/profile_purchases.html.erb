@@ -8,7 +8,7 @@
     </div>
 
     <p><%= @user.first_name %> <%= @user.last_name %> </p>
-    <button> <%= link_to("Back to Profile", profile_path)%> </button>
+    <%= button_to("Back to Profile", "/profile", :method => "get", :class => "button") %> 
 
     <%= render(partial: "users/purchase_table", rentals: @rentals) %>
     
