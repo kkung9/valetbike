@@ -26,9 +26,9 @@
       <td>In progress.</td>
     <% end %>
     <% if rental.actual_end_time > rental.predicted_end_time %>
-      <td> $ <%= ((((((rental.actual_end_time - rental.predicted_end_time)/60).ceil)*0.5)+((((rental.predicted_end_time - rental.start_time)/60).ceil)*0.09))).ceil  %> </td>
+      <td> $ <%= sprintf("%.2f",((((((rental.actual_end_time - rental.predicted_end_time)/60).ceil)*0.5)+((((rental.predicted_end_time - rental.start_time)/60).ceil)*0.09))))  %> </td>
     <% else %>
-      <td> $ <%= ((((rental.predicted_end_time - rental.start_time)/60).ceil)*0.09).ceil %> </td>
+      <td> $ <%= sprintf("%.2f",((((rental.predicted_end_time - rental.start_time)/60).ceil)*0.09)) %> </td>
     <% end %>
   </tr>
   <% end %>
