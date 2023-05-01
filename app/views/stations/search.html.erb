@@ -15,7 +15,7 @@
 
             <br>
 
-            <div class="flexbox vertical stretch" id="s" style="display:block">
+            <div class="flexbox vertical stretch" id="s">
                 <% if @stations.present? %>
                     <div class="record-row header flexbox horizontal justify-space-between"></div>
                     <%= render(partial: "stations/row", collection: @stations, as: :station) %>

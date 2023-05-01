@@ -10,7 +10,7 @@
 
         <% @rental = Rental.find_by(user: @user, end_station: nil) %>
         <% if @rental %>
-          <p> You cannot delete your account while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
+          <p> You cannot delete your account while a rental is active. Please <a href="/current_ride"> return your bike(s)</a> before proceeding. </p>
         <% else %>
           <p>Are you sure you want to delete your account? This action cannot be undone.</p>
 

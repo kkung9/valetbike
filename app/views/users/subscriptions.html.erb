@@ -31,7 +31,7 @@
                 <% @rental = Rental.find_by(user: @user, end_station: nil) %>
                 <% @user = User.find_by(email: session[:email]) %>
                 <% if !!@rental %>
-                    <p> You cannot subscribe while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
+                    <p> You cannot subscribe while a rental is active. Please <a href="/current_ride"> return your bike(s)</a> before proceeding. </p>
                 <% elsif !!@user and !!@user.sub_id %>
                     <p> You are already subscribed. </p>
                 <% else %>
@@ -55,7 +55,7 @@
                 <% @rental = Rental.find_by(user: @user, end_station: nil) %>
                 <% @user = User.find_by(email: session[:email]) %>
                 <% if !!@rental %>
-                    <p> You cannot subscribe while a rental is active. Please <a href="/current_ride" style = "color: var(--light-text-color)"> return your bike(s)</a> before proceeding. </p>
+                    <p> You cannot subscribe while a rental is active. Please <a href="/current_ride"> return your bike(s)</a> before proceeding. </p>
                 <% elsif !!@user and !!@user.sub_id %>
                     <p> You are already subscribed. </p>
                 <% else %>
