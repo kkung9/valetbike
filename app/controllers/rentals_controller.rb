@@ -51,6 +51,46 @@ class RentalsController < ApplicationController
     redirect_to current_path
   end
 
+  # redirect to Stripe to pay for ride
+  def pay
+    Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
+
+    # find user or guest
+    if !!session[:email]
+      @user = User.find_by(email: session[:email])
+    elsif !!session[:guest]
+      @user = Guest.find_by(last_name: session[:guest])
+    end
+
+    # create user in Stripe
+    if !!@user && !!@user.stripe_id
+      @id = Stripe::Customer.retrieve(@user.stripe_id).id
+    else
+      @stripe_user = Stripe::Customer.create({
+        name: @user.first_name + " " + @user.last_name,
+        email: @user.email,
+        metadata: {user_id: @user.id}
+      })
+      @user.stripe_id = @stripe_user["id"]
+      @user.save
+      @id = @user.stripe_id
+    end
+
+    @session = Stripe::Checkout::Session.create({
+      customer: @id,
+      payment_method_types: ['card'],
+      line_items: [{
+        price: 'price_1N0aHtDRwtZV86UmuNxcpLPe', # $0.90 per 10 mins
+        quantity: (params[:duration].to_i)/10, # number of 10 minute periods user wants to ride for
+      }],
+      allow_promotion_codes: true,
+      mode: 'payment',
+      success_url: "https://valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
+      cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
+    })
+    redirect_to @session.url, status: 303, allow_other_host: true
+  end
+
   # pass information about user to show user's rentals in progress
   def current_ride
     if !!session[:email] # if user is logged in 
@@ -72,25 +112,30 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
   end  
 
+  # return a bike
   def return
-    # Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
-    @rental = Rental.find(params[:id])
+    Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
-    @s = Station.find_by(identifier: params[:station_code])
-    if @s.present?
+    @rental = Rental.find(params[:id]) # find rental that is being ended
+
+    @s = Station.find_by(identifier: params[:station_code]) # station user wants to return bike to
+    if @s.present? # station must be valid
       @dcode = params[:station_code]+params[:dock_code]
       @d = Dock.find_by(identifier: @dcode)
-      if @d.present?
-        if @d.bike.present?
+
+      if @d.present? # dock must be valid
+        if @d.bike.present? # dock must not already have a bug in it
           redirect_to lock_path(@rental.id)
           flash[:error] = "Dock already has a bike in it."
         else
           @rental.end_station = @s.identifier
           @rental.actual_end_time = Time.current
-          @rental.save
-          @d.redock(@rental.bike)
+          @rental.save # update rental
+          @d.redock(@rental.bike) # associate bike with its new dock
           @d.save
-          if !!session[:guest]
+
+          # if guest returned their last bike, end guest session
+          if !!session[:guest] 
             @guest = Guest.find_by(last_name: session[:guest])
             @all_rentals = Rental.where(user: @guest, end_station: nil)
             if @all_rentals.count == 0
@@ -98,21 +143,22 @@ class RentalsController < ApplicationController
             end
           end
 
+          # find user or gueest
           if !!session[:email]
             @user = User.find_by(email: session[:email])
           elsif !!session[:guest]
             @user = Guest.find_by(last_name: session[:guest])
           end
 
+          # charge user if bike was kept over time
           if @rental.actual_end_time > @rental.predicted_end_time && !@user.sub_id
-            
             @session = Stripe::Checkout::Session.create({
             customer: @user.stripe_id,
             payment_method_types: ['card'],
             line_items: [{
-              price: 'price_1N189uDRwtZV86UmrgwQB7E3',
+              price: 'price_1N189uDRwtZV86UmrgwQB7E3', # overtime price: $0.50 per min
               quantity: ((@rental.actual_end_time - @rental.predicted_end_time).to_i)/60,
-            }],
+            }], # number of minutes of overtime
             allow_promotion_codes: true,
             mode: 'payment',
             success_url: "https://valetbike-rr.herokuapp.com/receipt/" + @rental.id.to_s,
@@ -121,68 +167,38 @@ class RentalsController < ApplicationController
           redirect_to @session.url, status: 303, allow_other_host: true
           flash[:alert] = "We are very disappointed in you for returning your bike late. Please don't do it again."
           else
-            redirect_to receipt_path(@rental.id)
+            redirect_to receipt_path(@rental.id) # redirect to receipt if not overtime
           end
-
         end
+
       else
         redirect_to lock_path(@rental.id)
         flash[:error] = "Invalid dock code."
       end
+
     else 
       redirect_to lock_path(@rental.id)
       flash[:error] = "Invalid station code."
     end      
   end
 
-  def pay
-    if !!session[:email]
-      @user = User.find_by(email: session[:email])
-    elsif !!session[:guest]
-      @user = Guest.find_by(last_name: session[:guest])
-    end
-
-    Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
-
-    if !!@user && !!@user.stripe_id
-      @id = Stripe::Customer.retrieve(@user.stripe_id).id
-    else
-      @stripe_user = Stripe::Customer.create({
-        name: @user.first_name + " " + @user.last_name,
-        email: @user.email,
-        metadata: {user_id: @user.id}
-      })
-      @user.stripe_id = @stripe_user["id"]
-      @user.save
-      @id = @user.stripe_id
-    end
-
-    @session = Stripe::Checkout::Session.create({
-      customer: @id,
-      payment_method_types: ['card'],
-      line_items: [{
-        price: 'price_1N0aHtDRwtZV86UmuNxcpLPe',
-        quantity: (params[:duration].to_i)/10,
-      }],
-      allow_promotion_codes: true,
-      mode: 'payment',
-      success_url: "https://valetbike-rr.herokuapp.com/rentals/success/" + params[:duration],
-      cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
-    })
-    redirect_to @session.url, status: 303, allow_other_host: true
-  end
-
+  # used to bypass payment for subscribed users
   def member_ride
     redirect_to success_path(params[:duration])
   end
 
+  # pass rental so user can select how much time to extend for
   def extend
     @rental = Rental.find_by(id: params[:id])
   end
 
+  # extend time of ride
   def extend_time
+    # find rental and user
     @rental = Rental.find_by(id: params[:id])
     @user = User.find_by(email: session[:email])
+
+    #allow subscribed users to bypass payment
     if @user && @user.sub_id
       @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
       redirect_to current_path
@@ -193,34 +209,20 @@ class RentalsController < ApplicationController
 
       Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
 
-      if !!@user.stripe_id
-        @id = Stripe::Customer.retrieve(@user.stripe_id).id
-      else
-        @stripe_user = Stripe::Customer.create({
-          name: @user.first_name + " " + @user.last_name,
-          email: @user.email,
-          metadata: {user_id: @user.id}
-        })
-        @user.stripe_id = @stripe_user["id"]
-        @user.save
-        @id = @user.stripe_id
-      end
-
       @session = Stripe::Checkout::Session.create({
         customer: @id,
         payment_method_types: ['card'],
         line_items: [{
-          price: 'price_1N0aHtDRwtZV86UmuNxcpLPe',
-          quantity: (params[:duration].to_i)/10,
+          price: 'price_1N0aHtDRwtZV86UmuNxcpLPe', # $0.90 per 10 mins
+          quantity: (params[:duration].to_i)/10, # number of 10 minute periods user wants to add
         }],
         allow_promotion_codes: true,
         mode: 'payment',
         success_url: "https://valetbike-rr.herokuapp.com/current_ride",
         cancel_url: "https://valetbike-rr.herokuapp.com/rentals/cancel",
       })
-      @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes)
+      @rental.update(predicted_end_time: @rental.predicted_end_time + params[:duration].to_i.minutes) # increase predicted end time
       redirect_to @session.url, status: 303, allow_other_host: true
-    
     end
   end
 

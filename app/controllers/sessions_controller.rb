@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def create
     session[:email] = params[:email]
     @existing = User.find_by(email: session[:email])
