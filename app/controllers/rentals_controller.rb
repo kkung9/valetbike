@@ -22,6 +22,7 @@ class RentalsController < ApplicationController
     elsif session[:guest] # if ride is by a guest
       @user = Guest.find_by(last_name: session[:guest])
     end
+    # doesn't allow user to have more than 4 bikes at a time
     if @user.bikes.count  >= 4
       if session[:email] || !!session[:guest]
         redirect_to rental_path(@station.identifier)
@@ -30,14 +31,11 @@ class RentalsController < ApplicationController
     end
   end
 
-  # pass rental information for the rental being ended
-  def receipt
-    @rental = Rental.find(params[:id])
-  end
-
+  # start a rental
   def create
     @bike = Bike.find_by(identifier: params[:bike_identifier])
     @station = Station.find_by(identifier: params[:station_identifier])
+    # create rental object in database
     @rental = Rental.new
     if !!session[:verified]
       @rental.user_id = User.find_by(email: session[:email]).id
@@ -48,27 +46,34 @@ class RentalsController < ApplicationController
     @rental.start_station = @station.identifier
     @rental.start_time = Time.current
     @rental.predicted_end_time = @rental.start_time + params[:duration].to_i.minutes
-    @bike.dock.undock
+    @bike.dock.undock # unassociate bike from its previous dock
     @rental.save
     redirect_to current_path
   end
 
+  # pass information about user to show user's rentals in progress
   def current_ride
-    if !!session[:email]
+    if !!session[:email] # if user is logged in 
       @user = User.find_by(email: session[:email])
-    elsif !!session[:guest]
+    elsif !!session[:guest] # if ride is by a guest
       @user = Guest.find_by(last_name: session[:guest])
     end
-      @rentals = Rental.where(user: @user, end_station: nil).order(predicted_end_time: :asc)
+      @rentals = Rental.where(user: @user, end_station: nil).order(predicted_end_time: :asc) # list of the user's rentals in progress
   end
 
+  # pass information about the rental that is going to be ended
   def lock
     @rental = Rental.find(params[:id])
-    @station_options = Station.all.map{ |u| [ u.name, u.identifier ] }
+    @station_options = Station.all.map{ |u| [ u.name, u.identifier ] } # list of available stations
   end
 
+  # pass rental information for the rental being ended
+  def receipt
+    @rental = Rental.find(params[:id])
+  end  
+
   def return
-    Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
+    # Stripe.api_key = "sk_test_51Mu2DBDRwtZV86UmlnkSnDPMTt4IJkdbjH4Z8z2T7ewCMZyJuvRkDKIcRAKVKwiRxE1nFBoSKBlR8gma2Q5vPfyA003IWwpvvP"
     @rental = Rental.find(params[:id])
 
     @s = Station.find_by(identifier: params[:station_code])
